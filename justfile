@@ -1,5 +1,7 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
+blockscape_base_url := "https://github.com/pwright/skupper-okf/blob/main/"
+
 # List available commands
 _default:
     just --list
@@ -32,3 +34,7 @@ show-expected-layout:
 # Print current top-level tree without requiring tree(1)
 tree:
     find . -maxdepth 3 -type d -print | sort
+
+# Print the base URL used for Blockscape external links
+blockscape-base-url:
+    @echo {{blockscape_base_url}}
