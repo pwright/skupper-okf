@@ -2,7 +2,7 @@
 /human/
 
 # Generated local outputs
-/generated/
+# /generated/
 /indexes/
 /maps/*.generated.*
 /context-packs/
