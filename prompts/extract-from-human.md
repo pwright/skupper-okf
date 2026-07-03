@@ -1,6 +1,6 @@
 # Prompt: extract OKF from human source docs
 
-Use `human/` as read-only source material. Create small OKF-style Markdown pages under `generated/`.
+Use `human/<repo-name>/` as read-only source material. Create small OKF-style Markdown pages under `generated/`.
 
 Rules:
 
@@ -8,6 +8,7 @@ Rules:
 - Prefer one concept, command, resource, or workflow per file.
 - Do not rewrite the original documentation as marketing copy.
 - Do not invent source paths.
+- Always include the repo-name segment in source paths, for example `human/skupper-docs/input/index.md`.
 - Mark all outputs as `status: generated` and `reviewed: false`.
 
 Suggested front matter:
@@ -22,7 +23,7 @@ source_repo: https://github.com/skupperproject/skupper-docs.git
 source_branch: main
 source_commit: <commit from sources/skupper-docs.md>
 source_paths:
-  - <path inside human/>
+  - human/skupper-docs/<path>
 tags: []
 related: []
 ```

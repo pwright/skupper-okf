@@ -6,7 +6,7 @@ blockscape_base_url := "https://github.com/pwright/skupper-okf/blob/main/"
 _default:
     just --list
 
-# Create directories and fetch skupper-docs into human/
+# Create directories and fetch skupper-docs into human/skupper-docs/
 init:
     ./scripts/init-layout.sh
     ./scripts/sync-human-skupper-docs.sh
@@ -15,7 +15,7 @@ init:
 layout:
     ./scripts/init-layout.sh
 
-# Refresh human/ from skupper-docs main
+# Refresh human/skupper-docs/ from skupper-docs main
 sync-human:
     ./scripts/sync-human-skupper-docs.sh
 

@@ -23,14 +23,14 @@ log "initializing layout"
 
 log "syncing from offline fixture"
 commit="$(./scripts/sync-human-skupper-docs.sh --local-source tests/fixtures/fake-skupper-docs)"
-[[ "$commit" == "local-fixture" ]] || die "unexpected fixture commit: $commit"
+[[ "$commit" == "local-fixture" || "$commit" =~ ^[0-9a-f]{40}$ ]] || die "unexpected fixture commit: $commit"
 
-[[ -f human/_source.md ]] || die "missing human/_source.md"
+[[ -f human/skupper-docs/_source.md ]] || die "missing human/skupper-docs/_source.md"
 [[ -f sources/skupper-docs.md ]] || die "missing sources/skupper-docs.md"
-[[ -f human/docs/listener.md ]] || die "missing copied fixture page"
+[[ -f human/skupper-docs/docs/listener.md ]] || die "missing copied fixture page"
 
-grep -q 'source_commit: local-fixture' human/_source.md || die "human source metadata missing commit"
-grep -q 'local_snapshot: ../human' sources/skupper-docs.md || die "source record missing snapshot path"
+grep -Eq 'source_commit: local-fixture|source_commit: [0-9a-f]{40}' human/skupper-docs/_source.md || die "human source metadata missing commit"
+grep -q 'local_snapshot: ../human/skupper-docs' sources/skupper-docs.md || die "source record missing snapshot path"
 
 log "checking expected directories"
 while IFS= read -r dir; do

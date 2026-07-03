@@ -14,6 +14,7 @@ mkdir_p() {
 main() {
   mkdir_p _system
   mkdir_p human
+  mkdir_p human/skupper-docs
   mkdir_p generated/concepts
   mkdir_p generated/resources
   mkdir_p generated/workflows
@@ -32,7 +33,7 @@ main() {
     cat > _system/AGENTS.md <<'DOC'
 # Agent rules
 
-- Treat `human/` as a read-only upstream snapshot.
+- Treat each `human/<repo-name>/` directory as a read-only upstream snapshot.
 - Write draft OKF files to `generated/`.
 - Do not write to `reviewed/` unless explicitly asked to promote reviewed content.
 - Preserve source provenance in YAML front matter.

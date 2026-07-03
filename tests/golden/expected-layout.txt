@@ -6,6 +6,7 @@ generated/concepts
 generated/resources
 generated/workflows
 human
+human/skupper-docs
 indexes
 maps
 prompts

@@ -11,12 +11,12 @@ source_repo: https://github.com/skupperproject/skupper-docs.git
 source_branch: main
 source_commit: fdfd4594ade939dd2d756215e5f3afdb54190c44
 source_paths:
-  - human/input/refdog/concepts/listener.md
-  - human/refdog/config/concepts/listener.yaml
-  - human/refdog/config/resources/listener.yaml
-  - human/input/system-yaml/service-exposure.md
-  - human/input/system-cli/service-exposure.md
-  - human/refdog/config/commands/listener.yaml
+  - human/skupper-docs/input/refdog/concepts/listener.md
+  - human/skupper-docs/refdog/config/concepts/listener.yaml
+  - human/skupper-docs/refdog/config/resources/listener.yaml
+  - human/skupper-docs/input/system-yaml/service-exposure.md
+  - human/skupper-docs/input/system-cli/service-exposure.md
+  - human/skupper-docs/refdog/config/commands/listener.yaml
 human_context:
   - MultiKeyListener should be treated as a listener type in this wiki model, not as a separate concept family.
   - Multi-key listener behavior may become the default listener behavior in the future.

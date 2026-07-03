@@ -5,7 +5,7 @@ This repository is a minimal starting point for treating Skupper documentation a
 The intended split is:
 
 ```text
-human/      copied snapshot of skupperproject/skupper-docs main; do not edit directly
+human/      copied upstream snapshots by repo name; do not edit directly
 generated/  agent-produced OKF notes; disposable and rebuildable
 reviewed/   human-promoted OKF notes; trusted enough for downstream use
 indexes/    generated indexes and coverage reports
@@ -15,7 +15,7 @@ sources/    provenance records for upstream repositories
 _system/    local operating rules for humans and agents
 ```
 
-The `human/` directory is populated by a script. It is a snapshot, not the source of truth. The source of truth remains the upstream Skupper documentation repository:
+The `human/` directory is populated by scripts. Each upstream repository gets its own repo-named subdirectory, for example `human/skupper-docs/`. These are snapshots, not the source of truth. The source of truth for the initial snapshot remains the upstream Skupper documentation repository:
 
 ```text
 https://github.com/skupperproject/skupper-docs.git
@@ -28,7 +28,7 @@ just init
 just tree
 ```
 
-`just init` creates the local OKF layout and fetches `skupper-docs` from GitHub into `human/`.
+`just init` creates the local OKF layout and fetches `skupper-docs` from GitHub into `human/skupper-docs/`.
 
 For an offline smoke test that does not contact GitHub:
 
@@ -48,7 +48,7 @@ The scripts are ordinary command-line tools. They log progress to stderr and res
 ## Directory lifecycle
 
 ```text
-human/
+human/<repo-name>/
   Refreshed from upstream. Do not hand-edit.
 
 generated/
@@ -67,7 +67,7 @@ maps/
 ## Basic workflow
 
 ```text
-1. Refresh human/ from skupper-docs main.
+1. Refresh human/skupper-docs/ from skupper-docs main.
 2. Use prompts/extract-from-human.md to generate OKF pages into generated/.
 3. Validate front matter and source provenance.
 4. Promote useful pages into reviewed/.
@@ -89,7 +89,7 @@ source_repo: https://github.com/skupperproject/skupper-docs.git
 source_branch: main
 source_commit: <commit>
 source_paths:
-  - <path inside human/>
+  - human/skupper-docs/<path>
 status: generated
 reviewed: false
 ```

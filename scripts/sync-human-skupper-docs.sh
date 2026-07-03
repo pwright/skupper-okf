@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 repo_url="https://github.com/skupperproject/skupper-docs.git"
 branch="main"
-dest="human"
+dest="human/skupper-docs"
 sources_dir="sources"
 dry_run="false"
 local_source=""
@@ -22,14 +22,14 @@ usage() {
 Usage:
   sync-human-skupper-docs.sh [options]
 
-Fetch skupper-docs and populate the local human/ directory with a clean
+Fetch skupper-docs and populate the local human/skupper-docs/ directory with a clean
 snapshot. By default, the script performs a shallow clone of the main branch.
 For tests or offline use, pass --local-source DIR.
 
 Options:
   --repo URL          Git repository URL
   --branch NAME      Branch to fetch, default: main
-  --dest DIR         Destination directory, default: human
+  --dest DIR         Destination directory, default: human/skupper-docs
   --sources-dir DIR  Provenance directory, default: sources
   --local-source DIR Copy from a local directory instead of cloning
   --dry-run          Show what would happen without modifying files
@@ -85,7 +85,7 @@ done
 [[ -n "$sources_dir" ]] || die "--sources-dir must not be empty"
 
 case "$dest" in
-  /|.|..|"" )
+  /|.|..|human|"" )
     die "refusing unsafe destination: $dest"
     ;;
 esac

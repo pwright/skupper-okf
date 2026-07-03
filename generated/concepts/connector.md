@@ -11,15 +11,15 @@ source_repo: https://github.com/skupperproject/skupper-docs.git
 source_branch: main
 source_commit: fdfd4594ade939dd2d756215e5f3afdb54190c44
 source_paths:
-  - human/input/refdog/concepts/connector.md
-  - human/refdog/config/resources/connector.yaml
-  - human/refdog/config/resources/attached-connector.yaml
-  - human/refdog/config/resources/attached-connector-binding.yaml
-  - human/input/refdog/topics/attached-connectors.md
-  - human/input/kube-yaml/service-exposure.md
-  - human/input/system-yaml/service-exposure.md
-  - human/input/system-cli/service-exposure.md
-  - human/refdog/config/commands/connector.yaml
+  - human/skupper-docs/input/refdog/concepts/connector.md
+  - human/skupper-docs/refdog/config/resources/connector.yaml
+  - human/skupper-docs/refdog/config/resources/attached-connector.yaml
+  - human/skupper-docs/refdog/config/resources/attached-connector-binding.yaml
+  - human/skupper-docs/input/refdog/topics/attached-connectors.md
+  - human/skupper-docs/input/kube-yaml/service-exposure.md
+  - human/skupper-docs/input/system-yaml/service-exposure.md
+  - human/skupper-docs/input/system-cli/service-exposure.md
+  - human/skupper-docs/refdog/config/commands/connector.yaml
 human_context:
   - AttachedConnector should be treated as a connector type in this wiki model, not as a separate concept family.
 tags:
