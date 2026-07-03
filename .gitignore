@@ -1,5 +1,5 @@
 # Upstream snapshot; refresh with scripts/sync-human-skupper-docs.sh
-/human/
+#/human/
 
 # Generated local outputs
 # /generated/

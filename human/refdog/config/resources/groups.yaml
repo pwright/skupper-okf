@@ -1,0 +1,20 @@
+- title: Primary resources
+  objects:
+    - site
+    - link
+    - listener
+    - connector
+- title: Sites and site linking
+  objects:
+    - site
+    - link
+    - access-grant
+    - access-token
+    - router-access
+- title: Service exposure
+  objects:
+    - listener
+    - multi-key-listener
+    - connector
+    - attached-connector
+    - attached-connector-binding
