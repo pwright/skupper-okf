@@ -15,10 +15,11 @@ sources/    provenance records for upstream repositories
 _system/    local operating rules for humans and agents
 ```
 
-The `human/` directory is populated by scripts. Each upstream repository gets its own repo-named subdirectory, for example `human/skupper-docs/`. These are snapshots, not the source of truth. The source of truth for the initial snapshot remains the upstream Skupper documentation repository:
+The `human/` directory is populated by scripts. Each upstream repository gets its own repo-named subdirectory, for example `human/skupper-docs/` and `human/skupper-example-hello-world/`. These are snapshots, not the source of truth. The source of truth for the initial snapshots remains the upstream Skupper repositories:
 
 ```text
 https://github.com/skupperproject/skupper-docs.git
+https://github.com/skupperproject/skupper-example-hello-world.git
 ```
 
 ## Quick start
@@ -28,7 +29,7 @@ just init
 just tree
 ```
 
-`just init` creates the local OKF layout and fetches `skupper-docs` from GitHub into `human/skupper-docs/`.
+`just init` creates the local OKF layout and fetches `skupper-docs` into `human/skupper-docs/` and `skupper-example-hello-world` into `human/skupper-example-hello-world/`.
 
 For an offline smoke test that does not contact GitHub:
 

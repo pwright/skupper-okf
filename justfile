@@ -6,22 +6,33 @@ blockscape_base_url := "https://github.com/pwright/skupper-okf/blob/main/"
 _default:
     just --list
 
-# Create directories and fetch skupper-docs into human/skupper-docs/
+# Create directories and fetch configured human source snapshots
 init:
     ./scripts/init-layout.sh
     ./scripts/sync-human-skupper-docs.sh
+    ./scripts/sync-human-skupper-example-hello-world.sh
 
 # Create directories only
 layout:
     ./scripts/init-layout.sh
 
-# Refresh human/skupper-docs/ from skupper-docs main
+# Refresh all configured human source snapshots
 sync-human:
     ./scripts/sync-human-skupper-docs.sh
+    ./scripts/sync-human-skupper-example-hello-world.sh
 
-# Dry-run the sync script
+# Dry-run all human source sync scripts
 sync-human-dry-run:
     ./scripts/sync-human-skupper-docs.sh --dry-run
+    ./scripts/sync-human-skupper-example-hello-world.sh --dry-run
+
+# Refresh human/skupper-docs/ from skupper-docs main
+sync-human-skupper-docs:
+    ./scripts/sync-human-skupper-docs.sh
+
+# Refresh human/skupper-example-hello-world/ from skupper-example-hello-world main
+sync-human-example-hello-world:
+    ./scripts/sync-human-skupper-example-hello-world.sh
 
 # Build an offline test fixture and validate behavior without network
 test:

@@ -10,3 +10,10 @@
 # Temporary files
 /tmp/
 .DS_Store
+
+
+# Heavy/generated upstream snapshot internals
+/human/**/python/
+/human/**/external/
+/human/skupper-example-hello-world/frontend/static/
+.github/
