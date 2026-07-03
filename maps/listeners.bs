@@ -1,0 +1,231 @@
+{
+  "id": "skupper-listeners-map",
+  "title": "Skupper Listeners in the Application Network",
+  "abstract": "How listeners help Skupper make remote services feel local across a secure application network.",
+  "status": "generated",
+  "reviewed": false,
+  "source_paths": [
+    "human/input/overview/index.md",
+    "human/input/overview/connectivity.md",
+    "human/input/system-yaml/service-exposure.md",
+    "human/input/kube-yaml/service-exposure.md",
+    "generated/concepts/listener.md"
+  ],
+  "categories": [
+    {
+      "id": "application-outcomes",
+      "title": "Application outcomes",
+      "items": [
+        {
+          "id": "distributed-services-communicate",
+          "name": "Distributed services communicate",
+          "deps": [
+            "remote-service-consumption",
+            "secure-application-network"
+          ],
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "hybrid-cloud-reachability",
+          "name": "Hybrid cloud reachability",
+          "deps": [
+            "secure-application-network",
+            "local-service-endpoint"
+          ],
+          "source": "human/input/overview/connectivity.md"
+        },
+        {
+          "id": "avoid-public-internet-or-vpn",
+          "name": "Avoid public exposure or VPN setup",
+          "deps": [
+            "secure-application-network"
+          ],
+          "source": "human/input/overview/connectivity.md"
+        }
+      ]
+    },
+    {
+      "id": "service-consumption",
+      "title": "Service consumption",
+      "items": [
+        {
+          "id": "remote-service-consumption",
+          "name": "Consume remote service locally",
+          "deps": [
+            "local-service-endpoint",
+            "matching-connector"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "local-service-endpoint",
+          "name": "Local service endpoint",
+          "deps": [
+            "listener-host-port"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "client-stable-address",
+          "name": "Stable client address",
+          "deps": [
+            "listener-host-port"
+          ],
+          "source": "generated/concepts/listener.md"
+        }
+      ]
+    },
+    {
+      "id": "listener-role",
+      "title": "Listener role",
+      "items": [
+        {
+          "id": "listener",
+          "name": "Listener",
+          "deps": [
+            "listener-host-port",
+            "routing-key-match"
+          ],
+          "source": "generated/concepts/listener.md"
+        },
+        {
+          "id": "listener-host-port",
+          "name": "Host and port",
+          "deps": [
+            "listener-resource"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "routing-key-match",
+          "name": "Routing key match",
+          "deps": [
+            "matching-connector"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "matching-connector",
+          "name": "Matching connector",
+          "deps": [
+            "connector-exposed-workload"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        }
+      ]
+    },
+    {
+      "id": "traffic-path",
+      "title": "Traffic path",
+      "items": [
+        {
+          "id": "client-connection",
+          "name": "Client connection",
+          "deps": [
+            "listener"
+          ],
+          "source": "generated/concepts/listener.md"
+        },
+        {
+          "id": "skupper-router-forwarding",
+          "name": "Skupper router forwarding",
+          "deps": [
+            "secure-application-network",
+            "routing-key-match"
+          ],
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "connector-exposed-workload",
+          "name": "Connector-exposed workload",
+          "deps": [
+            "secure-application-network"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        }
+      ]
+    },
+    {
+      "id": "network-foundation",
+      "title": "Network foundation",
+      "items": [
+        {
+          "id": "secure-application-network",
+          "name": "Secure application network",
+          "deps": [
+            "linked-sites",
+            "skupper-routers"
+          ],
+          "source": "human/input/overview/connectivity.md"
+        },
+        {
+          "id": "linked-sites",
+          "name": "Linked sites",
+          "deps": [
+            "skupper-instances"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "skupper-routers",
+          "name": "Skupper routers",
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "skupper-instances",
+          "name": "Skupper instances",
+          "source": "human/input/overview/index.md"
+        }
+      ]
+    },
+    {
+      "id": "listener-control-plane",
+      "title": "Listener control plane",
+      "items": [
+        {
+          "id": "listener-resource",
+          "name": "Listener resource",
+          "deps": [
+            "listener-spec-routing-key",
+            "listener-spec-host",
+            "listener-spec-port"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "listener-spec-routing-key",
+          "name": "spec.routingKey",
+          "source": "generated/concepts/listener.md"
+        },
+        {
+          "id": "listener-spec-host",
+          "name": "spec.host",
+          "source": "generated/concepts/listener.md"
+        },
+        {
+          "id": "listener-spec-port",
+          "name": "spec.port",
+          "source": "generated/concepts/listener.md"
+        },
+        {
+          "id": "multi-key-listener",
+          "name": "Multi-key listener",
+          "deps": [
+            "listener",
+            "routing-key-match"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "listener-ready-status",
+          "name": "Ready with matching connector",
+          "deps": [
+            "listener-resource",
+            "matching-connector"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "id": "skupper-connectors-map",
+  "title": "Skupper Connectors in the Application Network",
+  "abstract": "How connectors help Skupper publish workloads into a secure application network so remote listeners can consume them.",
+  "status": "generated",
+  "reviewed": false,
+  "source_paths": [
+    "human/input/overview/index.md",
+    "human/input/overview/connectivity.md",
+    "human/input/system-yaml/service-exposure.md",
+    "human/input/kube-yaml/service-exposure.md",
+    "human/input/refdog/topics/attached-connectors.md",
+    "generated/concepts/connector.md"
+  ],
+  "categories": [
+    {
+      "id": "application-outcomes",
+      "title": "Application outcomes",
+      "items": [
+        {
+          "id": "distributed-application",
+          "name": "Distributed application",
+          "deps": [
+            "service-exposed-to-network",
+            "secure-application-network"
+          ],
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "services-across-sites",
+          "name": "Services across sites",
+          "deps": [
+            "service-exposed-to-network",
+            "remote-listener-consumption"
+          ],
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "private-public-cloud-composition",
+          "name": "Private and public cloud composition",
+          "deps": [
+            "secure-application-network"
+          ],
+          "source": "human/input/overview/connectivity.md"
+        }
+      ]
+    },
+    {
+      "id": "service-publication",
+      "title": "Service publication",
+      "items": [
+        {
+          "id": "service-exposed-to-network",
+          "name": "Service exposed to network",
+          "deps": [
+            "connector",
+            "routing-key-match"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "workload-selected",
+          "name": "Workload selected",
+          "deps": [
+            "connector-selector-or-host"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "remote-listener-consumption",
+          "name": "Remote listener consumption",
+          "deps": [
+            "routing-key-match"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        }
+      ]
+    },
+    {
+      "id": "connector-role",
+      "title": "Connector role",
+      "items": [
+        {
+          "id": "connector",
+          "name": "Connector",
+          "deps": [
+            "connector-selector-or-host",
+            "connector-port",
+            "routing-key-match"
+          ],
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "connector-selector-or-host",
+          "name": "Selector or host",
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "connector-port",
+          "name": "Target port",
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "routing-key-match",
+          "name": "Routing key match",
+          "deps": [
+            "matching-listener"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "matching-listener",
+          "name": "Matching listener",
+          "source": "human/input/system-yaml/service-exposure.md"
+        }
+      ]
+    },
+    {
+      "id": "traffic-path",
+      "title": "Traffic path",
+      "items": [
+        {
+          "id": "listener-to-connector-traffic",
+          "name": "Listener-to-connector traffic",
+          "deps": [
+            "remote-listener-consumption",
+            "connector"
+          ],
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "router-message-forwarding",
+          "name": "Router message forwarding",
+          "deps": [
+            "secure-application-network",
+            "routing-key-match"
+          ],
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "workload-server-delivery",
+          "name": "Workload server delivery",
+          "deps": [
+            "workload-selected",
+            "listener-to-connector-traffic"
+          ],
+          "source": "generated/concepts/connector.md"
+        }
+      ]
+    },
+    {
+      "id": "network-foundation",
+      "title": "Network foundation",
+      "items": [
+        {
+          "id": "secure-application-network",
+          "name": "Secure application network",
+          "deps": [
+            "linked-sites",
+            "skupper-routers"
+          ],
+          "source": "human/input/overview/connectivity.md"
+        },
+        {
+          "id": "linked-sites",
+          "name": "Linked sites",
+          "deps": [
+            "skupper-instances"
+          ],
+          "source": "human/input/system-yaml/service-exposure.md"
+        },
+        {
+          "id": "skupper-routers",
+          "name": "Skupper routers",
+          "source": "human/input/overview/index.md"
+        },
+        {
+          "id": "skupper-instances",
+          "name": "Skupper instances",
+          "source": "human/input/overview/index.md"
+        }
+      ]
+    },
+    {
+      "id": "connector-control-plane",
+      "title": "Connector control plane",
+      "items": [
+        {
+          "id": "connector-resource",
+          "name": "Connector resource",
+          "deps": [
+            "connector-routing-key-field",
+            "connector-selector-field",
+            "connector-port-field"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "connector-routing-key-field",
+          "name": "spec.routingKey",
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "connector-selector-field",
+          "name": "spec.selector",
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "connector-port-field",
+          "name": "spec.port",
+          "source": "generated/concepts/connector.md"
+        },
+        {
+          "id": "attached-connector",
+          "name": "Attached connector",
+          "deps": [
+            "connector",
+            "peer-namespace-workload"
+          ],
+          "source": "human/input/refdog/topics/attached-connectors.md"
+        },
+        {
+          "id": "peer-namespace-workload",
+          "name": "Peer namespace workload",
+          "deps": [
+            "cluster-wide-skupper"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "cluster-wide-skupper",
+          "name": "Cluster-wide Skupper",
+          "source": "human/input/kube-yaml/service-exposure.md"
+        },
+        {
+          "id": "connector-ready-status",
+          "name": "Ready with matching listener",
+          "deps": [
+            "connector-resource",
+            "matching-listener"
+          ],
+          "source": "human/input/kube-yaml/service-exposure.md"
+        }
+      ]
+    }
+  ]
+}
