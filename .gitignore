@@ -1,0 +1,12 @@
+# Upstream snapshot; refresh with scripts/sync-human-skupper-docs.sh
+/human/
+
+# Generated local outputs
+/generated/
+/indexes/
+/maps/*.generated.*
+/context-packs/
+
+# Temporary files
+/tmp/
+.DS_Store

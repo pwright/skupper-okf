@@ -1,0 +1,17 @@
+_system
+context-packs
+generated
+generated/architecture
+generated/concepts
+generated/resources
+generated/workflows
+human
+indexes
+maps
+prompts
+reviewed
+reviewed/architecture
+reviewed/concepts
+reviewed/resources
+reviewed/workflows
+sources
