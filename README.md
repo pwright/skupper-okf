@@ -2,6 +2,12 @@
 
 This repository is a minimal starting point for treating Skupper documentation as a curated human source and building an OKF-style LLM wiki beside it.
 
+
+## Maps
+
+- [Skupper Blockscape map](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs) from `maps/skupper.bs`
+
+
 The intended split is:
 
 ```text
