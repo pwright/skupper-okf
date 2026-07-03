@@ -11,6 +11,7 @@ init:
     ./scripts/init-layout.sh
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
+    ./scripts/sync-human-skupper-example-grpc.sh
 
 # Create directories only
 layout:
@@ -20,11 +21,13 @@ layout:
 sync-human:
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
+    ./scripts/sync-human-skupper-example-grpc.sh
 
 # Dry-run all human source sync scripts
 sync-human-dry-run:
     ./scripts/sync-human-skupper-docs.sh --dry-run
     ./scripts/sync-human-skupper-example-hello-world.sh --dry-run
+    ./scripts/sync-human-skupper-example-grpc.sh --dry-run
 
 # Refresh human/skupper-docs/ from skupper-docs main
 sync-human-skupper-docs:
@@ -33,6 +36,10 @@ sync-human-skupper-docs:
 # Refresh human/skupper-example-hello-world/ from skupper-example-hello-world main
 sync-human-example-hello-world:
     ./scripts/sync-human-skupper-example-hello-world.sh
+
+# Refresh human/skupper-example-grpc/ from skupper-example-grpc main
+sync-human-example-grpc:
+    ./scripts/sync-human-skupper-example-grpc.sh
 
 # Build an offline test fixture and validate behavior without network
 test:

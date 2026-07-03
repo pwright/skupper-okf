@@ -9,6 +9,7 @@ skupper-okf-mvp/
     init-layout.sh
     sync-human-skupper-docs.sh
     sync-human-skupper-example-hello-world.sh
+    sync-human-skupper-example-grpc.sh
   prompts/
     extract-from-human.md
     promote-generated.md
@@ -23,9 +24,13 @@ skupper-okf-mvp/
     skupper-example-hello-world/
       _source.md
       ...snapshot of skupper-example-hello-world...
+    skupper-example-grpc/
+      _source.md
+      ...snapshot of skupper-example-grpc...
   sources/
     skupper-docs.md
     skupper-example-hello-world.md
+    skupper-example-grpc.md
   generated/
   reviewed/
   indexes/
