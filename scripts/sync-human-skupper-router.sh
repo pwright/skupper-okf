@@ -128,7 +128,7 @@ Do not edit this directory directly. Refresh it with:
 
 This clone is used to extract markdown documentation files.
 
-Generated documentation is written to \`sources/\` via \`scripts/copy-router-markdown.sh\`.
+Generated documentation is written to \`generated/skupper-router/\` via \`scripts/copy-router-markdown.sh\`.
 DOC
 
 cat > "$sources_dir/$source_name.md" <<DOC
@@ -160,7 +160,7 @@ This clone provides source material for extracting technical documentation.
 
 ## Generated Documentation
 
-Run \`./scripts/copy-router-markdown.sh\` to copy markdown files from the router repo to sources/.
+Run \`./scripts/copy-router-markdown.sh\` to copy markdown files from the router repo to generated/skupper-router/.
 DOC
 
 log "wrote $dest/_source.md"

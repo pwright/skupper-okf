@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 source_repo="human/skupper"
-output_dir="sources"
+output_dir="generated/skupper"
 dry_run="false"
 
 log() {
@@ -23,7 +23,7 @@ Generate documentation from API specs and CRDs in the skupper repository clone.
 
 Options:
   --source-repo DIR  Source repository directory, default: human/skupper
-  --output-dir DIR   Output directory for generated docs, default: sources
+  --output-dir DIR   Output directory for generated docs, default: generated/skupper
   --dry-run          Show what would happen without modifying files
   -h, --help         Show help
 
@@ -38,8 +38,8 @@ Requirements:
   - yq (for CRD parsing, optional)
 
 Generates:
-  - sources/skupper-api-*.md (from OpenAPI specs)
-  - sources/skupper-crd-*.md (from CRD YAML files)
+  - generated/skupper/skupper-api-*.md (from OpenAPI specs)
+  - generated/skupper/skupper-crd-*.md (from CRD YAML files)
 DOC
 }
 

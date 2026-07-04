@@ -128,7 +128,7 @@ Do not edit this directory directly. Refresh it with:
 
 This clone is used to extract and document API calls made by the console frontend.
 
-Generated documentation is written to \`sources/\` via \`scripts/extract-console-api-calls.sh\`.
+Generated documentation is written to \`generated/skupper-console/\` via \`scripts/extract-console-api-calls.sh\`.
 DOC
 
 cat > "$sources_dir/$source_name.md" <<DOC

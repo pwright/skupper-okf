@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 source_repo="human/skupper-console"
-output_file="sources/console.md"
+output_file="generated/skupper-console/console.md"
 dry_run="false"
 
 log() {
@@ -23,7 +23,7 @@ Extract and document API calls from the Skupper Console codebase.
 
 Options:
   --source-repo DIR  Source repository directory, default: human/skupper-console
-  --output-file FILE Output file for API documentation, default: sources/console.md
+  --output-file FILE Output file for API documentation, default: generated/skupper-console/console.md
   --dry-run          Show what would happen without modifying files
   -h, --help         Show help
 
@@ -34,7 +34,7 @@ Stderr:
   Progress and diagnostic messages.
 
 Generates:
-  sources/console.md - Documentation of all API endpoints used by the console
+  generated/skupper-console/console.md - Documentation of all API endpoints used by the console
 DOC
 }
 
@@ -65,6 +65,9 @@ done
 [[ -n "$source_repo" ]] || die "--source-repo must not be empty"
 [[ -n "$output_file" ]] || die "--output-file must not be empty"
 [[ -d "$source_repo" ]] || die "source repository not found: $source_repo (run sync-human-skupper-console.sh first)"
+
+# Ensure output directory exists
+mkdir -p "$(dirname "$output_file")"
 
 if [[ "$dry_run" == "true" ]]; then
   log "dry run enabled; no files changed"

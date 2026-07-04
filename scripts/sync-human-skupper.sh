@@ -131,7 +131,7 @@ This clone is used to generate documentation from:
 - CRD definitions
 - API types
 
-Generated documentation is written to \`sources/\` via \`scripts/generate-api-docs.sh\`.
+Generated documentation is written to \`generated/skupper/\` via \`scripts/generate-api-docs.sh\`.
 DOC
 
 cat > "$sources_dir/$source_name.md" <<DOC

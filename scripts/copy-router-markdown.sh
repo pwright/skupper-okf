@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 source_repo="human/skupper-router"
-output_dir="sources"
+output_dir="generated/skupper-router"
 dry_run="false"
 
 log() {
@@ -23,7 +23,7 @@ Copy all markdown files from skupper-router to sources/ with proper naming and f
 
 Options:
   --source-repo DIR  Source repository directory, default: human/skupper-router
-  --output-dir DIR   Output directory for copied markdown, default: sources
+  --output-dir DIR   Output directory for copied markdown, default: generated/skupper-router
   --dry-run          Show what would happen without modifying files
   -h, --help         Show help
 
@@ -34,7 +34,7 @@ Stderr:
   Progress and diagnostic messages.
 
 Generates:
-  sources/router-*.md - Markdown files from the router repo with frontmatter
+  generated/skupper-router/router-*.md - Markdown files from the router repo with frontmatter
 DOC
 }
 
