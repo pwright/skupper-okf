@@ -168,34 +168,24 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 """,
         encoding="utf-8",
     )
-    (output_dir / "okf-pages.base").write_text(
-        """filters:
-  and:
-    - file.ext == "md"
-    - not file.path == "index.md"
-properties:
-  title:
-    displayName: Page
-  status:
-    displayName: Status
-  reviewed:
-    displayName: Reviewed
-  tags:
-    displayName: Tags
-views:
-  - type: table
-    name: OKF Pages
-    order:
-      - title
-      - status
-      - reviewed
-      - tags
-    sort:
-      - property: title
-        direction: ASC
-""",
-        encoding="utf-8",
-    )
+
+
+def copy_templates(template_dir: Path, output_dir: Path, repos: list[dict[str, object]]) -> int:
+    if not template_dir.exists():
+        log(f"no templates directory found at {template_dir}, skipping")
+        return 0
+
+    copied = 0
+    for source in sorted(template_dir.glob("*.base")):
+        if not source.is_file():
+            continue
+
+        target = output_dir / source.name
+        text = source.read_text(encoding="utf-8")
+        target.write_text(rewrite_human_links(text, repos), encoding="utf-8")
+        copied += 1
+
+    return copied
 
 
 def main() -> int:
@@ -220,6 +210,13 @@ def main() -> int:
 
     reset_output(output_dir)
     write_homepage(output_dir)
+
+    # Copy template files (e.g., .base files for Obsidian Dataview)
+    template_dir = output_dir.parent / "templates"
+    template_count = copy_templates(template_dir, output_dir, repos)
+    if template_count > 0:
+        log(f"copied {template_count} template files from {template_dir}")
+
     total = 0
     for input_dir in inputs:
         if not input_dir.exists():

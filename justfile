@@ -16,6 +16,8 @@ init:
     ./scripts/sync-human-skupper-example-grpc.sh
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
+    ./scripts/sync-human-skupper-console.sh
+    ./scripts/extract-console-api-calls.sh
 
 # Create directories only
 layout:
@@ -28,6 +30,8 @@ sync-human:
     ./scripts/sync-human-skupper-example-grpc.sh
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
+    ./scripts/sync-human-skupper-console.sh
+    ./scripts/extract-console-api-calls.sh
 
 # Dry-run all human source sync scripts
 sync-human-dry-run:
@@ -36,6 +40,8 @@ sync-human-dry-run:
     ./scripts/sync-human-skupper-example-grpc.sh --dry-run
     ./scripts/sync-human-skupper.sh --dry-run
     ./scripts/generate-api-docs.sh --dry-run
+    ./scripts/sync-human-skupper-console.sh --dry-run
+    ./scripts/extract-console-api-calls.sh --dry-run
 
 # Refresh human/skupper-docs/ from skupper-docs main
 sync-human-skupper-docs:
@@ -56,6 +62,14 @@ sync-human-skupper:
 # Generate API and CRD documentation from human/skupper/ to sources/
 generate-api-docs:
     ./scripts/generate-api-docs.sh
+
+# Refresh human/skupper-console/ (full repo clone) for console API extraction
+sync-human-skupper-console:
+    ./scripts/sync-human-skupper-console.sh
+
+# Extract and document API calls from human/skupper-console/ to sources/console.md
+extract-console-api-calls:
+    ./scripts/extract-console-api-calls.sh
 
 # Build an offline test fixture and validate behavior without network
 test:

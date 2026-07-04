@@ -3,6 +3,7 @@
 
 # Full repo clones (gitignored, used as source for doc generation)
 /human/skupper/
+/human/skupper-console/
 
 # Generated local outputs
 # /generated/
@@ -27,3 +28,6 @@
 /quartz/public/
 /quartz/node_modules/
 /quartz/.quartz/plugins/
+
+# Quartz templates are tracked (not ignored)
+!/quartz/templates/

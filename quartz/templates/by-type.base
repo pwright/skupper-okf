@@ -1,0 +1,27 @@
+filters:
+  and:
+    - file.ext == "md"
+    - not file.path == "index.md"
+    - type != null
+properties:
+  type:
+    displayName: Type
+  title:
+    displayName: Title
+  status:
+    displayName: Status
+  confidence:
+    displayName: Confidence
+  reviewed:
+    displayName: Reviewed
+views:
+  - type: table
+    name: Content by Type
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - property: title
+        direction: ASC
+    summaries:
+      file.name: Empty

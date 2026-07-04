@@ -1,0 +1,27 @@
+filters:
+  and:
+    - file.ext == "md"
+    - not file.path == "index.md"
+    - file.folder != ""
+properties:
+  title:
+    displayName: Page
+  file.folder:
+    displayName: Section
+  status:
+    displayName: Status
+  reviewed:
+    displayName: Reviewed
+  tags:
+    displayName: Tags
+views:
+  - type: table
+    name: Content by Section
+    groupBy:
+      property: file.folder
+      direction: ASC
+    order:
+      - property: title
+        direction: ASC
+    summaries:
+      file.name: Empty
