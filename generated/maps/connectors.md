@@ -1,3 +1,18 @@
+---
+title: "Skupper Connectors in the Application Network"
+type: BlockscapeMap
+status: generated
+source_path: maps/connectors.bs
+tags:
+  - skupper
+  - blockscape
+---
+
+# Skupper Connectors in the Application Network
+
+Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/connectors.bs)
+
+```bs full
 {
   "id": "skupper-connectors-map",
   "title": "Skupper Connectors in the Application Network",
@@ -272,3 +287,4 @@
   ],
   "source_base_url": "https://pwright.github.io/skupper-okf/"
 }
+```

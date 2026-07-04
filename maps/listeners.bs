@@ -24,7 +24,7 @@
             "secure-application-network"
           ],
           "source": "human/skupper-docs/input/overview/index.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/index.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         },
         {
           "id": "hybrid-cloud-reachability",
@@ -34,7 +34,7 @@
             "local-service-endpoint"
           ],
           "source": "human/skupper-docs/input/overview/connectivity.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/connectivity.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/connectivity"
         },
         {
           "id": "avoid-public-internet-or-vpn",
@@ -43,7 +43,7 @@
             "secure-application-network"
           ],
           "source": "human/skupper-docs/input/overview/connectivity.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/connectivity.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/connectivity"
         }
       ]
     },
@@ -59,7 +59,7 @@
             "matching-connector"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/system-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         },
         {
           "id": "local-service-endpoint",
@@ -68,7 +68,7 @@
             "listener-host-port"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/kube-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
           "id": "client-stable-address",
@@ -77,7 +77,7 @@
             "listener-host-port"
           ],
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md#outcome"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#outcome"
         }
       ]
     },
@@ -93,7 +93,7 @@
             "routing-key-match"
           ],
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md#listener"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#listener"
         },
         {
           "id": "listener-host-port",
@@ -102,7 +102,7 @@
             "listener-resource"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/kube-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
           "id": "routing-key-match",
@@ -111,7 +111,7 @@
             "matching-connector"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/system-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         },
         {
           "id": "matching-connector",
@@ -120,7 +120,7 @@
             "connector-exposed-workload"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/system-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         }
       ]
     },
@@ -135,7 +135,7 @@
             "listener"
           ],
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener"
         },
         {
           "id": "skupper-router-forwarding",
@@ -145,7 +145,7 @@
             "routing-key-match"
           ],
           "source": "human/skupper-docs/input/overview/index.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/index.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         },
         {
           "id": "connector-exposed-workload",
@@ -154,7 +154,7 @@
             "secure-application-network"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/system-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         }
       ]
     },
@@ -170,7 +170,7 @@
             "skupper-routers"
           ],
           "source": "human/skupper-docs/input/overview/connectivity.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/connectivity.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/connectivity"
         },
         {
           "id": "linked-sites",
@@ -179,19 +179,19 @@
             "skupper-instances"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/system-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         },
         {
           "id": "skupper-routers",
           "name": "Skupper routers",
           "source": "human/skupper-docs/input/overview/index.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/index.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         },
         {
           "id": "skupper-instances",
           "name": "Skupper instances",
           "source": "human/skupper-docs/input/overview/index.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/overview/index.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         }
       ]
     },
@@ -208,25 +208,25 @@
             "listener-spec-port"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/kube-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
           "id": "listener-spec-routing-key",
           "name": "spec.routingKey",
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md#common-fields"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
           "id": "listener-spec-host",
           "name": "spec.host",
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md#common-fields"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
           "id": "listener-spec-port",
           "name": "spec.port",
           "source": "generated/concepts/listener.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/generated/concepts/listener.md#common-fields"
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
           "id": "multi-key-listener",
@@ -236,7 +236,7 @@
             "routing-key-match"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/kube-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
           "id": "listener-ready-status",
@@ -246,10 +246,10 @@
             "matching-connector"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://github.com/pwright/skupper-okf/blob/main/human/skupper-docs/input/kube-yaml/service-exposure.md"
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         }
       ]
     }
   ],
-  "source_base_url": "https://github.com/pwright/skupper-okf/blob/main/"
+  "source_base_url": "https://pwright.github.io/skupper-okf/"
 }

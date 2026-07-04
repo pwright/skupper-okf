@@ -1,7 +1,22 @@
+---
+title: "Skupper Listeners in the Application Network"
+type: BlockscapeMap
+status: generated
+source_path: maps/listeners.bs
+tags:
+  - skupper
+  - blockscape
+---
+
+# Skupper Listeners in the Application Network
+
+Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/listeners.bs)
+
+```bs full
 {
-  "id": "skupper-connectors-map",
-  "title": "Skupper Connectors in the Application Network",
-  "abstract": "How connectors help Skupper publish workloads into a secure application network so remote listeners can consume them.",
+  "id": "skupper-listeners-map",
+  "title": "Skupper Listeners in the Application Network",
+  "abstract": "How listeners help Skupper make remote services feel local across a secure application network.",
   "status": "generated",
   "reviewed": false,
   "source_paths": [
@@ -9,8 +24,7 @@
     "human/skupper-docs/input/overview/connectivity.md",
     "human/skupper-docs/input/system-yaml/service-exposure.md",
     "human/skupper-docs/input/kube-yaml/service-exposure.md",
-    "human/skupper-docs/input/refdog/topics/attached-connectors.md",
-    "generated/concepts/connector.md"
+    "generated/concepts/listener.md"
   ],
   "categories": [
     {
@@ -18,28 +32,28 @@
       "title": "Application outcomes",
       "items": [
         {
-          "id": "distributed-application",
-          "name": "Distributed application",
+          "id": "distributed-services-communicate",
+          "name": "Distributed services communicate",
           "deps": [
-            "service-exposed-to-network",
+            "remote-service-consumption",
             "secure-application-network"
           ],
           "source": "human/skupper-docs/input/overview/index.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         },
         {
-          "id": "services-across-sites",
-          "name": "Services across sites",
+          "id": "hybrid-cloud-reachability",
+          "name": "Hybrid cloud reachability",
           "deps": [
-            "service-exposed-to-network",
-            "remote-listener-consumption"
+            "secure-application-network",
+            "local-service-endpoint"
           ],
-          "source": "human/skupper-docs/input/overview/index.md",
-          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
+          "source": "human/skupper-docs/input/overview/connectivity.md",
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/connectivity"
         },
         {
-          "id": "private-public-cloud-composition",
-          "name": "Private and public cloud composition",
+          "id": "avoid-public-internet-or-vpn",
+          "name": "Avoid public exposure or VPN setup",
           "deps": [
             "secure-application-network"
           ],
@@ -49,78 +63,77 @@
       ]
     },
     {
-      "id": "service-publication",
-      "title": "Service publication",
+      "id": "service-consumption",
+      "title": "Service consumption",
       "items": [
         {
-          "id": "service-exposed-to-network",
-          "name": "Service exposed to network",
+          "id": "remote-service-consumption",
+          "name": "Consume remote service locally",
           "deps": [
-            "connector",
-            "routing-key-match"
+            "local-service-endpoint",
+            "matching-connector"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         },
         {
-          "id": "workload-selected",
-          "name": "Workload selected",
+          "id": "local-service-endpoint",
+          "name": "Local service endpoint",
           "deps": [
-            "connector-selector-or-host"
+            "listener-host-port"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
-          "id": "remote-listener-consumption",
-          "name": "Remote listener consumption",
+          "id": "client-stable-address",
+          "name": "Stable client address",
           "deps": [
-            "routing-key-match"
+            "listener-host-port"
           ],
-          "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#outcome"
         }
       ]
     },
     {
-      "id": "connector-role",
-      "title": "Connector role",
+      "id": "listener-role",
+      "title": "Listener role",
       "items": [
         {
-          "id": "connector",
-          "name": "Connector",
+          "id": "listener",
+          "name": "Listener",
           "deps": [
-            "connector-selector-or-host",
-            "connector-port",
+            "listener-host-port",
             "routing-key-match"
           ],
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#connector"
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#listener"
         },
         {
-          "id": "connector-selector-or-host",
-          "name": "Selector or host",
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
-        },
-        {
-          "id": "connector-port",
-          "name": "Target port",
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+          "id": "listener-host-port",
+          "name": "Host and port",
+          "deps": [
+            "listener-resource"
+          ],
+          "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
           "id": "routing-key-match",
           "name": "Routing key match",
           "deps": [
-            "matching-listener"
+            "matching-connector"
           ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         },
         {
-          "id": "matching-listener",
-          "name": "Matching listener",
+          "id": "matching-connector",
+          "name": "Matching connector",
+          "deps": [
+            "connector-exposed-workload"
+          ],
           "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         }
@@ -131,18 +144,17 @@
       "title": "Traffic path",
       "items": [
         {
-          "id": "listener-to-connector-traffic",
-          "name": "Listener-to-connector traffic",
+          "id": "client-connection",
+          "name": "Client connection",
           "deps": [
-            "remote-listener-consumption",
-            "connector"
+            "listener"
           ],
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener"
         },
         {
-          "id": "router-message-forwarding",
-          "name": "Router message forwarding",
+          "id": "skupper-router-forwarding",
+          "name": "Skupper router forwarding",
           "deps": [
             "secure-application-network",
             "routing-key-match"
@@ -151,14 +163,13 @@
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/index"
         },
         {
-          "id": "workload-server-delivery",
-          "name": "Workload server delivery",
+          "id": "connector-exposed-workload",
+          "name": "Connector-exposed workload",
           "deps": [
-            "workload-selected",
-            "listener-to-connector-traffic"
+            "secure-application-network"
           ],
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
+          "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/system-yaml/service-exposure"
         }
       ]
     },
@@ -200,69 +211,54 @@
       ]
     },
     {
-      "id": "connector-control-plane",
-      "title": "Connector control plane",
+      "id": "listener-control-plane",
+      "title": "Listener control plane",
       "items": [
         {
-          "id": "connector-resource",
-          "name": "Connector resource",
+          "id": "listener-resource",
+          "name": "Listener resource",
           "deps": [
-            "connector-routing-key-field",
-            "connector-selector-field",
-            "connector-port-field"
+            "listener-spec-routing-key",
+            "listener-spec-host",
+            "listener-spec-port"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
-          "id": "connector-routing-key-field",
+          "id": "listener-spec-routing-key",
           "name": "spec.routingKey",
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
-          "id": "connector-selector-field",
-          "name": "spec.selector",
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+          "id": "listener-spec-host",
+          "name": "spec.host",
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
-          "id": "connector-port-field",
+          "id": "listener-spec-port",
           "name": "spec.port",
-          "source": "generated/concepts/connector.md",
-          "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+          "source": "generated/concepts/listener.md",
+          "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
         },
         {
-          "id": "attached-connector",
-          "name": "Attached connector",
+          "id": "multi-key-listener",
+          "name": "Multi-key listener",
           "deps": [
-            "connector",
-            "peer-namespace-workload"
-          ],
-          "source": "human/skupper-docs/input/refdog/topics/attached-connectors.md",
-          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/refdog/topics/attached-connectors"
-        },
-        {
-          "id": "peer-namespace-workload",
-          "name": "Peer namespace workload",
-          "deps": [
-            "cluster-wide-skupper"
+            "listener",
+            "routing-key-match"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
         },
         {
-          "id": "cluster-wide-skupper",
-          "name": "Cluster-wide Skupper",
-          "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
-          "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
-        },
-        {
-          "id": "connector-ready-status",
-          "name": "Ready with matching listener",
+          "id": "listener-ready-status",
+          "name": "Ready with matching connector",
           "deps": [
-            "connector-resource",
-            "matching-listener"
+            "listener-resource",
+            "matching-connector"
           ],
           "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
           "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/kube-yaml/service-exposure"
@@ -272,3 +268,4 @@
   ],
   "source_base_url": "https://pwright.github.io/skupper-okf/"
 }
+```

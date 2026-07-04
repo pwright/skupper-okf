@@ -87,6 +87,11 @@ plugins:
     options:
       renderEngine: katex
     order: 80
+  - source: ./dist
+    enabled: true
+    options:
+      defaultRenderer: full
+    order: 81
   - source: github:quartz-community/citations
     enabled: false
     order: 85

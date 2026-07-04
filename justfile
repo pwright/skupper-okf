@@ -1,6 +1,8 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
-blockscape_base_url := "https://github.com/pwright/skupper-okf/blob/main/"
+blockscape_base_url := "https://pwright.github.io/skupper-okf/"
+blockscape_raw_base_url := "https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/"
+blockscape_app_base_url := "https://pwright.github.io/blockscape/"
 
 # List available commands
 _default:
@@ -49,8 +51,12 @@ test:
 tags *paths:
     @./scripts/extract-frontmatter-tags.py {{paths}}
 
+# Wrap Blockscape maps as generated Markdown pages
+maps:
+    ./tools/update-generated-maps.py --input maps --output generated/maps --source-base-url {{blockscape_raw_base_url}} --blockscape-base-url {{blockscape_app_base_url}}
+
 # Stage publishable OKF content into Quartz
-quartz-stage:
+quartz-stage: maps
     python3 tools/stage-quartz-content.py --input generated --input reviewed --output quartz/content --link-map linkmap.yaml
 
 # Build the Quartz static site

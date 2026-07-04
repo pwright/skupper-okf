@@ -1,3 +1,18 @@
+---
+title: "Skupper Blockscape maps"
+type: BlockscapeMap
+status: generated
+source_path: maps/skupper.bs
+tags:
+  - skupper
+  - blockscape
+---
+
+# Skupper Blockscape maps
+
+Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs)
+
+```bs full
 [
   {
     "id": "skupper-application-network-map",
@@ -532,3 +547,4 @@
     "source_base_url": "https://pwright.github.io/skupper-okf/"
   }
 ]
+```
