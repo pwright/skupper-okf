@@ -1,3 +1,12 @@
+---
+type: GeneratedDocs
+title: Skupper API - network-observer
+id: skupper-api-network-observer
+source_file: ../human/skupper/cmd/network-observer/spec/openapi.yaml
+generated_at: 2026-07-04T10:01:08Z
+generator: openapi-to-md
+---
+
 # Skupper Network Observer HTTP API.
 
 > Version 0.0.1

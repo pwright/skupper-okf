@@ -14,7 +14,8 @@ init:
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
     ./scripts/sync-human-skupper-example-grpc.sh
-    ./scripts/sync-human-openapi-spec.sh
+    ./scripts/sync-human-skupper.sh
+    ./scripts/generate-api-docs.sh
 
 # Create directories only
 layout:
@@ -25,14 +26,16 @@ sync-human:
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
     ./scripts/sync-human-skupper-example-grpc.sh
-    ./scripts/sync-human-openapi-spec.sh
+    ./scripts/sync-human-skupper.sh
+    ./scripts/generate-api-docs.sh
 
 # Dry-run all human source sync scripts
 sync-human-dry-run:
     ./scripts/sync-human-skupper-docs.sh --dry-run
     ./scripts/sync-human-skupper-example-hello-world.sh --dry-run
     ./scripts/sync-human-skupper-example-grpc.sh --dry-run
-    ./scripts/sync-human-openapi-spec.sh --dry-run
+    ./scripts/sync-human-skupper.sh --dry-run
+    ./scripts/generate-api-docs.sh --dry-run
 
 # Refresh human/skupper-docs/ from skupper-docs main
 sync-human-skupper-docs:
@@ -46,9 +49,13 @@ sync-human-example-hello-world:
 sync-human-example-grpc:
     ./scripts/sync-human-skupper-example-grpc.sh
 
-# Refresh human/skupper-openapi-spec/ and generate markdown from OpenAPI spec
-sync-human-openapi-spec:
-    ./scripts/sync-human-openapi-spec.sh
+# Refresh human/skupper/ (full repo clone) for API and CRD doc generation
+sync-human-skupper:
+    ./scripts/sync-human-skupper.sh
+
+# Generate API and CRD documentation from human/skupper/ to sources/
+generate-api-docs:
+    ./scripts/generate-api-docs.sh
 
 # Build an offline test fixture and validate behavior without network
 test:

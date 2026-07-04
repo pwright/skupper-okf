@@ -27,7 +27,10 @@ The `human/` directory is populated by scripts. Each upstream repository gets it
 https://github.com/skupperproject/skupper-docs.git
 https://github.com/skupperproject/skupper-example-hello-world.git
 https://github.com/skupperproject/skupper-example-grpc.git
+https://github.com/skupperproject/skupper.git (full clone, gitignored)
 ```
+
+The `human/skupper/` directory contains a full clone of the Skupper main repository, used for generating API and CRD documentation. This clone is gitignored and refreshed via `scripts/sync-human-skupper.sh`.
 
 ## Quick start
 

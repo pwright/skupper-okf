@@ -1,6 +1,9 @@
 # Upstream snapshot; refresh with scripts/sync-human-skupper-docs.sh
 #/human/
 
+# Full repo clones (gitignored, used as source for doc generation)
+/human/skupper/
+
 # Generated local outputs
 # /generated/
 /indexes/
