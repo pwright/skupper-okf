@@ -4,6 +4,7 @@
 # Full repo clones (gitignored, used as source for doc generation)
 /human/skupper/
 /human/skupper-console/
+/human/skupper-router/
 
 # Generated local outputs
 # /generated/

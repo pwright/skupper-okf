@@ -18,6 +18,8 @@ init:
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
     ./scripts/extract-console-api-calls.sh
+    ./scripts/sync-human-skupper-router.sh
+    ./scripts/copy-router-markdown.sh
 
 # Create directories only
 layout:
@@ -32,6 +34,8 @@ sync-human:
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
     ./scripts/extract-console-api-calls.sh
+    ./scripts/sync-human-skupper-router.sh
+    ./scripts/copy-router-markdown.sh
 
 # Dry-run all human source sync scripts
 sync-human-dry-run:
@@ -42,6 +46,8 @@ sync-human-dry-run:
     ./scripts/generate-api-docs.sh --dry-run
     ./scripts/sync-human-skupper-console.sh --dry-run
     ./scripts/extract-console-api-calls.sh --dry-run
+    ./scripts/sync-human-skupper-router.sh --dry-run
+    ./scripts/copy-router-markdown.sh --dry-run
 
 # Refresh human/skupper-docs/ from skupper-docs main
 sync-human-skupper-docs:
@@ -70,6 +76,14 @@ sync-human-skupper-console:
 # Extract and document API calls from human/skupper-console/ to sources/console.md
 extract-console-api-calls:
     ./scripts/extract-console-api-calls.sh
+
+# Refresh human/skupper-router/ (full repo clone) for markdown extraction
+sync-human-skupper-router:
+    ./scripts/sync-human-skupper-router.sh
+
+# Copy markdown files from human/skupper-router/ to sources/
+copy-router-markdown:
+    ./scripts/copy-router-markdown.sh
 
 # Build an offline test fixture and validate behavior without network
 test:
