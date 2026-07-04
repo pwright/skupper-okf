@@ -45,6 +45,10 @@ sync-human-example-grpc:
 test:
     ./tests/smoke-test.sh
 
+# Print unique tags from Markdown front matter
+tags *paths:
+    @./scripts/extract-frontmatter-tags.py {{paths}}
+
 # Print the expected tree for the MVP
 show-expected-layout:
     cat tests/golden/expected-layout.txt
