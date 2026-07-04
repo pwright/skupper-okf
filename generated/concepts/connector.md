@@ -2,7 +2,7 @@
 type: Concept
 title: Connector
 id: skupper-concept-connector
-status: generated
+status: needs-review
 owner: agent
 generated_by: codex
 reviewed: false

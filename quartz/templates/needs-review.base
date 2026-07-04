@@ -1,7 +1,7 @@
 filters:
   and:
     - file.ext == "md"
-    - not file.path == "index.md"
+    - file.path != "index.md"
     - reviewed == false
     - status != "draft"
 properties:
@@ -19,7 +19,11 @@ views:
   - type: table
     name: Needs Review
     order:
+      - title
+      - status
+      - tags
+      - file.mtime
+      - file.folder
+    sort:
       - property: file.mtime
         direction: DESC
-    summaries:
-      file.name: Empty
