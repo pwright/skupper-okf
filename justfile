@@ -49,6 +49,25 @@ test:
 tags *paths:
     @./scripts/extract-frontmatter-tags.py {{paths}}
 
+# Stage publishable OKF content into Quartz
+quartz-stage:
+    python3 tools/stage-quartz-content.py --input generated --input reviewed --output quartz/content --link-map linkmap.yaml
+
+# Build the Quartz static site
+quartz-build: quartz-stage
+    cd quartz && node quartz/bootstrap-cli.mjs build
+
+# Serve the Quartz site locally
+quartz-serve: quartz-stage
+    cd quartz && node quartz/bootstrap-cli.mjs build --serve
+
+# Remove Quartz staged content and build output
+quartz-clean:
+    rm -rf quartz/content
+    mkdir -p quartz/content
+    touch quartz/content/.gitkeep
+    rm -rf quartz/public
+
 # Print the expected tree for the MVP
 show-expected-layout:
     cat tests/golden/expected-layout.txt

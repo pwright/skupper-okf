@@ -1,0 +1,25 @@
+human_repos:
+  skupper-docs:
+    local_prefixes:
+      - human/skupper-docs/
+      - /human/skupper-docs/
+      - ../human/skupper-docs/
+      - ../../human/skupper-docs/
+    public_base_url: https://skupperproject.github.io/skupper-docs/
+    strip_prefixes:
+      - input/
+    markdown_extension: html
+  skupper-example-hello-world:
+    local_prefixes:
+      - human/skupper-example-hello-world/
+      - /human/skupper-example-hello-world/
+      - ../human/skupper-example-hello-world/
+      - ../../human/skupper-example-hello-world/
+    public_base_url: https://github.com/skupperproject/skupper-example-hello-world/blob/main/
+  skupper-example-grpc:
+    local_prefixes:
+      - human/skupper-example-grpc/
+      - /human/skupper-example-grpc/
+      - ../human/skupper-example-grpc/
+      - ../../human/skupper-example-grpc/
+    public_base_url: https://github.com/skupperproject/skupper-example-grpc/blob/main/
