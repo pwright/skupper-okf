@@ -24,6 +24,7 @@ TEXT_EXTENSIONS = {
     ".yml",
     ".json",
     ".csv",
+    ".base",
     ".svg",
 }
 
@@ -163,6 +164,34 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 
 - [Generated notes](generated/)
 - [Reviewed notes](reviewed/)
+""",
+        encoding="utf-8",
+    )
+    (output_dir / "okf-pages.base").write_text(
+        """filters:
+  and:
+    - file.ext == "md"
+    - not file.path == "index.md"
+properties:
+  title:
+    displayName: Page
+  status:
+    displayName: Status
+  reviewed:
+    displayName: Reviewed
+  tags:
+    displayName: Tags
+views:
+  - type: table
+    name: OKF Pages
+    order:
+      - title
+      - status
+      - reviewed
+      - tags
+    sort:
+      - property: title
+        direction: ASC
 """,
         encoding="utf-8",
     )
