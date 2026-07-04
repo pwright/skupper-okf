@@ -11,6 +11,10 @@ generator: manual
 
 Source: `human/skupper/config/crd/bases/skupper_listener_crd.yaml`
 
+For listener usage guides, see:
+- [Creating a listener using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-listener-yaml)
+- [Listener concept](../concepts/listener.md)
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition

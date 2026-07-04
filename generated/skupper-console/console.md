@@ -19,6 +19,8 @@ This document describes all API calls made by the Skupper Console frontend to th
 
 The Skupper Console is a web-based frontend that visualizes and manages Skupper networks. It communicates with the Skupper Network Observer backend through a REST API and Prometheus-compatible metrics API.
 
+For console configuration and usage, see [Console documentation](../input/console/index.md).
+
 ## Base URL
 
 The console uses the following base URL pattern:

@@ -11,6 +11,11 @@ generator: manual
 
 Source: `human/skupper/config/crd/bases/skupper_connector_crd.yaml`
 
+For connector usage guides, see:
+- [Creating a connector using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-connector-yaml)
+- [Creating a connector for a different namespace](../input/kube-yaml/service-exposure.md#kube-creating-attachedconnector-yaml)
+- [Connector concept](../concepts/connector.md)
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition

@@ -55,6 +55,10 @@ API Query → Network Observer → Real-time state of:
 
 **Authentication**: None (read-only, network-internal service)
 
+For console usage and configuration, see:
+- [Console documentation](../input/console/index.md)
+- [Console configuration](../input/console/configuration.md)
+
 **Response Pattern**: All collection endpoints return paginated results with:
 - `results`: Array of records
 - `count`: Total number of records

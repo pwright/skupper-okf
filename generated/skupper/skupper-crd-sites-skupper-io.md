@@ -11,6 +11,11 @@ generator: manual
 
 Source: `human/skupper/config/crd/bases/skupper_site_crd.yaml`
 
+For site configuration guides, see:
+- [Site configuration with YAML (Kubernetes)](../input/kube-yaml/site-configuration.md)
+- [Site configuration with YAML (local systems)](../input/system-yaml/site-configuration.md)
+- [Site configuration with CLI (local systems)](../input/system-cli/site-configuration.md)
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition

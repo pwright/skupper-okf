@@ -48,6 +48,11 @@ remote client → Listener (routingKey: "backend")
 
 ## How Routing Keys Work
 
+For practical guides on using routing keys:
+- [Service exposure with YAML (Kubernetes)](../input/kube-yaml/service-exposure.md)
+- [Service exposure with YAML (local systems)](../input/system-yaml/service-exposure.md)
+- [Service exposure with CLI (local systems)](../input/system-cli/service-exposure.md)
+
 ### API Level
 
 At the Kubernetes API level, `routingKey` is a required field on both Listeners and Connectors:

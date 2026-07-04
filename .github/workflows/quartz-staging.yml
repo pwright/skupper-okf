@@ -1,10 +1,12 @@
-name: Build Quartz
+name: Build Quartz Staging (skupper-docs)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      sources:
+        description: 'Additional input sources (comma-separated, e.g., "generated,reviewed")'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -12,7 +14,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-staging
   cancel-in-progress: false
 
 jobs:
@@ -37,8 +39,22 @@ jobs:
         working-directory: quartz
         run: node quartz/bootstrap-cli.mjs plugin install
 
-      - name: Stage Quartz content
-        run: python3 tools/stage-quartz-content.py --input human/skupper-docs/input --input generated --input reviewed --input sources --output quartz/content --link-map linkmap.yaml
+      - name: Stage Quartz content (skupper-docs input)
+        run: |
+          INPUTS="--input human/skupper-docs/input"
+
+          # Add additional sources if provided
+          if [ -n "${{ github.event.inputs.sources }}" ]; then
+            IFS=',' read -ra SOURCES <<< "${{ github.event.inputs.sources }}"
+            for source in "${SOURCES[@]}"; do
+              source=$(echo "$source" | xargs)  # trim whitespace
+              if [ -d "$source" ]; then
+                INPUTS="$INPUTS --input $source"
+              fi
+            done
+          fi
+
+          python3 tools/stage-quartz-content.py $INPUTS --output quartz/content --link-map linkmap.yaml
 
       - name: Build Quartz
         working-directory: quartz

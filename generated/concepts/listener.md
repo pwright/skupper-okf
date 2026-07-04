@@ -66,6 +66,12 @@ If a service needs multiple ports, create multiple listeners using the same host
 
 ## Creation paths
 
+See also:
+- [Creating a listener using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-listener-yaml)
+- [Creating a multi-key listener using YAML](../input/kube-yaml/service-exposure.md#kube-creating-multikeylistener-yaml)
+- [Creating a listener using YAML (local systems)](../input/system-yaml/service-exposure.md)
+- [Creating a listener using CLI (local systems)](../input/system-cli/service-exposure.md)
+
 For Kubernetes-style YAML workflows, create a `Listener` resource and apply it through Skupper:
 
 ```yaml

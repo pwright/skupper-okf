@@ -69,6 +69,11 @@ When `--routing-key` is not specified in CLI workflows, the connector name is th
 
 ## Creation paths
 
+See also:
+- [Creating a connector using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-connector-yaml)
+- [Creating a connector using YAML (local systems)](../input/system-yaml/service-exposure.md)
+- [Creating a connector using CLI (local systems)](../input/system-cli/service-exposure.md)
+
 For Kubernetes-style YAML workflows, create a `Connector` resource and apply it through Skupper:
 
 ```yaml
@@ -103,6 +108,8 @@ skupper connector create backend 8080 --workload deployment/backend
 ## Connector variants
 
 A standard connector is created in the site namespace and directly describes the workload to expose. An attached connector is still a connector in the wiki model: it exposes a workload from a peer namespace without requiring a separate site or inter-site link for that workload namespace.
+
+For a complete guide on attached connectors, see [Creating a connector for a different namespace using YAML](../input/kube-yaml/service-exposure.md#kube-creating-attachedconnector-yaml).
 
 Current Skupper source material describes this with two Kubernetes resources:
 

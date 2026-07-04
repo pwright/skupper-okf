@@ -99,7 +99,7 @@ maps:
 
 # Stage publishable OKF content into Quartz
 quartz-stage: maps
-    python3 tools/stage-quartz-content.py --input generated --input reviewed --input sources --output quartz/content --link-map linkmap.yaml
+    python3 tools/stage-quartz-content.py --input human/skupper-docs/input --input generated --input reviewed --input sources --output quartz/content --link-map linkmap.yaml
 
 # Build the Quartz static site
 quartz-build: quartz-stage

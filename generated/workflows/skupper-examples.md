@@ -64,6 +64,11 @@ Interactive view: <https://pwright.github.io/webernetes/?scenario=skupper-grpc>
 
 ## How to use these examples
 
+For step-by-step tutorials and installation guides, see:
+- [Skupper overview](../input/overview/index.md)
+- [Installation guide](../input/install/index.md)
+- [Getting started with Kubernetes CLI](../input/kube-cli/index.md)
+
 Use Hello World first when validating the basic Skupper flow:
 
 ```text
