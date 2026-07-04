@@ -28,12 +28,13 @@ tags:
 related:
   - skupper-concept-connector
   - skupper-concept-routing-key
+  - skupper-concept-network-observer-api
 timestamp: 2026-07-03T14:03:38Z
 ---
 
 # Listener
 
-A Skupper listener is the local endpoint that clients connect to when they want to consume a service exposed from another site. The listener is matched to one or more remote connectors by routing key, and Skupper routers forward matching client connections across the application network.
+A Skupper listener is the local endpoint that clients connect to when they want to consume a service exposed from another site. The listener is matched to one or more remote connectors by [routing key](./routing-key.md), and Skupper routers forward matching client connections across the application network.
 
 ## Outcome
 
@@ -47,7 +48,7 @@ local client -> listener host:port -> Skupper router -> matching routing key -> 
 
 - A site can have zero or more listeners.
 - Each listener has a local connection endpoint, defined by host and port.
-- Each listener has a routing key.
+- Each listener has a [routing key](./routing-key.md).
 - A service is usable when at least one listener and one connector share the same routing key.
 - On Kubernetes, a listener is implemented as a Kubernetes Service.
 - On Docker, Podman, and Linux, a listener is a listening socket bound to a local network interface.
@@ -115,9 +116,20 @@ A standard listener binds one local endpoint to one routing key. A multi-key lis
 
 Current Skupper source material describes multi-key listeners as a separate resource, `MultiKeyListener`. For this wiki, treat that as an implementation detail or listener subtype rather than a separate concept family. This distinction matters because multi-key behavior may become the default listener behavior in the future.
 
+## Observability
+
+The [Network Observer API](./network-observer-api.md) exposes runtime state for listeners:
+
+- `GET /api/v2alpha1/listeners` — List all listeners across the network
+- `GET /api/v2alpha1/listeners/{id}` — Get a single listener by identity
+
+Each listener record includes the routing key, site, router, and endpoint details. Use the API to verify that listeners are configured and to check cross-site matching status.
+
+For detailed API schema information, see the [Network Observer API Reference](../sources/skupper-openapi-spec-api-reference.md#getapiv2alpha1listeners).
+
 ## Caveats
 
-- A listener does not expose a workload by itself; a connector with the same routing key is required.
-- A routing key can match multiple listeners and multiple connectors.
+- A listener does not expose a workload by itself; a connector with the same [routing key](./routing-key.md) is required.
+- A [routing key](./routing-key.md) can match multiple listeners and multiple connectors.
 - Multi-key listeners aggregate several routing keys behind one local endpoint.
 - On local-system platforms, configuration changes may require `skupper system reload`.

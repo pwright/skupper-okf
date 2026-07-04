@@ -31,16 +31,17 @@ tags:
 related:
   - skupper-concept-listener
   - skupper-concept-routing-key
+  - skupper-concept-network-observer-api
 timestamp: 2026-07-03T14:45:49Z
 ---
 
 # Connector
 
-A Skupper connector is the network-side handle for a workload that should be reachable from other sites. The connector selects or addresses the local workload, assigns it a routing key, and lets matching listeners forward client connections to that workload through the Skupper application network.
+A Skupper connector is the network-side handle for a workload that should be reachable from other sites. The connector selects or addresses the local workload, assigns it a [routing key](./routing-key.md), and lets matching listeners forward client connections to that workload through the Skupper application network.
 
 ## Outcome
 
-A working connector makes a local workload consumable from remote listeners that use the same routing key.
+A working connector makes a local workload consumable from remote listeners that use the same [routing key](./routing-key.md).
 
 ```text
 remote client -> listener -> matching routing key -> connector -> local workload
@@ -49,7 +50,7 @@ remote client -> listener -> matching routing key -> connector -> local workload
 ## Key ideas
 
 - A site can have zero or more connectors.
-- Each connector has a workload endpoint and a routing key.
+- Each connector has a workload endpoint and a [routing key](./routing-key.md).
 - A service is usable when at least one connector and one listener share the same routing key.
 - On Kubernetes, a connector usually selects workload pods with a label selector or workload reference.
 - On Docker, Podman, and Linux, a connector usually addresses a local server by host and port.
@@ -146,10 +147,21 @@ backend   backend       attached              Ready    true
 
 The service is not operational until the connector has at least one matching listener. In resource status, the relevant signals include `hasMatchingListener`, `selectedPods`, and `Ready`.
 
+## Observability
+
+The [Network Observer API](./network-observer-api.md) exposes runtime state for connectors:
+
+- `GET /api/v2alpha1/connectors` — List all connectors across the network
+- `GET /api/v2alpha1/connectors/{id}` — Get a single connector by identity
+
+Each connector record includes the routing key, site, router, process binding, and target workload details. The `processId` field links the connector to the specific backend process it targets, while the `target` field provides human-readable context (e.g., `deployment/backend`).
+
+For detailed API schema information, see the [Network Observer API Reference](../sources/skupper-openapi-spec-api-reference.md#getapiv2alpha1connectors).
+
 ## Caveats
 
-- A connector does not create a local client endpoint by itself; a listener with the same routing key is required.
-- A routing key can match multiple connectors and multiple listeners.
+- A connector does not create a local client endpoint by itself; a listener with the same [routing key](./routing-key.md) is required.
+- A [routing key](./routing-key.md) can match multiple connectors and multiple listeners.
 - Attached connectors split responsibility: the workload namespace controls pod selection, while the site namespace controls the routing key.
 - To expose one peer-namespace workload into multiple application networks, create multiple attached connectors and corresponding bindings.
 - On local-system platforms, configuration changes may require `skupper system reload`.

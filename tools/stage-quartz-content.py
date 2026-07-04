@@ -164,6 +164,7 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 
 - [Generated notes](generated/)
 - [Reviewed notes](reviewed/)
+- [Source snapshots](sources/)
 """,
         encoding="utf-8",
     )

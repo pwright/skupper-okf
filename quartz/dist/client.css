@@ -12,21 +12,14 @@
   display: none;
 }
 .blockscape-view {
-  --bsq-bg: #f8fafc;
-  --bsq-surface: #ffffff;
-  --bsq-border: #cbd5e1;
-  --bsq-text: #111827;
-  --bsq-muted: #4b5563;
-  --bsq-dep: #2563eb;
-  --bsq-revdep: #dc2626;
   display: grid;
   gap: 1rem;
   overflow-x: auto;
   padding: 1rem;
-  border: 1px solid var(--bsq-border);
+  border: 1px solid var(--blockscape-border);
   border-radius: 8px;
-  background: var(--bsq-bg);
-  color: var(--bsq-text);
+  background: var(--blockscape-surface-alt);
+  color: var(--blockscape-foreground);
 }
 .blockscape-view__header {
   display: grid;
@@ -42,7 +35,7 @@
   line-height: 1.25;
 }
 .blockscape-view__abstract {
-  color: var(--bsq-muted);
+  color: var(--blockscape-muted);
   font-size: 0.95rem;
   line-height: 1.45;
 }
@@ -67,11 +60,11 @@
   opacity: 0.45;
 }
 .blockscape-view__edge.is-dep {
-  stroke: var(--bsq-dep);
+  stroke: var(--blockscape-dep);
   opacity: 0.9;
 }
 .blockscape-view__edge.is-revdep {
-  stroke: var(--bsq-revdep);
+  stroke: var(--blockscape-revdep);
   opacity: 0.9;
 }
 .blockscape-view__edge.is-dimmed {
@@ -89,8 +82,8 @@
   left: 0;
   z-index: 1;
   padding: 0.35rem 0.5rem 0.35rem 0;
-  background: var(--bsq-bg);
-  color: var(--bsq-muted);
+  background: var(--blockscape-surface-alt);
+  color: var(--blockscape-muted);
   font-size: 0.85rem;
   line-height: 1.25;
   text-transform: uppercase;
@@ -108,9 +101,9 @@
   width: 7.5rem;
   min-height: 4.5rem;
   padding: 0.55rem;
-  border: 1px solid var(--bsq-border);
+  border: 1px solid var(--blockscape-border);
   border-radius: 8px;
-  background: var(--bsq-surface);
+  background: var(--blockscape-surface);
   cursor: pointer;
 }
 .blockscape-view__tile:hover,
@@ -119,16 +112,16 @@
   outline: none;
 }
 .blockscape-view__tile.is-selected {
-  border-color: var(--bsq-text);
-  box-shadow: 0 0 0 2px rgb(17 24 39 / 18%);
+  border-color: var(--blockscape-foreground);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18);
 }
 .blockscape-view__tile.is-dep {
-  border-color: var(--bsq-dep);
-  box-shadow: 0 0 0 2px rgb(37 99 235 / 18%);
+  border-color: var(--blockscape-dep);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
 }
 .blockscape-view__tile.is-revdep {
-  border-color: var(--bsq-revdep);
-  box-shadow: 0 0 0 2px rgb(220 38 38 / 18%);
+  border-color: var(--blockscape-revdep);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.18);
 }
 .blockscape-view__tile.is-dimmed {
   opacity: 0.32;
@@ -138,12 +131,12 @@
   line-height: 1.2;
 }
 .blockscape-view__tile-id {
-  color: var(--bsq-muted);
+  color: var(--blockscape-muted);
   font-size: 0.76rem;
   overflow-wrap: anywhere;
 }
 .blockscape-view__tile-link {
-  color: var(--bsq-dep);
+  color: var(--blockscape-dep);
   font-size: 0.78rem;
 }
 @media (max-width: 700px) {
