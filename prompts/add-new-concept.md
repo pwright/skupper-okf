@@ -118,9 +118,99 @@ tags:
 related:
   - skupper-concept-<related-concept-1>
   - skupper-concept-<related-concept-2>
+# Optional Decision Lens metadata. Include only fields clearly supported by sources.
+decision:
+  setupStep:
+    - <setup-step>
+  platform:
+    - <platform>
 timestamp: <ISO 8601 timestamp>
 ---
 ```
+
+### Decision Lens metadata
+
+Decision Lens metadata prepares pages for runtime soft filtering in the Quartz wiki. Add it when a concept, resource, or workflow clearly belongs to one or more Skupper setup decisions.
+
+Allowed setup steps:
+
+```text
+identify-sites
+classify-workloads
+define-routing-key
+configure-listener
+configure-connector
+decide-link-access
+join-sites
+validate
+```
+
+Allowed platforms:
+
+```text
+kubernetes
+openshift
+podman
+docker
+linux
+local-system
+```
+
+Optional facets:
+
+```yaml
+decision:
+  workloadRole:
+    - client
+  resource:
+    - listener
+  authoring:
+    - yaml
+  linkAccess:
+    - openshift-route
+  joinMethod:
+    - cli-token
+```
+
+Use these examples as patterns:
+
+```yaml
+# Link access decision on Kubernetes/OpenShift
+decision:
+  setupStep:
+    - decide-link-access
+  platform:
+    - kubernetes
+    - openshift
+  linkAccess:
+    - openshift-route
+    - loadbalancer
+```
+
+```yaml
+# Joining sites
+decision:
+  setupStep:
+    - join-sites
+  resource:
+    - link
+  joinMethod:
+    - cli-token
+    - access-grant-token
+```
+
+```yaml
+# Server-side binding
+decision:
+  setupStep:
+    - configure-connector
+  resource:
+    - connector
+  workloadRole:
+    - server
+```
+
+Leave `decision` out for generic concepts unless the source clearly establishes applicability.
 
 ### Content Structure
 
