@@ -96,6 +96,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
     ],
     "categories": [
       {
+        "id": "installation-prerequisites",
+        "title": "Installation prerequisites",
+        "items": [
+          {
+            "id": "kubectl",
+            "name": "kubectl",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "cluster-admin-access",
+            "name": "Cluster-admin access",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
         "id": "installation-methods",
         "title": "Installation methods",
         "items": [
@@ -191,8 +211,8 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "site-creation",
-        "title": "Site creation",
+        "id": "site-operations",
+        "title": "Site operations",
         "items": [
           {
             "id": "site-custom-resource",
@@ -225,8 +245,8 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "site-components",
-        "title": "Site components",
+        "id": "runtime-components",
+        "title": "Runtime components",
         "items": [
           {
             "id": "skupper-router-pod",
@@ -257,6 +277,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
           }
         ]
+      },
+      {
+        "id": "site-namespaces",
+        "title": "Site namespaces",
+        "items": [
+          {
+            "id": "kubernetes-namespace",
+            "name": "Kubernetes namespace",
+            "deps": [],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "multiple-sites-per-cluster",
+            "name": "Multiple sites per cluster",
+            "deps": ["kubernetes-namespace"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
       }
     ],
     "source_base_url": "https://pwright.github.io/skupper-okf/"
@@ -272,6 +312,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
       "human/skupper-docs/input/kube-yaml/site-configuration.md"
     ],
     "categories": [
+      {
+        "id": "installation-prerequisites",
+        "title": "Installation prerequisites",
+        "items": [
+          {
+            "id": "oc-cli",
+            "name": "oc CLI",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "cluster-admin-access",
+            "name": "Cluster-admin access",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
       {
         "id": "installation-methods",
         "title": "Installation methods",
@@ -388,8 +448,8 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "site-creation",
-        "title": "Site creation",
+        "id": "site-operations",
+        "title": "Site operations",
         "items": [
           {
             "id": "site-custom-resource",
@@ -409,6 +469,67 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "oc-apply",
             "name": "oc apply",
             "deps": ["site-custom-resource", "oc-command"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-status",
+            "name": "Site status",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "runtime-components",
+        "title": "Runtime components",
+        "items": [
+          {
+            "id": "skupper-router-pod",
+            "name": "Skupper router pod",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "kube-adaptor-pod",
+            "name": "Kube adaptor pod",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-resources",
+            "name": "Site resources",
+            "deps": ["skupper-router-pod"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "high-availability",
+            "name": "High availability",
+            "deps": ["skupper-router-pod"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-namespaces",
+        "title": "Site namespaces",
+        "items": [
+          {
+            "id": "openshift-project",
+            "name": "OpenShift project",
+            "deps": [],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "multiple-sites-per-cluster",
+            "name": "Multiple sites per cluster",
+            "deps": ["openshift-project"],
             "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
             "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
           }
@@ -456,9 +577,16 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "controller-installation",
-        "title": "Controller installation",
+        "id": "installation-methods",
+        "title": "Installation methods",
         "items": [
+          {
+            "id": "cli-installation",
+            "name": "CLI installation",
+            "deps": ["skupper-cli"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
           {
             "id": "system-install-command",
             "name": "skupper system install",
@@ -472,7 +600,13 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [],
             "source": "human/skupper-docs/input/system-cli/site-configuration.md",
             "external": "https://skupper.io/docs/system-cli/site-configuration.html"
-          },
+          }
+        ]
+      },
+      {
+        "id": "controller-components",
+        "title": "Controller components",
+        "items": [
           {
             "id": "controller-container",
             "name": "Controller container",
@@ -612,9 +746,16 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "controller-installation",
-        "title": "Controller installation",
+        "id": "installation-methods",
+        "title": "Installation methods",
         "items": [
+          {
+            "id": "cli-installation",
+            "name": "CLI installation",
+            "deps": ["skupper-cli"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
           {
             "id": "system-install-command",
             "name": "skupper system install",
@@ -628,7 +769,13 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [],
             "source": "human/skupper-docs/input/system-cli/site-configuration.md",
             "external": "https://skupper.io/docs/system-cli/site-configuration.html"
-          },
+          }
+        ]
+      },
+      {
+        "id": "controller-components",
+        "title": "Controller components",
+        "items": [
           {
             "id": "controller-container",
             "name": "Controller container",
@@ -775,7 +922,34 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "installation-differences",
+        "id": "installation-methods",
+        "title": "Installation methods",
+        "items": [
+          {
+            "id": "cli-installation",
+            "name": "CLI installation",
+            "deps": ["skupper-cli"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "direct-site-creation",
+            "name": "Direct site creation (no system install)",
+            "deps": ["skupper-cli", "linux-platform-env"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "linux-platform-env",
+            "name": "SKUPPER_PLATFORM=linux",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "linux-specific-differences",
         "title": "Linux-specific differences",
         "items": [
           {
@@ -789,13 +963,6 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "direct-systemd-services",
             "name": "Direct systemd services",
             "deps": ["systemd"],
-            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
-            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
-          },
-          {
-            "id": "linux-platform-env",
-            "name": "SKUPPER_PLATFORM=linux",
-            "deps": [],
             "source": "human/skupper-docs/input/system-cli/site-configuration.md",
             "external": "https://skupper.io/docs/system-cli/site-configuration.html"
           }
