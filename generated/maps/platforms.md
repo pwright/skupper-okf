@@ -245,6 +245,47 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
+        "id": "linking",
+        "title": "Linking",
+        "items": [
+          {
+            "id": "link-access",
+            "name": "Link access",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "loadbalancer-type",
+            "name": "LoadBalancer service type",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "nodeport-type",
+            "name": "NodePort service type",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "ingress",
+            "name": "Ingress",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "http-proxy",
+            "name": "HTTP proxy (CONNECT)",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          }
+        ]
+      },
+      {
         "id": "runtime-components",
         "title": "Runtime components",
         "items": [
@@ -482,6 +523,54 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
+        "id": "linking",
+        "title": "Linking",
+        "items": [
+          {
+            "id": "link-access",
+            "name": "Link access",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "route",
+            "name": "Route (default)",
+            "deps": ["link-access", "openshift-routes"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "loadbalancer-type",
+            "name": "LoadBalancer service type",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "nodeport-type",
+            "name": "NodePort service type",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "ingress",
+            "name": "Ingress",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          },
+          {
+            "id": "http-proxy",
+            "name": "HTTP proxy (CONNECT)",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/kube-yaml/site-linking.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-linking.html"
+          }
+        ]
+      },
+      {
         "id": "runtime-components",
         "title": "Runtime components",
         "items": [
@@ -665,6 +754,33 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
+        "id": "linking",
+        "title": "Linking",
+        "items": [
+          {
+            "id": "link-access",
+            "name": "Link access",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "public-ip",
+            "name": "Public IP address",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "port-forwarding",
+            "name": "Port forwarding",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          }
+        ]
+      },
+      {
         "id": "runtime-components",
         "title": "Runtime components",
         "items": [
@@ -834,6 +950,33 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
+        "id": "linking",
+        "title": "Linking",
+        "items": [
+          {
+            "id": "link-access",
+            "name": "Link access",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "public-ip",
+            "name": "Public IP address",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "port-forwarding",
+            "name": "Port forwarding",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          }
+        ]
+      },
+      {
         "id": "runtime-components",
         "title": "Runtime components",
         "items": [
@@ -999,6 +1142,33 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": ["systemd-user-services"],
             "source": "human/skupper-docs/input/system-cli/site-configuration.md",
             "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "linking",
+        "title": "Linking",
+        "items": [
+          {
+            "id": "link-access",
+            "name": "Link access",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "public-ip",
+            "name": "Public IP address",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
+          },
+          {
+            "id": "port-forwarding",
+            "name": "Port forwarding",
+            "deps": ["link-access"],
+            "source": "human/skupper-docs/input/system-cli/site-linking.md",
+            "external": "https://skupper.io/docs/system-cli/site-linking.html"
           }
         ]
       },
