@@ -162,9 +162,19 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 
 ## Published areas
 
-- [Generated notes](generated/)
-- [Reviewed notes](reviewed/)
-- [Source snapshots](sources/)
+### Generated notes
+- [Concepts](generated/concepts/)
+- [Maps](generated/maps/)
+- [Skupper](generated/skupper/)
+- [Skupper Console](generated/skupper-console/)
+- [Skupper Router](generated/skupper-router/)
+- [Workflows](generated/workflows/)
+
+### Reviewed notes
+- [Reviewed](reviewed/)
+
+### Source snapshots
+- [Sources](sources/)
 """,
         encoding="utf-8",
     )
