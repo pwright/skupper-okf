@@ -238,6 +238,16 @@ def main() -> int:
         log(f"copied {copied} files from {input_dir}")
         total += copied
 
+    # Copy images from input/images/ to root images/ for Quartz URL resolution
+    input_images_src = output_dir / "input" / "images"
+    if input_images_src.exists():
+        images_dest = output_dir / "images"
+        if images_dest.exists():
+            shutil.rmtree(images_dest)
+        shutil.copytree(input_images_src, images_dest)
+        image_count = sum(1 for _ in images_dest.rglob("*") if _.is_file())
+        log(f"copied {image_count} images from input/images/ to root images/")
+
     log(f"staged {total} files in {output_dir}")
     return 0
 
