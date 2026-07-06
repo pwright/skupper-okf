@@ -103,10 +103,14 @@ quartz-stage: maps
 
 # Build the Quartz static site
 quartz-build: quartz-stage
+    ./tools/update-generated-maps.py --input maps --output generated/maps --source-base-url {{blockscape_raw_base_url}} --blockscape-base-url {{blockscape_app_base_url}}
+
     cd quartz && node quartz/bootstrap-cli.mjs build
 
 # Serve the Quartz site locally
 quartz-serve: quartz-stage
+    ./tools/update-generated-maps.py --input maps --output generated/maps --source-base-url {{blockscape_raw_base_url}} --blockscape-base-url {{blockscape_app_base_url}}
+
     cd quartz && node quartz/bootstrap-cli.mjs build --serve
 
 # Remove Quartz staged content and build output

@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 DEFAULT_ARRAY_TITLES = {
-    "skupper": "Skupper Blockscape maps",
+    "skupper": "Skupper",
 }
 
 DEFAULT_SOURCE_BASE_URL = "https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/"

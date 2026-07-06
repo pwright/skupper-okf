@@ -10,4 +10,5 @@ Rules:
 - When `stage` is absent, order items in a category from less mature/custom to more mature/commodity.
 - If a docs/code fit is uncertain, keep the item but set `color` to `#0000ff`.
 - Preserve source references in item metadata where useful.
-- links to generated content should use pattern from justfile and no .md ext like https://pwright.github.io/skupper-okf/generated/concepts/connector
+- Links to generated content should use pattern from justfile and no .md ext like https://pwright.github.io/skupper-okf/generated/concepts/connector
+- When an item references another map (via deps or as a sub-map), the item's `id` should match the referenced map's `id` exactly (e.g., if the item links to `kubernetes-platform-map`, the item id should be `kubernetes-platform-map`, not `kubernetes-platform`)

@@ -1,5 +1,5 @@
 ---
-title: "Skupper Blockscape maps"
+title: "Skupper"
 type: BlockscapeMap
 status: generated
 source_path: maps/skupper.bs
@@ -8,7 +8,7 @@ tags:
   - blockscape
 ---
 
-# Skupper Blockscape maps
+# Skupper
 
 Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs)
 
@@ -70,32 +70,6 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       },
       {
-        "id": "enablers",
-        "title": "Enablers",
-        "items": [
-          {
-            "id": "routing-key",
-            "name": "Routing key",
-            "source": "generated/concepts/routing-key.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/routing-key",
-            "deps": []
-          }
-        ]
-      },
-      {
-        "id": "observability",
-        "title": "Observability",
-        "items": [
-          {
-            "id": "network-observer-api",
-            "name": "Network Observer API",
-            "source": "generated/concepts/network-observer-api.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/network-observer-api",
-            "deps": ["routing-key", "skupper-listeners-map", "skupper-connectors-map"]
-          }
-        ]
-      },
-      {
         "id": "service-exposure-primitives",
         "title": "Service exposure primitives",
         "items": [
@@ -113,6 +87,27 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector",
             "deps": ["routing-key"]
           }
+        ]
+      },
+
+      {
+        "id": "enablers",
+        "title": "Enablers",
+        "items": [
+          {
+            "id": "routing-key",
+            "name": "Routing key",
+            "source": "generated/concepts/routing-key.md",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/routing-key",
+            "deps": []
+          },          {
+            "id": "network-observer-api",
+            "name": "Network Observer API",
+            "source": "generated/concepts/network-observer-api.md",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/network-observer-api",
+            "deps": ["routing-key", "skupper-listeners-map", "skupper-connectors-map"]
+          }
+
         ]
       }
     ],

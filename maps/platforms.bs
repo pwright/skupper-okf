@@ -1,0 +1,873 @@
+[
+  {
+    "id": "platforms-overview-map",
+    "title": "Skupper Platform Support",
+    "abstract": "Overview of Skupper installation across supported platforms: Kubernetes, OpenShift, Podman, Docker, and Linux (systemd).",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/refdog/concepts/platform.md"
+    ],
+    "categories": [
+      {
+        "id": "supported-platforms",
+        "title": "Supported platforms",
+        "items": [
+          {
+            "id": "kubernetes-platform-map",
+            "name": "Kubernetes",
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "openshift-platform-map",
+            "name": "OpenShift",
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "podman-platform-map",
+            "name": "Podman",
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "docker-platform-map",
+            "name": "Docker",
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "linux-platform-map",
+            "name": "Linux (systemd)",
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "platform-concepts",
+        "title": "Platform concepts",
+        "items": [
+          {
+            "id": "platform-namespaces",
+            "name": "Platform namespaces",
+            "deps": [],
+            "source": "human/skupper-docs/input/refdog/concepts/platform.md",
+            "external": "https://skupper.io/docs/refdog/concepts/platform.html"
+          },
+          {
+            "id": "multi-site-per-platform",
+            "name": "Multiple sites per platform",
+            "deps": ["platform-namespaces"],
+            "source": "human/skupper-docs/input/refdog/concepts/platform.md",
+            "external": "https://skupper.io/docs/refdog/concepts/platform.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  },
+  {
+    "id": "kubernetes-platform-map",
+    "title": "Skupper on Kubernetes",
+    "abstract": "Installing and configuring Skupper on Kubernetes using YAML manifests, Helm charts, or the Operator.",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/kube-yaml/site-configuration.md"
+    ],
+    "categories": [
+      {
+        "id": "installation-methods",
+        "title": "Installation methods",
+        "items": [
+          {
+            "id": "yaml-installation",
+            "name": "YAML installation",
+            "deps": ["controller-scope", "yaml-manifests"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "helm-installation",
+            "name": "Helm installation",
+            "deps": ["controller-scope", "helm-chart"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "operator-installation",
+            "name": "Operator installation",
+            "deps": ["controller-scope"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
+        "id": "controller-components",
+        "title": "Controller components",
+        "items": [
+          {
+            "id": "skupper-controller",
+            "name": "Skupper controller",
+            "deps": ["controller-scope"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "controller-scope",
+            "name": "Controller scope",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "cluster-scope-controller",
+            "name": "Cluster-scoped controller",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "namespace-scope-controller",
+            "name": "Namespace-scoped controller",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
+        "id": "installation-resources",
+        "title": "Installation resources",
+        "items": [
+          {
+            "id": "yaml-manifests",
+            "name": "YAML manifests",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "helm-chart",
+            "name": "Helm chart",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "cluster-scope-yaml",
+            "name": "skupper-cluster-scope.yaml",
+            "deps": ["yaml-manifests"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "namespace-scope-yaml",
+            "name": "skupper-namespace-scope.yaml",
+            "deps": ["yaml-manifests"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
+        "id": "site-creation",
+        "title": "Site creation",
+        "items": [
+          {
+            "id": "site-custom-resource",
+            "name": "Site custom resource",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-spec",
+            "name": "Site specification",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "kubectl-apply",
+            "name": "kubectl apply",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-status",
+            "name": "Site status",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-components",
+        "title": "Site components",
+        "items": [
+          {
+            "id": "skupper-router-pod",
+            "name": "Skupper router pod",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "kube-adaptor-pod",
+            "name": "Kube adaptor pod",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-resources",
+            "name": "Site resources",
+            "deps": ["skupper-router-pod"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "high-availability",
+            "name": "High availability",
+            "deps": ["skupper-router-pod"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  },
+  {
+    "id": "openshift-platform-map",
+    "title": "Skupper on OpenShift",
+    "abstract": "Installing and configuring Skupper on OpenShift using YAML manifests, Helm charts, or the Operator.",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/kube-yaml/site-configuration.md"
+    ],
+    "categories": [
+      {
+        "id": "installation-methods",
+        "title": "Installation methods",
+        "items": [
+          {
+            "id": "yaml-installation",
+            "name": "YAML installation",
+            "deps": ["controller-scope", "yaml-manifests"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "helm-installation",
+            "name": "Helm installation",
+            "deps": ["controller-scope", "helm-chart"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "operator-installation",
+            "name": "Operator installation (OperatorHub)",
+            "deps": ["controller-scope", "operatorhub"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
+        "id": "openshift-specific",
+        "title": "OpenShift-specific features",
+        "items": [
+          {
+            "id": "operatorhub",
+            "name": "OperatorHub integration",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "openshift-routes",
+            "name": "OpenShift Routes",
+            "deps": [],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "security-context-constraints",
+            "name": "Security Context Constraints",
+            "deps": [],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "controller-components",
+        "title": "Controller components",
+        "items": [
+          {
+            "id": "skupper-controller",
+            "name": "Skupper controller",
+            "deps": ["controller-scope"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "controller-scope",
+            "name": "Controller scope",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "cluster-scope-controller",
+            "name": "Cluster-scoped controller",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "namespace-scope-controller",
+            "name": "Namespace-scoped controller",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          }
+        ]
+      },
+      {
+        "id": "installation-resources",
+        "title": "Installation resources",
+        "items": [
+          {
+            "id": "yaml-manifests",
+            "name": "YAML manifests",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "helm-chart",
+            "name": "Helm chart",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "oc-command",
+            "name": "oc command",
+            "deps": [],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-creation",
+        "title": "Site creation",
+        "items": [
+          {
+            "id": "site-custom-resource",
+            "name": "Site custom resource",
+            "deps": ["skupper-controller"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "site-spec",
+            "name": "Site specification",
+            "deps": ["site-custom-resource"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          },
+          {
+            "id": "oc-apply",
+            "name": "oc apply",
+            "deps": ["site-custom-resource", "oc-command"],
+            "source": "human/skupper-docs/input/kube-yaml/site-configuration.md",
+            "external": "https://skupper.io/docs/kube-yaml/site-configuration.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  },
+  {
+    "id": "podman-platform-map",
+    "title": "Skupper on Podman",
+    "abstract": "Installing and configuring Skupper on Podman using the CLI and systemd user services.",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/system-cli/site-configuration.md"
+    ],
+    "categories": [
+      {
+        "id": "installation-prerequisites",
+        "title": "Installation prerequisites",
+        "items": [
+          {
+            "id": "skupper-cli",
+            "name": "Skupper CLI",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "podman-socket",
+            "name": "Podman socket",
+            "deps": ["systemd-user-service"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "loginctl-linger",
+            "name": "loginctl linger",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "controller-installation",
+        "title": "Controller installation",
+        "items": [
+          {
+            "id": "system-install-command",
+            "name": "skupper system install",
+            "deps": ["skupper-cli", "podman-platform-env"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "podman-platform-env",
+            "name": "SKUPPER_PLATFORM=podman",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "controller-container",
+            "name": "Controller container",
+            "deps": ["system-install-command"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "dynamic-controller",
+            "name": "Dynamic system controller",
+            "deps": ["controller-container", "reload-type-auto"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "reload-type-auto",
+            "name": "SKUPPER_SYSTEM_RELOAD_TYPE=auto",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-operations",
+        "title": "Site operations",
+        "items": [
+          {
+            "id": "site-create",
+            "name": "skupper site create",
+            "deps": ["controller-container"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-start",
+            "name": "skupper system start",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-reload",
+            "name": "skupper system reload",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-stop",
+            "name": "skupper system stop",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "runtime-components",
+        "title": "Runtime components",
+        "items": [
+          {
+            "id": "podman-containers",
+            "name": "Podman containers",
+            "deps": ["controller-container", "router-container"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "router-container",
+            "name": "Router container",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "systemd-user-service",
+            "name": "systemd user service",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-namespaces",
+        "title": "Site namespaces",
+        "items": [
+          {
+            "id": "namespace-option",
+            "name": "Namespace option (-n)",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "multiple-sites",
+            "name": "Multiple sites per user",
+            "deps": ["namespace-option"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  },
+  {
+    "id": "docker-platform-map",
+    "title": "Skupper on Docker",
+    "abstract": "Installing and configuring Skupper on Docker using the CLI and Docker containers.",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/system-cli/site-configuration.md"
+    ],
+    "categories": [
+      {
+        "id": "installation-prerequisites",
+        "title": "Installation prerequisites",
+        "items": [
+          {
+            "id": "skupper-cli",
+            "name": "Skupper CLI",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "docker-daemon",
+            "name": "Docker daemon",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "controller-installation",
+        "title": "Controller installation",
+        "items": [
+          {
+            "id": "system-install-command",
+            "name": "skupper system install",
+            "deps": ["skupper-cli", "docker-platform-env"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "docker-platform-env",
+            "name": "SKUPPER_PLATFORM=docker",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "controller-container",
+            "name": "Controller container",
+            "deps": ["system-install-command"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "dynamic-controller",
+            "name": "Dynamic system controller",
+            "deps": ["controller-container", "reload-type-auto"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "reload-type-auto",
+            "name": "SKUPPER_SYSTEM_RELOAD_TYPE=auto",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-operations",
+        "title": "Site operations",
+        "items": [
+          {
+            "id": "site-create",
+            "name": "skupper site create",
+            "deps": ["controller-container"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-start",
+            "name": "skupper system start",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-reload",
+            "name": "skupper system reload",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-stop",
+            "name": "skupper system stop",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "runtime-components",
+        "title": "Runtime components",
+        "items": [
+          {
+            "id": "docker-containers",
+            "name": "Docker containers",
+            "deps": ["controller-container", "router-container"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "router-container",
+            "name": "Router container",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "docker-network",
+            "name": "Docker network",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-namespaces",
+        "title": "Site namespaces",
+        "items": [
+          {
+            "id": "namespace-option",
+            "name": "Namespace option (-n)",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "multiple-sites",
+            "name": "Multiple sites per user",
+            "deps": ["namespace-option"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  },
+  {
+    "id": "linux-platform-map",
+    "title": "Skupper on Linux (systemd)",
+    "abstract": "Installing and configuring Skupper on Linux using systemd services without container runtime.",
+    "status": "generated",
+    "reviewed": false,
+    "source_paths": [
+      "human/skupper-docs/input/install/index.md",
+      "human/skupper-docs/input/system-cli/site-configuration.md"
+    ],
+    "categories": [
+      {
+        "id": "installation-prerequisites",
+        "title": "Installation prerequisites",
+        "items": [
+          {
+            "id": "skupper-cli",
+            "name": "Skupper CLI",
+            "deps": [],
+            "source": "human/skupper-docs/input/install/index.md",
+            "external": "https://skupper.io/docs/install/index.html"
+          },
+          {
+            "id": "systemd",
+            "name": "systemd",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "loginctl-linger",
+            "name": "loginctl linger",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "installation-differences",
+        "title": "Linux-specific differences",
+        "items": [
+          {
+            "id": "no-controller-container",
+            "name": "No controller container",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "direct-systemd-services",
+            "name": "Direct systemd services",
+            "deps": ["systemd"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "linux-platform-env",
+            "name": "SKUPPER_PLATFORM=linux",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-operations",
+        "title": "Site operations",
+        "items": [
+          {
+            "id": "site-create",
+            "name": "skupper site create",
+            "deps": ["linux-platform-env"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-start",
+            "name": "skupper system start",
+            "deps": ["site-create", "systemd-user-services"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-reload",
+            "name": "skupper system reload",
+            "deps": ["site-create"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "system-stop",
+            "name": "skupper system stop",
+            "deps": ["systemd-user-services"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "runtime-components",
+        "title": "Runtime components",
+        "items": [
+          {
+            "id": "systemd-user-services",
+            "name": "systemd user services",
+            "deps": ["systemd"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "router-service",
+            "name": "Router service",
+            "deps": ["systemd-user-services"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "router-binary",
+            "name": "Router binary",
+            "deps": ["router-service"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      },
+      {
+        "id": "site-namespaces",
+        "title": "Site namespaces",
+        "items": [
+          {
+            "id": "namespace-option",
+            "name": "Namespace option (-n)",
+            "deps": [],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          },
+          {
+            "id": "multiple-sites",
+            "name": "Multiple sites per user",
+            "deps": ["namespace-option"],
+            "source": "human/skupper-docs/input/system-cli/site-configuration.md",
+            "external": "https://skupper.io/docs/system-cli/site-configuration.html"
+          }
+        ]
+      }
+    ],
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
+  }
+]
