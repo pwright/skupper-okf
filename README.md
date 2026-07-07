@@ -3,6 +3,13 @@
 This repository is a minimal starting point for treating Skupper documentation as a curated human source and building an OKF-style LLM wiki beside it.
 
 
+## Ask about Skupper
+
+This repo can be supplemented with code repos so you can query it like deepwiki, but with more scope (ie multiple repos).
+
+See [Requirements](#requirements) and [Quick start](#quick-start) to set up the repository.
+
+
 ## Maps
 
 - [Skupper Blockscape map](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs) from `maps/skupper.bs`
@@ -36,10 +43,19 @@ The `human/skupper/` directory contains a full clone of the Skupper main reposit
 
 ```bash
 just init
-just tree
+just tree  # optional: view the directory structure
 ```
 
-`just init` creates the local OKF layout and fetches `skupper-docs` into `human/skupper-docs/`, `skupper-example-hello-world` into `human/skupper-example-hello-world/`, and `skupper-example-grpc` into `human/skupper-example-grpc/`.
+`just init` creates the local OKF layout and populates the `human/` directory by fetching upstream Skupper repositories:
+
+- `human/skupper-docs/` — Skupper documentation
+- `human/skupper-example-hello-world/` — Hello World example
+- `human/skupper-example-grpc/` — gRPC example  
+- `human/skupper/` — Full Skupper repo (for API/CRD generation, gitignored)
+- `human/skupper-console/` — Console repo (for API extraction)
+- `human/skupper-router/` — Router repo (for markdown extraction)
+
+`just tree` displays the directory structure to verify the layout.
 
 For an offline smoke test that does not contact GitHub:
 
