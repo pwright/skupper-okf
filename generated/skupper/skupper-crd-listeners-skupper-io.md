@@ -3,17 +3,13 @@ type: GeneratedDocs
 title: Skupper CRD - listeners-skupper-io
 id: skupper-crd-listeners-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_listener_crd.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: manual
 ---
 
 # Skupper CRD: listeners-skupper-io
 
 Source: `human/skupper/config/crd/bases/skupper_listener_crd.yaml`
-
-For listener usage guides, see:
-- [Creating a listener using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-listener-yaml)
-- [Listener concept](../concepts/listener.md)
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1

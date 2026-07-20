@@ -3,18 +3,13 @@ type: GeneratedDocs
 title: Skupper CRD - sites-skupper-io
 id: skupper-crd-sites-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_site_crd.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: manual
 ---
 
 # Skupper CRD: sites-skupper-io
 
 Source: `human/skupper/config/crd/bases/skupper_site_crd.yaml`
-
-For site configuration guides, see:
-- [Site configuration with YAML (Kubernetes)](../input/kube-yaml/site-configuration.md)
-- [Site configuration with YAML (local systems)](../input/system-yaml/site-configuration.md)
-- [Site configuration with CLI (local systems)](../input/system-cli/site-configuration.md)
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1

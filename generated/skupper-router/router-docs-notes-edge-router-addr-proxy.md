@@ -3,7 +3,7 @@ type: RouterDocs
 title: Edge Router Addr Proxy
 id: router-docs-notes-edge-router-addr-proxy
 source_file: ../human/skupper-router/docs/notes/edge-router-addr-proxy.md
-generated_at: 2026-07-04T10:38:23Z
+generated_at: 2026-07-10T14:10:49Z
 generator: copy-router-markdown.sh
 ---
 

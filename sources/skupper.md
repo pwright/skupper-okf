@@ -3,9 +3,9 @@ type: SourceFile
 title: Skupper Main Repository
 id: source-skupper
 url: https://github.com/skupperproject/skupper
-retrieved_at: 2026-07-04T09:56:11Z
-commit: 143bc972423733c96d2decb368d920ccff649e61
-commit_date: 2026-07-02 09:03:19 -0700
+retrieved_at: 2026-07-10T14:10:45Z
+commit: 172317cd4e96c127ac553070dd47aa1883e2ade9
+commit_date: 2026-07-07 15:27:04 -0400
 local_snapshot: ../human/skupper
 ---
 
@@ -14,9 +14,9 @@ local_snapshot: ../human/skupper
 This source entry records the Skupper repository clone used for API/CRD documentation generation.
 
 - URL: `https://github.com/skupperproject/skupper`
-- Retrieved: `2026-07-04T09:56:11Z`
-- Commit: `143bc972423733c96d2decb368d920ccff649e61`
-- Commit date: `2026-07-02 09:03:19 -0700`
+- Retrieved: `2026-07-10T14:10:45Z`
+- Commit: `172317cd4e96c127ac553070dd47aa1883e2ade9`
+- Commit date: `2026-07-07 15:27:04 -0400`
 - Local snapshot: `../human/skupper/`
 
 ## Description

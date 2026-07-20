@@ -3,18 +3,13 @@ type: GeneratedDocs
 title: Skupper CRD - connectors-skupper-io
 id: skupper-crd-connectors-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_connector_crd.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: manual
 ---
 
 # Skupper CRD: connectors-skupper-io
 
 Source: `human/skupper/config/crd/bases/skupper_connector_crd.yaml`
-
-For connector usage guides, see:
-- [Creating a connector using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-connector-yaml)
-- [Creating a connector for a different namespace](../input/kube-yaml/service-exposure.md#kube-creating-attachedconnector-yaml)
-- [Connector concept](../concepts/connector.md)
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1

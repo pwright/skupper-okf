@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper Console API Calls
 id: console-api-calls
 source_repo: ../human/skupper-console
-generated_at: 2026-07-04T10:10:28Z
+generated_at: 2026-07-10T14:10:48Z
 generator: extract-console-api-calls.sh
 ---
 
@@ -13,13 +13,11 @@ This document describes all API calls made by the Skupper Console frontend to th
 
 **Source Repository:** `skupperproject/skupper-console`
 **API Version:** `/api/v2alpha1`
-**Generated:** `2026-07-04T10:10:28Z`
+**Generated:** `2026-07-10T14:10:48Z`
 
 ## Overview
 
 The Skupper Console is a web-based frontend that visualizes and manages Skupper networks. It communicates with the Skupper Network Observer backend through a REST API and Prometheus-compatible metrics API.
-
-For console configuration and usage, see [Console documentation](../input/console/index.md).
 
 ## Base URL
 

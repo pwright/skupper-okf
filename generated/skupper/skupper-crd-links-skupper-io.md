@@ -3,18 +3,13 @@ type: GeneratedDocs
 title: Skupper CRD - links-skupper-io
 id: skupper-crd-links-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_link_crd.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: manual
 ---
 
 # Skupper CRD: links-skupper-io
 
 Source: `human/skupper/config/crd/bases/skupper_link_crd.yaml`
-
-For site linking guides, see:
-- [Site linking with YAML (Kubernetes)](../input/kube-yaml/site-linking.md)
-- [Site linking with YAML (local systems)](../input/system-yaml/site-linking.md)
-- [Site linking with CLI (local systems)](../input/system-cli/site-linking.md)
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1

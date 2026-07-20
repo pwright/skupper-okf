@@ -3,7 +3,7 @@ type: RouterDocs
 title:  Scraper - Analyze qpid-dispatch log files
 id: router-tools-scraper-README
 source_file: ../human/skupper-router/tools/scraper/README.md
-generated_at: 2026-07-04T10:38:23Z
+generated_at: 2026-07-10T14:10:49Z
 generator: copy-router-markdown.sh
 ---
 

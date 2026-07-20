@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper CRD - securedaccesses-skupper-io
 id: skupper-crd-securedaccesses-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_secured_access_crd.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: manual
 ---
 

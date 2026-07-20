@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper API - network-observer
 id: skupper-api-network-observer
 source_file: ../human/skupper/cmd/network-observer/spec/openapi.yaml
-generated_at: 2026-07-04T10:01:08Z
+generated_at: 2026-07-10T14:10:45Z
 generator: openapi-to-md
 ---
 
