@@ -166,6 +166,7 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 - [Concepts](generated/concepts/)
 - [Maps](generated/maps/)
 - [Skupper](generated/skupper/)
+- [Skupper Ansible](generated/skupper-ansible/)
 - [Skupper Console](generated/skupper-console/)
 - [Skupper Router](generated/skupper-router/)
 - [Workflows](generated/workflows/)

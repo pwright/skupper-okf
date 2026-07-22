@@ -110,6 +110,8 @@ maps/
 just sync-human
 ```
 
+`just sync-human` also regenerates repeatable reference pages for the Skupper Ansible collection under `generated/skupper-ansible/`.
+
 ## Generated content policy
 
 Generated content is not authoritative by default. Every generated or reviewed OKF file should record:

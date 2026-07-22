@@ -166,6 +166,7 @@ decision:
     - listener
   authoring:
     - yaml
+    - ansible
   linkAccess:
     - openshift-route
   joinMethod:
@@ -173,6 +174,13 @@ decision:
 ```
 
 Use these examples as patterns:
+
+```yaml
+# Ansible-driven setup
+decision:
+  authoring:
+    - ansible
+```
 
 ```yaml
 # Link access decision on Kubernetes/OpenShift

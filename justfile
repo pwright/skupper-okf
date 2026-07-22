@@ -17,6 +17,7 @@ init:
     ./scripts/fetch_skewer_yamls.py --branch main --output-dir human/skewer-yamls
     ./scripts/sync-human-skewer.sh
     ./scripts/sync-human-skupper-ansible.sh
+    ./scripts/generate-ansible-docs.py
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
@@ -36,6 +37,7 @@ sync-human:
     ./scripts/fetch_skewer_yamls.py --branch main --output-dir human/skewer-yamls
     ./scripts/sync-human-skewer.sh
     ./scripts/sync-human-skupper-ansible.sh
+    ./scripts/generate-ansible-docs.py
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
@@ -50,6 +52,7 @@ sync-human-dry-run:
     ./scripts/sync-human-skupper-example-grpc.sh --dry-run
     ./scripts/sync-human-skewer.sh --dry-run
     ./scripts/sync-human-skupper-ansible.sh --dry-run
+    ./scripts/generate-ansible-docs.py --dry-run
     ./scripts/sync-human-skupper.sh --dry-run
     ./scripts/generate-api-docs.sh --dry-run
     ./scripts/sync-human-skupper-console.sh --dry-run
@@ -80,6 +83,10 @@ sync-human-skewer:
 # Refresh human/skupper-ansible/ from skupper-ansible main
 sync-human-skupper-ansible:
     ./scripts/sync-human-skupper-ansible.sh
+
+# Generate Ansible collection documentation from human/skupper-ansible/
+generate-ansible-docs:
+    ./scripts/generate-ansible-docs.py
 
 # Refresh human/skupper/ (full repo clone) for API and CRD doc generation
 sync-human-skupper:

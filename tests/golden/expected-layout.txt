@@ -4,6 +4,7 @@ generated
 generated/architecture
 generated/concepts
 generated/resources
+generated/skupper-ansible
 generated/workflows
 human
 human/skewer

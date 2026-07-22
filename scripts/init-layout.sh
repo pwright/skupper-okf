@@ -22,6 +22,7 @@ main() {
   mkdir_p generated/resources
   mkdir_p generated/workflows
   mkdir_p generated/architecture
+  mkdir_p generated/skupper-ansible
   mkdir_p reviewed/concepts
   mkdir_p reviewed/resources
   mkdir_p reviewed/workflows

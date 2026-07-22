@@ -65,7 +65,7 @@ Optional facets when explicit in the source:
 
 - `decision.workloadRole`: `client`, `server`, `both`
 - `decision.resource`: `site`, `listener`, `connector`, `link`, `access-grant`, `access-token`, `attached-connector`, `attached-connector-binding`
-- `decision.authoring`: `cli`, `yaml`
+- `decision.authoring`: `cli`, `yaml`, `ansible`
 - `decision.linkAccess`: `openshift-route`, `loadbalancer`, `default`, `none`
 - `decision.joinMethod`: `cli-token`, `access-grant-token`
 

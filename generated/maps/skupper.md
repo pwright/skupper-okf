@@ -15,15 +15,15 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
 ```bs full
 [
   {
-    "id": "skupper-application-network-map",
+    "id": "application-network-map",
     "title": "Skupper Application Network",
     "abstract": "How Skupper uses listeners and connectors to let distributed application services communicate across sites.",
     "status": "generated",
     "reviewed": false,
     "source_paths": [
-      "human/skupper-docs/input/overview/index.md",
-      "human/skupper-docs/input/overview/connectivity.md",
-      "human/skupper-docs/input/system-yaml/service-exposure.md",
+      "human/docs/input/overview/index.md",
+      "human/docs/input/overview/connectivity.md",
+      "human/docs/input/system-yaml/service-exposure.md",
       "generated/concepts/listener.md",
       "generated/concepts/connector.md",
       "generated/concepts/routing-key.md",
@@ -39,10 +39,10 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "name": "Distributed applications communicate",
             "deps": [
               "routing-key",
-              "skupper-listeners-map",
-              "skupper-connectors-map"
+              "listeners-map",
+              "connectors-map"
             ],
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           },
           {
@@ -50,21 +50,21 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "name": "Services feel local across sites",
             "deps": [
               "routing-key",
-              "skupper-listeners-map",
-              "skupper-connectors-map"
+              "listeners-map",
+              "connectors-map"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
-            "external": "https://pwright.github.io/skupper-okf/human/skupper-docs/input/overview/service-exposure"
+            "source": "human/docs/input/system-yaml/service-exposure.md",
+            "external": "https://pwright.github.io/okf/human/docs/input/overview/service-exposure"
           },
           {
             "id": "secure-hybrid-cloud-connectivity",
             "name": "Secure hybrid cloud connectivity",
             "deps": [
               "routing-key",
-              "skupper-listeners-map",
-              "skupper-connectors-map"
+              "listeners-map",
+              "connectors-map"
             ],
-            "source": "human/skupper-docs/input/overview/connectivity.md",
+            "source": "human/docs/input/overview/connectivity.md",
             "external": "https://skupper.io/docs/overview/connectivity.html"
           }
         ]
@@ -74,17 +74,17 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         "title": "Service exposure primitives",
         "items": [
           {
-            "id": "skupper-listeners-map",
-            "name": "Listeners",
+            "id": "listeners-map",
+            "name": "Clients",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener",
+            "external": "https://pwright.github.io/okf/generated/concepts/listener",
             "deps": ["routing-key"]
           },
           {
-            "id": "skupper-connectors-map",
-            "name": "Connectors",
+            "id": "connectors-map",
+            "name": "Servers",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector",
+            "external": "https://pwright.github.io/okf/generated/concepts/connector",
             "deps": ["routing-key"]
           }
         ]
@@ -98,32 +98,32 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "routing-key",
             "name": "Routing key",
             "source": "generated/concepts/routing-key.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/routing-key",
+            "external": "https://pwright.github.io/okf/generated/concepts/routing-key",
             "deps": []
           },          {
             "id": "network-observer-api",
             "name": "Network Observer API",
             "source": "generated/concepts/network-observer-api.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/network-observer-api",
-            "deps": ["routing-key", "skupper-listeners-map", "skupper-connectors-map"]
+            "external": "https://pwright.github.io/okf/generated/concepts/network-observer-api",
+            "deps": ["routing-key", "listeners-map", "connectors-map"]
           }
 
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/skupper-okf/"
+    "source_base_url": "https://pwright.github.io/okf/"
   },
   {
-    "id": "skupper-listeners-map",
+    "id": "listeners-map",
     "title": "Skupper Listeners in the Application Network",
     "abstract": "How listeners help Skupper make remote services feel local across a secure application network.",
     "status": "generated",
     "reviewed": false,
     "source_paths": [
-      "human/skupper-docs/input/overview/index.md",
-      "human/skupper-docs/input/overview/connectivity.md",
-      "human/skupper-docs/input/system-yaml/service-exposure.md",
-      "human/skupper-docs/input/kube-yaml/service-exposure.md",
+      "human/docs/input/overview/index.md",
+      "human/docs/input/overview/connectivity.md",
+      "human/docs/input/system-yaml/service-exposure.md",
+      "human/docs/input/kube-yaml/service-exposure.md",
       "generated/concepts/listener.md"
     ],
     "categories": [
@@ -138,7 +138,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "local-service-endpoint",
               "matching-connector"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
@@ -147,7 +147,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "listener-host-port"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
@@ -157,7 +157,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-host-port"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#outcome"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener#outcome"
           }
         ]
       },
@@ -173,7 +173,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "routing-key-match"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#listener"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener#listener"
           },
           {
             "id": "listener-host-port",
@@ -181,7 +181,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "listener-resource"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
@@ -190,7 +190,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "matching-connector"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
@@ -199,7 +199,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "connector-exposed-workload"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           }
         ]
@@ -215,16 +215,16 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener"
           },
           {
-            "id": "skupper-router-forwarding",
+            "id": "router-forwarding",
             "name": "Skupper router forwarding",
             "deps": [
               "secure-application-network",
               "routing-key-match"
             ],
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           },
           {
@@ -233,7 +233,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "secure-application-network"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           }
         ]
@@ -247,30 +247,30 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "name": "Secure application network",
             "deps": [
               "linked-sites",
-              "skupper-routers"
+              "routers"
             ],
-            "source": "human/skupper-docs/input/overview/connectivity.md",
+            "source": "human/docs/input/overview/connectivity.md",
             "external": "https://skupper.io/docs/overview/connectivity.html"
           },
           {
             "id": "linked-sites",
             "name": "Linked sites",
             "deps": [
-              "skupper-instances"
+              "instances"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
-            "id": "skupper-routers",
+            "id": "routers",
             "name": "Skupper routers",
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           },
           {
-            "id": "skupper-instances",
+            "id": "instances",
             "name": "Skupper instances",
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           }
         ]
@@ -287,26 +287,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-spec-host",
               "listener-spec-port"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
             "id": "listener-spec-routing-key",
             "name": "spec.routingKey",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "listener-spec-host",
             "name": "spec.host",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "listener-spec-port",
             "name": "spec.port",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "multi-key-listener",
@@ -315,7 +315,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener",
               "routing-key-match"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
@@ -325,26 +325,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-resource",
               "matching-connector"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           }
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/skupper-okf/"
+    "source_base_url": "https://pwright.github.io/okf/"
   },
   {
-    "id": "skupper-connectors-map",
+    "id": "connectors-map",
     "title": "Skupper Connectors in the Application Network",
     "abstract": "How connectors help Skupper publish workloads into a secure application network so remote listeners can consume them.",
     "status": "generated",
     "reviewed": false,
     "source_paths": [
-      "human/skupper-docs/input/overview/index.md",
-      "human/skupper-docs/input/overview/connectivity.md",
-      "human/skupper-docs/input/system-yaml/service-exposure.md",
-      "human/skupper-docs/input/kube-yaml/service-exposure.md",
-      "human/skupper-docs/input/refdog/topics/attached-connectors.md",
+      "human/docs/input/overview/index.md",
+      "human/docs/input/overview/connectivity.md",
+      "human/docs/input/system-yaml/service-exposure.md",
+      "human/docs/input/kube-yaml/service-exposure.md",
+      "human/docs/input/refdog/topics/attached-connectors.md",
       "generated/concepts/connector.md"
     ],
     "categories": [
@@ -359,7 +359,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector",
               "routing-key-match"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
@@ -368,7 +368,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "connector-selector-or-host"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
@@ -377,7 +377,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "routing-key-match"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           }
         ]
@@ -395,19 +395,19 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "routing-key-match"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#connector"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#connector"
           },
           {
             "id": "connector-selector-or-host",
             "name": "Selector or host",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-port",
             "name": "Target port",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "routing-key-match",
@@ -415,13 +415,13 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "matching-listener"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
             "id": "matching-listener",
             "name": "Matching listener",
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           }
         ]
@@ -438,7 +438,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector"
           },
           {
             "id": "router-message-forwarding",
@@ -447,7 +447,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "secure-application-network",
               "routing-key-match"
             ],
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           },
           {
@@ -458,7 +458,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-to-connector-traffic"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector"
           }
         ]
       },
@@ -471,30 +471,30 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "name": "Secure application network",
             "deps": [
               "linked-sites",
-              "skupper-routers"
+              "routers"
             ],
-            "source": "human/skupper-docs/input/overview/connectivity.md",
+            "source": "human/docs/input/overview/connectivity.md",
             "external": "https://skupper.io/docs/overview/connectivity.html"
           },
           {
             "id": "linked-sites",
             "name": "Linked sites",
             "deps": [
-              "skupper-instances"
+              "instances"
             ],
-            "source": "human/skupper-docs/input/system-yaml/service-exposure.md",
+            "source": "human/docs/input/system-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/system-cli/service-exposure.html"
           },
           {
-            "id": "skupper-routers",
+            "id": "routers",
             "name": "Skupper routers",
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           },
           {
-            "id": "skupper-instances",
+            "id": "instances",
             "name": "Skupper instances",
-            "source": "human/skupper-docs/input/overview/index.md",
+            "source": "human/docs/input/overview/index.md",
             "external": "https://skupper.io/docs/overview/index.html"
           }
         ]
@@ -511,26 +511,26 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector-selector-field",
               "connector-port-field"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
             "id": "connector-routing-key-field",
             "name": "spec.routingKey",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-selector-field",
             "name": "spec.selector",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-port-field",
             "name": "spec.port",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "attached-connector",
@@ -539,7 +539,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector",
               "peer-namespace-workload"
             ],
-            "source": "human/skupper-docs/input/refdog/topics/attached-connectors.md",
+            "source": "human/docs/input/refdog/topics/attached-connectors.md",
             "external": "https://skupper.io/docs/refdog/topics/attached-connectors.html"
           },
           {
@@ -548,13 +548,13 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "deps": [
               "cluster-wide-skupper"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
             "id": "cluster-wide-skupper",
             "name": "Cluster-wide Skupper",
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           },
           {
@@ -564,13 +564,13 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector-resource",
               "matching-listener"
             ],
-            "source": "human/skupper-docs/input/kube-yaml/service-exposure.md",
+            "source": "human/docs/input/kube-yaml/service-exposure.md",
             "external": "https://skupper.io/docs/kube-cli/service-exposure.html"
           }
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/skupper-okf/"
+    "source_base_url": "https://pwright.github.io/okf/"
   }
 ]
 ```

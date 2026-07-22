@@ -23,3 +23,10 @@ human_repos:
       - ../human/skupper-example-grpc/
       - ../../human/skupper-example-grpc/
     public_base_url: https://github.com/skupperproject/skupper-example-grpc/blob/main/
+  skupper-ansible:
+    local_prefixes:
+      - human/skupper-ansible/
+      - /human/skupper-ansible/
+      - ../human/skupper-ansible/
+      - ../../human/skupper-ansible/
+    public_base_url: https://github.com/skupperproject/skupper-ansible/blob/main/
