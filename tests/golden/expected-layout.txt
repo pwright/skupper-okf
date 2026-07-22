@@ -6,6 +6,9 @@ generated/concepts
 generated/resources
 generated/workflows
 human
+human/skewer
+human/skewer-yamls
+human/skupper-ansible
 human/skupper-docs
 indexes
 maps

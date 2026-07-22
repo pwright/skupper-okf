@@ -14,6 +14,9 @@ init:
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
     ./scripts/sync-human-skupper-example-grpc.sh
+    ./scripts/fetch_skewer_yamls.py --branch main --output-dir human/skewer-yamls
+    ./scripts/sync-human-skewer.sh
+    ./scripts/sync-human-skupper-ansible.sh
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
@@ -30,6 +33,9 @@ sync-human:
     ./scripts/sync-human-skupper-docs.sh
     ./scripts/sync-human-skupper-example-hello-world.sh
     ./scripts/sync-human-skupper-example-grpc.sh
+    ./scripts/fetch_skewer_yamls.py --branch main --output-dir human/skewer-yamls
+    ./scripts/sync-human-skewer.sh
+    ./scripts/sync-human-skupper-ansible.sh
     ./scripts/sync-human-skupper.sh
     ./scripts/generate-api-docs.sh
     ./scripts/sync-human-skupper-console.sh
@@ -42,6 +48,8 @@ sync-human-dry-run:
     ./scripts/sync-human-skupper-docs.sh --dry-run
     ./scripts/sync-human-skupper-example-hello-world.sh --dry-run
     ./scripts/sync-human-skupper-example-grpc.sh --dry-run
+    ./scripts/sync-human-skewer.sh --dry-run
+    ./scripts/sync-human-skupper-ansible.sh --dry-run
     ./scripts/sync-human-skupper.sh --dry-run
     ./scripts/generate-api-docs.sh --dry-run
     ./scripts/sync-human-skupper-console.sh --dry-run
@@ -60,6 +68,18 @@ sync-human-example-hello-world:
 # Refresh human/skupper-example-grpc/ from skupper-example-grpc main
 sync-human-example-grpc:
     ./scripts/sync-human-skupper-example-grpc.sh
+
+# Refresh human/skewer-yamls/ from root skewer.yaml files on main
+sync-human-skewer-yamls:
+    ./scripts/fetch_skewer_yamls.py --branch main --output-dir human/skewer-yamls
+
+# Refresh human/skewer/ from skewer main
+sync-human-skewer:
+    ./scripts/sync-human-skewer.sh
+
+# Refresh human/skupper-ansible/ from skupper-ansible main
+sync-human-skupper-ansible:
+    ./scripts/sync-human-skupper-ansible.sh
 
 # Refresh human/skupper/ (full repo clone) for API and CRD doc generation
 sync-human-skupper:

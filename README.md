@@ -49,6 +49,9 @@ just tree  # optional: view the directory structure
 `just init` creates the local OKF layout and populates the `human/` directory by fetching upstream Skupper repositories:
 
 - `human/skupper-docs/` — Skupper documentation
+- `human/skewer/` — Skewer repository
+- `human/skewer-yamls/` — root `skewer.yaml` files from Skupper example repos on `main`
+- `human/skupper-ansible/` — Skupper Ansible collection
 - `human/skupper-example-hello-world/` — Hello World example
 - `human/skupper-example-grpc/` — gRPC example  
 - `human/skupper/` — Full Skupper repo (for API/CRD generation, gitignored)

@@ -5,6 +5,9 @@
 /human/skupper/
 /human/skupper-console/
 /human/skupper-router/
+/human/skupper-ansible/
+/human/skewer/
+/human/skewer-yamls/
 
 # Generated local outputs
 # /generated/

@@ -15,6 +15,9 @@ main() {
   mkdir_p _system
   mkdir_p human
   mkdir_p human/skupper-docs
+  mkdir_p human/skewer
+  mkdir_p human/skewer-yamls
+  mkdir_p human/skupper-ansible
   mkdir_p generated/concepts
   mkdir_p generated/resources
   mkdir_p generated/workflows
