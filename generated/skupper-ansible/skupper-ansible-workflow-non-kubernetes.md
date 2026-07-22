@@ -4,7 +4,7 @@ reviewed: false
 source_repo: https://github.com/skupperproject/skupper-ansible.git
 source_branch: main
 source_commit: 632478a5245d1b71bd0eabb4b8e414f91c5b020b
-generated_at: '2026-07-22T21:09:50Z'
+generated_at: '2026-07-22T21:20:39Z'
 generator: generate-ansible-docs.py
 tags:
 - skupper
@@ -22,6 +22,7 @@ related:
 - skupper-ansible-module-system
 - skupper-ansible-module-controller
 - skupper-ansible-overview
+- skupper-ansible-workflow-mixed-sites
 decision:
   authoring:
   - ansible
@@ -34,6 +35,11 @@ decision:
   - decide-link-access
   - join-sites
   - validate
+  resource:
+  - site
+  - listener
+  - connector
+  - link
 ---
 
 # Skupper Ansible non-Kubernetes workflow

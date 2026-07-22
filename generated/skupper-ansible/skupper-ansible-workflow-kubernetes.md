@@ -4,7 +4,7 @@ reviewed: false
 source_repo: https://github.com/skupperproject/skupper-ansible.git
 source_branch: main
 source_commit: 632478a5245d1b71bd0eabb4b8e414f91c5b020b
-generated_at: '2026-07-22T21:09:50Z'
+generated_at: '2026-07-22T21:20:39Z'
 generator: generate-ansible-docs.py
 tags:
 - skupper
@@ -21,6 +21,7 @@ related:
 - skupper-concept-connector
 - skupper-ansible-module-resource
 - skupper-ansible-module-token
+- skupper-ansible-workflow-mixed-sites
 decision:
   authoring:
   - ansible
@@ -35,22 +36,19 @@ decision:
   - site
   - listener
   - connector
-  - access-grant
-  - access-token
-  joinMethod:
-  - access-grant-token
+  - link
 ---
 
 # Skupper Ansible Kubernetes workflow
 
-The Kubernetes Ansible path applies Skupper resource YAML with `skupper.v2.resource`, issues or retrieves an AccessToken with `skupper.v2.token`, and applies the token on another site with `skupper.v2.resource`.
+The Kubernetes Ansible path applies Skupper resource YAML with `skupper.v2.resource`, retrieves a Link resource bundle with `skupper.v2.token`, and applies that bundle on the peer site with `skupper.v2.resource`.
 
 ## Flow
 
 ```text
 resource module -> Site/Listener/Connector YAML
-token module    -> AccessGrant/AccessToken
-resource module -> apply token on peer site
+token module    -> Link/Secret YAML
+resource module -> apply Link/Secret on peer site
 ```
 
 ## Playbook Shape
@@ -67,14 +65,15 @@ resource module -> apply token on peer site
   tasks:
     - skupper.v2.token:
         name: west
+        type: link
         kubeconfig: "{{ kubeconfig }}"
         namespace: "{{ namespace }}"
-      register: accesstoken
+      register: west_link
 
 - hosts: east
   tasks:
     - skupper.v2.resource:
-        def: "{{ hostvars['west']['accesstoken']['token'] }}"
+        def: "{{ hostvars['west']['west_link']['token'] }}"
         kubeconfig: "{{ kubeconfig }}"
         namespace: "{{ namespace }}"
 ```

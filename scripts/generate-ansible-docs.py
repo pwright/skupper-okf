@@ -201,6 +201,7 @@ def render_module_page(
             "skupper-ansible-overview",
             "skupper-ansible-workflow-kubernetes",
             "skupper-ansible-workflow-non-kubernetes",
+            "skupper-ansible-workflow-mixed-sites",
         ],
         "decision": decision_for_module(module),
     }
@@ -272,6 +273,7 @@ def render_curated_pages(source_record: dict[str, str], generated_at: str) -> di
             "skupper-ansible-module-token",
             "skupper-ansible-module-system",
             "skupper-ansible-module-controller",
+            "skupper-ansible-workflow-mixed-sites",
         ],
         "decision": {
             "authoring": ["ansible"],
@@ -321,6 +323,7 @@ Most modules use common options for `platform`, `namespace`, `kubeconfig`, and `
             "skupper-concept-connector",
             "skupper-ansible-module-resource",
             "skupper-ansible-module-token",
+            "skupper-ansible-workflow-mixed-sites",
         ],
         "decision": {
             "authoring": ["ansible"],
@@ -331,22 +334,21 @@ Most modules use common options for `platform`, `namespace`, `kubeconfig`, and `
                 "join-sites",
                 "validate",
             ],
-            "resource": ["site", "listener", "connector", "access-grant", "access-token"],
-            "joinMethod": ["access-grant-token"],
+            "resource": ["site", "listener", "connector", "link"],
         },
     }
     pages["skupper-ansible-workflow-kubernetes.md"] = (
         yaml_frontmatter(kube_fm)
         + """# Skupper Ansible Kubernetes workflow
 
-The Kubernetes Ansible path applies Skupper resource YAML with `skupper.v2.resource`, issues or retrieves an AccessToken with `skupper.v2.token`, and applies the token on another site with `skupper.v2.resource`.
+The Kubernetes Ansible path applies Skupper resource YAML with `skupper.v2.resource`, retrieves a Link resource bundle with `skupper.v2.token`, and applies that bundle on the peer site with `skupper.v2.resource`.
 
 ## Flow
 
 ```text
 resource module -> Site/Listener/Connector YAML
-token module    -> AccessGrant/AccessToken
-resource module -> apply token on peer site
+token module    -> Link/Secret YAML
+resource module -> apply Link/Secret on peer site
 ```
 
 ## Playbook Shape
@@ -363,14 +365,15 @@ resource module -> apply token on peer site
   tasks:
     - skupper.v2.token:
         name: west
+        type: link
         kubeconfig: "{{ kubeconfig }}"
         namespace: "{{ namespace }}"
-      register: accesstoken
+      register: west_link
 
 - hosts: east
   tasks:
     - skupper.v2.resource:
-        def: "{{ hostvars['west']['accesstoken']['token'] }}"
+        def: "{{ hostvars['west']['west_link']['token'] }}"
         kubeconfig: "{{ kubeconfig }}"
         namespace: "{{ namespace }}"
 ```
@@ -399,11 +402,13 @@ resource module -> apply token on peer site
             "skupper-ansible-module-system",
             "skupper-ansible-module-controller",
             "skupper-ansible-overview",
+            "skupper-ansible-workflow-mixed-sites",
         ],
         "decision": {
             "authoring": ["ansible"],
             "platform": ["podman", "docker", "linux"],
             "setupStep": ["identify-sites", "decide-link-access", "join-sites", "validate"],
+            "resource": ["site", "listener", "connector", "link"],
         },
     }
     pages["skupper-ansible-workflow-non-kubernetes.md"] = (
@@ -433,6 +438,122 @@ token module    -> static Link when link access is enabled
 - `human/skupper-ansible/plugins/modules/resource.py`
 - `human/skupper-ansible/plugins/modules/system.py`
 - `human/skupper-ansible/plugins/modules/controller.py`
+"""
+    )
+
+    mixed_fm = {
+        **common,
+        "type": "Workflow",
+        "title": "Skupper Ansible mixed Kubernetes and system workflow",
+        "id": "skupper-ansible-workflow-mixed-sites",
+        "source_paths": [
+            "human/skupper-ansible/README.md",
+            "human/skupper-ansible/plugins/modules/resource.py",
+            "human/skupper-ansible/plugins/modules/token.py",
+            "human/skupper-ansible/plugins/modules/system.py",
+        ],
+        "related": [
+            "skupper-ansible-module-resource",
+            "skupper-ansible-module-token",
+            "skupper-ansible-module-system",
+            "skupper-ansible-workflow-kubernetes",
+            "skupper-ansible-workflow-non-kubernetes",
+        ],
+        "decision": {
+            "authoring": ["ansible"],
+            "platform": ["kubernetes", "podman", "docker", "linux"],
+            "setupStep": ["identify-sites", "decide-link-access", "join-sites", "validate"],
+            "resource": ["site", "listener", "connector", "link"],
+        },
+    }
+    pages["skupper-ansible-workflow-mixed-sites.md"] = (
+        yaml_frontmatter(mixed_fm)
+        + """# Skupper Ansible mixed Kubernetes and system workflow
+
+Use Link resources when an Ansible playbook joins a Kubernetes site to a local system site. In these examples, `podman` represents the local system platform; use `docker` or `linux` when that is the actual system platform.
+
+## West Kubernetes, East Local System
+
+The Kubernetes site in `west` produces a Link resource bundle. The local system site in `east` applies that bundle as resource YAML.
+
+```yaml
+- hosts: west
+  tasks:
+    - skupper.v2.resource:
+        path: "{{ west_resources_path }}"
+        platform: kubernetes
+        namespace: west
+        kubeconfig: "{{ kubeconfig }}"
+
+    - skupper.v2.token:
+        name: west
+        type: link
+        platform: kubernetes
+        namespace: west
+        kubeconfig: "{{ kubeconfig }}"
+      register: west_link
+
+- hosts: east
+  tasks:
+    - skupper.v2.resource:
+        path: "{{ east_resources_path }}"
+        platform: podman
+        namespace: east
+
+    - skupper.v2.resource:
+        def: "{{ hostvars['west']['west_link']['token'] }}"
+        platform: podman
+        namespace: east
+
+    - skupper.v2.system:
+        platform: podman
+        namespace: east
+```
+
+## West Local System, East Kubernetes
+
+The local system site in `west` starts first and returns static Link resources. The Kubernetes site in `east` applies the selected Link resource bundle.
+
+```yaml
+- hosts: west
+  tasks:
+    - skupper.v2.resource:
+        path: "{{ west_resources_path }}"
+        platform: podman
+        namespace: west
+
+    - skupper.v2.system:
+        platform: podman
+        namespace: west
+      register: west_system
+
+- hosts: east
+  tasks:
+    - skupper.v2.resource:
+        path: "{{ east_resources_path }}"
+        platform: kubernetes
+        namespace: east
+        kubeconfig: "{{ kubeconfig }}"
+
+    - skupper.v2.resource:
+        def: "{{ hostvars['west']['west_system']['links']['0.0.0.0'] }}"
+        platform: kubernetes
+        namespace: east
+        kubeconfig: "{{ kubeconfig }}"
+```
+
+## Notes
+
+- The Link resource bundle is applied with `skupper.v2.resource`; the playbook does not redeem an access token on the peer site.
+- For system sites, `skupper.v2.system` starts or reloads the local namespace after resource files are present.
+- For Kubernetes sites, the Skupper controller reconciles the applied Link and Secret resources.
+
+## Source
+
+- `human/skupper-ansible/README.md`
+- `human/skupper-ansible/plugins/modules/resource.py`
+- `human/skupper-ansible/plugins/modules/token.py`
+- `human/skupper-ansible/plugins/modules/system.py`
 """
     )
 

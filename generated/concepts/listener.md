@@ -29,6 +29,10 @@ related:
   - skupper-concept-connector
   - skupper-concept-routing-key
   - skupper-concept-network-observer-api
+  - skupper-ansible-module-resource
+  - skupper-ansible-module-system
+  - skupper-ansible-workflow-kubernetes
+  - skupper-ansible-workflow-non-kubernetes
 timestamp: 2026-07-03T14:03:38Z
 ---
 
@@ -71,6 +75,7 @@ See also:
 - [Creating a multi-key listener using YAML](../input/kube-yaml/service-exposure.md#kube-creating-multikeylistener-yaml)
 - [Creating a listener using YAML (local systems)](../input/system-yaml/service-exposure.md)
 - [Creating a listener using CLI (local systems)](../input/system-cli/service-exposure.md)
+- [Skupper Ansible resource module](../skupper-ansible/skupper-ansible-module-resource.md)
 
 For Kubernetes-style YAML workflows, create a `Listener` resource and apply it through Skupper:
 
@@ -88,6 +93,49 @@ spec:
 
 ```bash
 skupper system apply -f <filename>
+```
+
+For Ansible workflows, pass the same `Listener` resource YAML to `skupper.v2.resource`. On Kubernetes, the module applies the resource to the target namespace:
+
+```yaml
+- name: Create backend listener on west
+  skupper.v2.resource:
+    platform: kubernetes
+    namespace: west
+    kubeconfig: "{{ kubeconfig }}"
+    def: |
+      apiVersion: skupper.io/v2alpha1
+      kind: Listener
+      metadata:
+        name: backend
+      spec:
+        routingKey: backend
+        host: east-backend
+        port: 8080
+```
+
+On local system platforms, the same module writes the resource into the local Skupper namespace definition. Reload or start the system site after the resource is present:
+
+```yaml
+- name: Define backend listener on west
+  skupper.v2.resource:
+    platform: podman
+    namespace: west
+    def: |
+      apiVersion: skupper.io/v2alpha1
+      kind: Listener
+      metadata:
+        name: backend
+      spec:
+        routingKey: backend
+        host: east-backend
+        port: 8080
+
+- name: Reload west system site
+  skupper.v2.system:
+    platform: podman
+    namespace: west
+    action: reload
 ```
 
 For local CLI workflows on Docker, Podman, or Linux platforms, create a listener directly:

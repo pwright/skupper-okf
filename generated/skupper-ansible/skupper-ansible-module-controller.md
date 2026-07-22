@@ -9,7 +9,7 @@ source_branch: main
 source_commit: 632478a5245d1b71bd0eabb4b8e414f91c5b020b
 source_paths:
 - human/skupper-ansible/plugins/modules/controller.py
-generated_at: '2026-07-22T21:09:50Z'
+generated_at: '2026-07-22T21:20:39Z'
 generator: generate-ansible-docs.py
 tags:
 - skupper
@@ -20,6 +20,7 @@ related:
 - skupper-ansible-overview
 - skupper-ansible-workflow-kubernetes
 - skupper-ansible-workflow-non-kubernetes
+- skupper-ansible-workflow-mixed-sites
 decision:
   authoring:
   - ansible

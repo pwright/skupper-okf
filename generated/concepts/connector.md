@@ -32,6 +32,10 @@ related:
   - skupper-concept-listener
   - skupper-concept-routing-key
   - skupper-concept-network-observer-api
+  - skupper-ansible-module-resource
+  - skupper-ansible-module-system
+  - skupper-ansible-workflow-kubernetes
+  - skupper-ansible-workflow-non-kubernetes
 timestamp: 2026-07-03T14:45:49Z
 ---
 
@@ -73,6 +77,7 @@ See also:
 - [Creating a connector using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-connector-yaml)
 - [Creating a connector using YAML (local systems)](../input/system-yaml/service-exposure.md)
 - [Creating a connector using CLI (local systems)](../input/system-cli/service-exposure.md)
+- [Skupper Ansible resource module](../skupper-ansible/skupper-ansible-module-resource.md)
 
 For Kubernetes-style YAML workflows, create a `Connector` resource and apply it through Skupper:
 
@@ -90,6 +95,49 @@ spec:
 
 ```bash
 skupper system apply -f <filename>
+```
+
+For Ansible workflows, pass the same `Connector` resource YAML to `skupper.v2.resource`. On Kubernetes, the module applies the resource to the target namespace:
+
+```yaml
+- name: Create backend connector on east
+  skupper.v2.resource:
+    platform: kubernetes
+    namespace: east
+    kubeconfig: "{{ kubeconfig }}"
+    def: |
+      apiVersion: skupper.io/v2alpha1
+      kind: Connector
+      metadata:
+        name: backend
+      spec:
+        routingKey: backend
+        selector: app=backend
+        port: 8080
+```
+
+On local system platforms, the same module writes the resource into the local Skupper namespace definition. Reload or start the system site after the resource is present:
+
+```yaml
+- name: Define backend connector on east
+  skupper.v2.resource:
+    platform: podman
+    namespace: east
+    def: |
+      apiVersion: skupper.io/v2alpha1
+      kind: Connector
+      metadata:
+        name: backend
+      spec:
+        routingKey: backend
+        host: 127.0.0.1
+        port: 8080
+
+- name: Reload east system site
+  skupper.v2.system:
+    platform: podman
+    namespace: east
+    action: reload
 ```
 
 For local CLI workflows, create a connector directly:
