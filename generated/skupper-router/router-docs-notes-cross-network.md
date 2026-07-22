@@ -3,7 +3,7 @@ type: RouterDocs
 title: Cross (Inter) Network Communication
 id: router-docs-notes-cross-network
 source_file: ../human/skupper-router/docs/notes/cross-network.md
-generated_at: 2026-07-10T14:10:49Z
+generated_at: 2026-07-22T20:46:26Z
 generator: copy-router-markdown.sh
 ---
 

@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper CRD - routeraccesses-skupper-io
 id: skupper-crd-routeraccesses-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_router_access_crd.yaml
-generated_at: 2026-07-10T14:10:45Z
+generated_at: 2026-07-22T20:46:15Z
 generator: manual
 ---
 

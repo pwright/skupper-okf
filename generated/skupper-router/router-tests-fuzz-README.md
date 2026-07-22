@@ -3,7 +3,7 @@ type: RouterDocs
 title: Fuzz testing http1 and http2 adaptors in skupper-router
 id: router-tests-fuzz-README
 source_file: ../human/skupper-router/tests/fuzz/README.md
-generated_at: 2026-07-10T14:10:49Z
+generated_at: 2026-07-22T20:46:26Z
 generator: copy-router-markdown.sh
 ---
 

@@ -3,7 +3,7 @@ type: RouterDocs
 title: 1. Record architecture decisions
 id: router-decisions-0001-record-architecture-decisions
 source_file: ../human/skupper-router/decisions/0001-record-architecture-decisions.md
-generated_at: 2026-07-10T14:10:49Z
+generated_at: 2026-07-22T20:46:26Z
 generator: copy-router-markdown.sh
 ---
 

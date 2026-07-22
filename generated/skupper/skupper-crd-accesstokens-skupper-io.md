@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper CRD - accesstokens-skupper-io
 id: skupper-crd-accesstokens-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_access_token_crd.yaml
-generated_at: 2026-07-10T14:10:45Z
+generated_at: 2026-07-22T20:46:15Z
 generator: manual
 ---
 

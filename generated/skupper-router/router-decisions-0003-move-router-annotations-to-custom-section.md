@@ -3,7 +3,7 @@ type: RouterDocs
 title: 3. Move per message router annotations
 id: router-decisions-0003-move-router-annotations-to-custom-section
 source_file: ../human/skupper-router/decisions/0003-move-router-annotations-to-custom-section.md
-generated_at: 2026-07-10T14:10:49Z
+generated_at: 2026-07-22T20:46:26Z
 generator: copy-router-markdown.sh
 ---
 

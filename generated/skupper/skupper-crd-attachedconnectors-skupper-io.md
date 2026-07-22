@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper CRD - attachedconnectors-skupper-io
 id: skupper-crd-attachedconnectors-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_attached_connector_crd.yaml
-generated_at: 2026-07-10T14:10:45Z
+generated_at: 2026-07-22T20:46:15Z
 generator: manual
 ---
 
@@ -48,7 +48,7 @@ spec:
                 tlsCredentials:
                   description: |-
                     Advanced. The name of a bundle of TLS certificates used for secure router-to-server communication. The bundle contains the trusted server certificate (usually a CA). It optionally includes a client certificate and key for mutual TLS.
-                    On Kubernetes, the value is the name of a Secret in the current namespace. On Docker, Podman, and Linux, the value is the name of a directory under input/certs/ in the current namespace.
+                    The value is the name of a Secret in the Site namespace (spec.siteNamespace).
                   type: string
                 useClientCert:
                   type: boolean
