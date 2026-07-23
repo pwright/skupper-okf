@@ -37,7 +37,7 @@ New capabilities collects user-visible Skupper features that may change what a t
 - [Skupper release artifacts](https://github.com/skupperproject/skupper/releases): Primary release source for new binaries, manifests, and versioned changes.
 - [Skupper installation guide](../../human/skupper-docs/input/install/index.md): Local source that points users at the current install script and GitHub release downloads.
 - [Skupper Console guide](../../human/skupper-docs/input/console/index.md): Local source for Network Observer installation, upgrade, and operational changes.
-- [Generated Skupper API notes](../skupper/skupper-api.md): Generated local API reference candidate for feature-level changes in Skupper resources and APIs.
+- [Generated Skupper API notes](../skupper/skupper-api-network-observer.md): Generated local API reference candidate for feature-level changes in Skupper resources and APIs.
 
 ## Website Links
 

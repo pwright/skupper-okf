@@ -35,7 +35,7 @@ Deprecations identify Skupper commands, resources, fields, behaviors, platforms,
 - [Release notes](./release-notes.md): Primary input for version-specific deprecation announcements.
 - [Command reference source](../../human/skupper-docs/refdog/config/commands/overview.md): Local source area for command-surface changes.
 - [Resource reference source](../../human/skupper-docs/refdog/config/resources/overview.md): Local source area for resource and field changes.
-- [Generated API reference](../skupper/skupper-api.md): Generated source candidate for API and field lifecycle changes.
+- [Generated API reference](../skupper/skupper-api-network-observer.md): Generated source candidate for API and field lifecycle changes.
 
 ## Website Links
 
