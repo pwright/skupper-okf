@@ -8,13 +8,14 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/feedback-loop
 tags:
   - skupper
   - docs-landscape
 related:
   - sandbox-trial
   - known-issues
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Feedback and Issue Reporting

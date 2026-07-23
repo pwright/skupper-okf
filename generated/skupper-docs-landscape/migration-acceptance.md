@@ -8,13 +8,14 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/migration-acceptance
 tags:
   - skupper
   - docs-landscape
 related:
   - migrated-connectivity
   - acceptance-tests
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Migration Acceptance

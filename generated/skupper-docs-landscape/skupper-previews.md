@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Technology Previews"
+title: "Skupper Technology Previews"
 id: skupper-previews
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/skupper-previews
 tags:
   - skupper
   - docs-landscape
-related:
-  - discover-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Technology Previews
+# Skupper Technology Previews
 
-Stub page for this Skupper documentation landscape topic.
+Help users assess experimental or early-access Skupper capabilities, understand their limits, and validate them safely before production use.
 
 ## Appears in
 
@@ -45,11 +43,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Preview Installation](./preview-installation.md)
 - [Validation Test Plan](./test-plan.md)
 - [Known Issues](./known-issues.md)
-
-## Dependencies
-
-- [Discover Skupper](./discover-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

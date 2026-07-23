@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Administer"
+title: "Administer Skupper"
 id: administer-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/administer-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - configure-skupper
-  - observe-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Administer
+# Administer Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Operate sites, links, services, credentials, and lifecycle tasks consistently across an application network.
 
 ## Appears in
 
@@ -53,11 +51,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Configuration Backup](./configuration-backup.md)
 - [Administrative Access Controls](./access-controls.md)
 - [Audit Records](./audit-records.md)
-
-## Dependencies
-
-- [Configure](./configure-skupper.md)
-- [Observe](./observe-skupper.md)
 
 ## Notes
 

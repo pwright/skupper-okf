@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Migrate"
+title: "Migrate to or Between Skupper Deployments"
 id: migrate-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/migrate-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - plan-skupper
-  - upgrade-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Migrate
+# Migrate to or Between Skupper Deployments
 
-Stub page for this Skupper documentation landscape topic.
+Move application-network connectivity between environments, deployment models, or major versions while preserving service reachability and minimizing disruption.
 
 ## Appears in
 
@@ -45,11 +43,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Dual Connectivity Plan](./dual-connectivity.md)
 - [Rollback Path](./rollback-path.md)
 - [Acceptance Tests](./acceptance-tests.md)
-
-## Dependencies
-
-- [Plan](./plan-skupper.md)
-- [Upgrade](./upgrade-skupper.md)
 
 ## Notes
 

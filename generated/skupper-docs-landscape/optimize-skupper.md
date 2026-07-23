@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Optimize"
+title: "Optimize Skupper"
 id: optimize-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/optimize-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - observe-skupper
-  - administer-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Optimize
+# Optimize Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Improve latency, throughput, reliability, and resource efficiency by tuning topology, routing, capacity, and runtime settings based on observed behavior.
 
 ## Appears in
 
@@ -52,11 +50,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Load Tests](./load-tests.md)
 - [Service Priorities](./service-priorities.md)
 - [Rate Controls](./rate-controls.md)
-
-## Dependencies
-
-- [Observe](./observe-skupper.md)
-- [Administer](./administer-skupper.md)
 
 ## Notes
 

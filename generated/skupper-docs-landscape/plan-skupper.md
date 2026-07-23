@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Plan"
+title: "Plan a Skupper Deployment"
 id: plan-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/plan-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - discover-skupper
-  - secure-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Plan
+# Plan a Skupper Deployment
 
-Stub page for this Skupper documentation landscape topic.
+Translate application connectivity goals into a site topology, security model, capacity plan, ownership model, and rollout sequence.
 
 ## Appears in
 
@@ -47,11 +45,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Availability Targets](./availability-targets.md)
 - [Operational Ownership](./ownership-model.md)
 - [Rollout Risk Assessment](./risk-assessment.md)
-
-## Dependencies
-
-- [Discover Skupper](./discover-skupper.md)
-- [Secure](./secure-skupper.md)
 
 ## Notes
 

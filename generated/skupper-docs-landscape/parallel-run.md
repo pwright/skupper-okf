@@ -8,13 +8,14 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/parallel-run
 tags:
   - skupper
   - docs-landscape
 related:
   - migration-wave
   - dual-connectivity
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Parallel Run

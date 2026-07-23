@@ -8,13 +8,14 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/migrated-connectivity
 tags:
   - skupper
   - docs-landscape
 related:
   - migration-wave
   - cutover
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Migrated Application Connectivity

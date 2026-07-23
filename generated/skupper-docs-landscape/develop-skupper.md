@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Develop"
+title: "Develop with Skupper"
 id: develop-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/develop-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - skupper-reference
-  - configure-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Develop
+# Develop with Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Support application developers and platform engineers who automate Skupper, embed connectivity into delivery workflows, or build against its command-line and declarative interfaces.
 
 ## Appears in
 
@@ -48,11 +46,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Secrets Injection](./secrets-injection.md)
 - [Version Control](./version-control.md)
 - [Integration Test Harness](./test-harness.md)
-
-## Dependencies
-
-- [Reference](./skupper-reference.md)
-- [Configure](./configure-skupper.md)
 
 ## Notes
 

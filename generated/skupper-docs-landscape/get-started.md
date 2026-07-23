@@ -8,15 +8,20 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/get-started
 tags:
   - skupper
   - docs-landscape
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Get Started with Skupper
 
 Guide a new user from prerequisites to a working multi-site application network, including site creation, linking, service exposure, and validation.
+
+## Appears in
+
+- [Skupper Documentation Landscape](./skupper-docs-series.md) / Orient
 
 ## Topics
 

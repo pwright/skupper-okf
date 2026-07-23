@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Extend"
+title: "Extend a Skupper Application Network"
 id: extend-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/extend-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - configure-skupper
-  - secure-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Extend
+# Extend a Skupper Application Network
 
-Stub page for this Skupper documentation landscape topic.
+Add new sites, connect additional environments, and expose more services while preserving identity, routing, and operational consistency.
 
 ## Appears in
 
@@ -46,11 +44,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Network Policy](./network-policy.md)
 - [Service Definition](./service-definition.md)
 - [Routing Policy](./routing-policy.md)
-
-## Dependencies
-
-- [Configure](./configure-skupper.md)
-- [Secure](./secure-skupper.md)
 
 ## Notes
 

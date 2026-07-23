@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Secure"
+title: "Secure Skupper"
 id: secure-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/secure-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - configure-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Secure
+# Secure Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Protect the application network with authenticated links, certificate lifecycle management, least-privilege access, workload isolation, and auditable policy.
 
 ## Appears in
 
@@ -52,11 +50,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Firewall Rules](./firewall-rules.md)
 - [Certificate Issuance](./issuance.md)
 - [Certificate Rotation](./rotation.md)
-
-## Dependencies
-
-- [Configure](./configure-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

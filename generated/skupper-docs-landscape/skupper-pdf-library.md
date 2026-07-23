@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Downloadable Guides"
+title: "Skupper Downloadable Guides"
 id: skupper-pdf-library
 status: generated
 owner: agent
@@ -8,17 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/skupper-pdf-library
 tags:
   - skupper
   - docs-landscape
-related:
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Downloadable Guides
+# Skupper Downloadable Guides
 
-Stub page for this Skupper documentation landscape topic.
+Package the most useful Skupper learning, deployment, operations, security, and reference material into stable downloadable guides for offline use and controlled distribution.
 
 ## Appears in
 
@@ -45,10 +44,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Reference Source Content](./reference-source.md)
 - [Release Version Metadata](./release-version.md)
 - [Link and Cross-reference Check](./link-check.md)
-
-## Dependencies
-
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

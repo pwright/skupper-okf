@@ -8,13 +8,14 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/upgrade-sequence
 tags:
   - skupper
   - docs-landscape
 related:
   - compatibility-review
   - maintenance-plan
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Site Upgrade Sequence

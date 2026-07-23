@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Platforms and Managed Environments"
+title: "Skupper Platform and Managed-Environment Guides"
 id: platform-guides
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/platform-guides
 tags:
   - skupper
   - docs-landscape
-related:
-  - install-skupper
-  - integrate-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Platforms and Managed Environments
+# Skupper Platform and Managed-Environment Guides
 
-Stub page for this Skupper documentation landscape topic.
+Adapt Skupper deployment and operations to Kubernetes distributions, managed cloud platforms, virtual machines, and mixed environments with platform-specific prerequisites and controls.
 
 ## Appears in
 
@@ -48,11 +46,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Cloud Network Rules](./cloud-network-rules.md)
 - [System Service Configuration](./system-service.md)
 - [Firewall and Egress Controls](./network-controls.md)
-
-## Dependencies
-
-- [Install](./install-skupper.md)
-- [Integrate](./integrate-skupper.md)
 
 ## Notes
 

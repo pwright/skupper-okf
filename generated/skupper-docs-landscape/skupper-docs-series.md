@@ -8,10 +8,11 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/skupper-docs-series
 tags:
   - skupper
   - docs-landscape
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Skupper Documentation Landscape
@@ -25,7 +26,7 @@ An overview of the Skupper documentation journey, from understanding application
 - [What's New](./skupper-whats-new.md)
 - [Discover Skupper](./discover-skupper.md)
 - [Technology Previews](./skupper-previews.md)
-- [Getting Started](./getting-started.md)
+- [Get Started](./get-started.md)
 
 ### Adopt
 

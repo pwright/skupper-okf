@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/discover-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - plan-skupper
-  - getting-started
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Discover Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Explain how Skupper creates secure application networks across Kubernetes clusters, virtual machines, and cloud boundaries, and how that capability improves application connectivity without exposing services publicly.
 
 ## Appears in
 
@@ -44,11 +42,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Site Links](./links.md)
 - [Service Routing](./routing.md)
 - [Certificates and Identity](./identity-model.md)
-
-## Dependencies
-
-- [Plan](./plan-skupper.md)
-- [Getting Started](./getting-started.md)
 
 ## Notes
 

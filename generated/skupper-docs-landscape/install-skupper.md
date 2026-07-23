@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Install"
+title: "Install Skupper"
 id: install-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/install-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - plan-skupper
-  - platform-guides
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Install
+# Install Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Cover installation paths for supported environments, from prerequisites and tooling through site initialization and post-install validation.
 
 ## Appears in
 
@@ -48,11 +46,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Host Package](./host-package.md)
 - [Site Initialization](./site-initialization.md)
 - [Post-install Health Checks](./health-checks.md)
-
-## Dependencies
-
-- [Plan](./plan-skupper.md)
-- [Platforms and Managed Environments](./platform-guides.md)
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Troubleshoot"
+title: "Troubleshoot Skupper"
 id: troubleshoot-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/troubleshoot-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - observe-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Troubleshoot
+# Troubleshoot Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Diagnose connectivity, routing, identity, configuration, and performance problems using a layered workflow from symptoms to evidence, root cause, and recovery.
 
 ## Appears in
 
@@ -46,11 +44,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Logs, Events, Metrics, and Configuration](./evidence-bundle.md)
 - [Recovery Procedure](./recovery-procedure.md)
 - [Monitoring Improvements](./monitoring-improvements.md)
-
-## Dependencies
-
-- [Observe](./observe-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

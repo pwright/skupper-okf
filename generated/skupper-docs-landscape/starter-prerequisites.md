@@ -8,10 +8,11 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/starter-prerequisites
 tags:
   - skupper
   - docs-landscape
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
 # Cluster or Host Prerequisites

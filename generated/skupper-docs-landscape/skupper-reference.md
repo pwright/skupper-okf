@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Reference"
+title: "Skupper Reference"
 id: skupper-reference
 status: generated
 owner: agent
@@ -8,15 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/skupper-reference
 tags:
   - skupper
   - docs-landscape
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Reference
+# Skupper Reference
 
-Stub page for this Skupper documentation landscape topic.
+Provide precise command, resource, field, status, compatibility, and terminology details for users who need authoritative implementation information.
 
 ## Appears in
 

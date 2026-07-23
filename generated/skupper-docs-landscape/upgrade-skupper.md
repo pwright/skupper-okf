@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Upgrade"
+title: "Upgrade Skupper"
 id: upgrade-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/upgrade-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - administer-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Upgrade
+# Upgrade Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Plan and execute Skupper upgrades with compatibility checks, staged rollout, state protection, validation, and rollback readiness.
 
 ## Appears in
 
@@ -46,11 +44,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Post-upgrade Test Suite](./post-upgrade-tests.md)
 - [Version Compatibility](./version-compatibility.md)
 - [Release Differences](./release-differences.md)
-
-## Dependencies
-
-- [Administer](./administer-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

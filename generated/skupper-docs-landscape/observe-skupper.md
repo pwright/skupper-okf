@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Observe"
+title: "Observe Skupper"
 id: observe-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/observe-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - administer-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Observe
+# Observe Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Make application-network health, topology, traffic, and faults visible through status views, metrics, logs, events, and traces.
 
 ## Appears in
 
@@ -50,11 +48,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Trace Context](./trace-context.md)
 - [Network Console](./network-console.md)
 - [Dashboards and Alerts](./dashboards.md)
-
-## Dependencies
-
-- [Administer](./administer-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Integrate"
+title: "Integrate Skupper"
 id: integrate-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/integrate-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - develop-skupper
-  - secure-skupper
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Integrate
+# Integrate Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Connect Skupper with Kubernetes platforms, virtual machines, service frameworks, CI/CD systems, observability stacks, security tooling, and enterprise network controls.
 
 ## Appears in
 
@@ -55,11 +53,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Policy Interface](./policy-interface.md)
 - [Automation Interface](./automation-interface.md)
 - [Secrets Interface](./secrets-interface.md)
-
-## Dependencies
-
-- [Develop](./develop-skupper.md)
-- [Secure](./secure-skupper.md)
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "What's New"
+title: "What's New in Skupper"
 id: skupper-whats-new
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/skupper-whats-new
 tags:
   - skupper
   - docs-landscape
-related:
-  - discover-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# What's New
+# What's New in Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Track user-visible improvements, compatibility changes, preview capabilities, and operational impacts so teams can decide what to adopt and how to prepare.
 
 ## Appears in
 
@@ -45,11 +43,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Preview Status](./preview-status.md)
 - [Known Limitations](./known-limitations.md)
 - [Compatibility Matrix](./compatibility-matrix.md)
-
-## Dependencies
-
-- [Discover Skupper](./discover-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ---
 type: DocumentationLandscapePage
-title: "Configure"
+title: "Configure Skupper"
 id: configure-skupper
 status: generated
 owner: agent
@@ -8,18 +8,16 @@ generated_by: codex
 reviewed: false
 confidence: stub
 source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/configure-skupper
 tags:
   - skupper
   - docs-landscape
-related:
-  - install-skupper
-  - skupper-reference
-timestamp: 2026-07-23T19:20:49Z
+timestamp: 2026-07-23T19:27:56Z
 ---
 
-# Configure
+# Configure Skupper
 
-Stub page for this Skupper documentation landscape topic.
+Define sites, links, listeners, connectors, services, policies, and runtime behavior so the application network matches intended traffic flows.
 
 ## Appears in
 
@@ -49,11 +47,6 @@ Stub page for this Skupper documentation landscape topic.
 - [Routing Mode](./routing-mode.md)
 - [Resource Limits](./resource-limits.md)
 - [Logging Settings](./logging-settings.md)
-
-## Dependencies
-
-- [Install](./install-skupper.md)
-- [Reference](./skupper-reference.md)
 
 ## Notes
 
