@@ -6,21 +6,22 @@ status: generated
 owner: agent
 generated_by: codex
 reviewed: false
-confidence: stub
+confidence: draft
 source: blockscape-json
 external: https://pwright.github.io/skupper-okf/generated/skupper-docs-landscape/behavior-changes
 tags:
   - skupper
   - docs-landscape
+  - whats-new
 related:
   - release-notes
   - upgrade-notes
-timestamp: 2026-07-23T19:27:56Z
+timestamp: 2026-07-23T19:40:56Z
 ---
 
 # Behavior Changes
 
-Stub page for this Skupper documentation landscape topic.
+Behavior changes are release-to-release differences that can alter existing workflows even when no new feature is being adopted. This page should help readers identify configuration, command, API, routing, security, or operational behavior that may require a change in expectations or procedure.
 
 ## Appears in
 
@@ -31,6 +32,19 @@ Stub page for this Skupper documentation landscape topic.
 - [Release Notes](./release-notes.md)
 - [Upgrade Notes](./upgrade-notes.md)
 
-## Notes
+## Sources
 
-- TODO: replace this stub with sourced documentation content.
+- [Release notes](./release-notes.md): Primary local topic for version-specific change records.
+- [Upgrade notes](./upgrade-notes.md): Companion topic for behavior changes that affect upgrade planning.
+- [Install and upgrade source](../../human/skupper-docs/input/install/index.md): Local source for supported upgrade paths and CLI/controller update procedures.
+- [Troubleshooting source](../../human/skupper-docs/input/troubleshooting/index.md): Useful for validating behavior changes against observable symptoms and recovery guidance.
+
+## Website Links
+
+- [Skupper releases](https://skupper.io/releases/index.html)
+- [Skupper docs](https://skupper.io/docs/)
+
+## Draft Notes
+
+- Separate intentional behavior changes from defects and known limitations.
+- Call out whether existing manifests, CLI commands, or automation pipelines need edits.
