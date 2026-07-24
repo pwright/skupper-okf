@@ -193,11 +193,11 @@ For installation and configuration details, see [Using the Skupper network conso
 
 ### Traffic Direction
 
-Traffic can be directed using link cost or multi-key listeners.
+Traffic can be directed using listener-side routing policy or link cost.
 
-#### Multi-key Listeners (Recommended)
+#### Listener-side Routing Policy (Recommended)
 
-A multi-key listener provides per-service control over load balancing and failover by binding a single endpoint to multiple routing keys (connectors). This is the recommended approach for most use cases because it offers:
+Listener-side routing policy provides per-service control over load balancing and failover by binding a single listener endpoint to multiple routing keys. In the current resource model, configure this policy with `MultiKeyListener`. This is the recommended approach for most use cases because it offers:
 
 - **Per-service configuration** — Each service can have its own distribution strategy, independent of network topology
 - **Predictable behavior** — Traffic distribution is explicitly controlled by strategy, not influenced by connection timing or link metrics
@@ -205,7 +205,7 @@ A multi-key listener provides per-service control over load balancing and failov
   - **weighted** — Proportional distribution across routing keys (e.g., 25/75 split)
   - **priority** — Failover with preference order (uses first available, fails over to next)
 
-For configuration details, see the multi-key listener section in [Service exposure](../human/skupper-docs/input/kube-yaml/service-exposure.md).
+For configuration details, see the listener-side routing policy section in [Service exposure](../human/skupper-docs/input/kube-yaml/service-exposure.md).
 
 #### Link Cost
 
@@ -215,7 +215,7 @@ Link cost is a configurable integer value that influences how Skupper routes tra
 
 - The default link cost is `1`. Local workloads have an implicit cost of `0`.
 - If a connection traverses more than one link, the path cost is the sum of all link costs along the path.
-- Link cost applies to **all services** on a link and cannot be set differently for individual services. For per-service control, use a multi-key listener instead.
+- Link cost applies to **all services** on a link and cannot be set differently for individual services. For per-service control, use listener-side routing policy instead.
 - When multiple paths exist, traffic flows on the lowest-cost path until the number of open connections exceeds the cost of an alternative path. After that threshold is reached, new connections are spread across both paths.
 
 For details on configuring link cost, see [Load balancing and failover](../human/skupper-docs/input/overview/load-balancing.md).

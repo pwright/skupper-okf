@@ -9,9 +9,10 @@ Specifically, Skupper balances **new TCP connections** across workloads deployed
 If a workload at one site becomes unavailable, traffic is automatically rerouted to available sites. 
 For example, if you deploy the same backend code on two sites and expose the backend on the application network, concurrent requests from a third site to the backend service are processed by both sites.
 
-## Preferred approach: Multi-key listeners
+## Preferred approach: Listener-side routing policy
 
-A [multi-key listener][mkl] provides per-service control over load balancing and failover by binding a single endpoint to multiple routing keys (connectors).
+A listener-side routing policy provides per-service control over load balancing and failover by binding a single listener endpoint to multiple routing keys.
+In the current resource model, configure this policy with a [multi-key listener][mkl].
 This is the **recommended** approach for most use cases because it offers:
 
 * **Per-service configuration** — Each service can have its own distribution strategy, independent of network topology.
@@ -20,7 +21,7 @@ This is the **recommended** approach for most use cases because it offers:
   * **weighted** — Proportional distribution across routing keys. For example, assign weights of `25` and `75` to send a quarter of TCP connections to the first backend and three-quarters to the second.
   * **priority** — Failover with preference order. Traffic uses the first available routing key; if that connector becomes unavailable, traffic automatically shifts to the next routing key in the list.
 
-For configuration details and examples, see [Creating a multi-key listener using YAML][mkl].
+For configuration details and examples, see [Creating a listener-side routing policy using YAML][mkl].
 
 ## Alternative: Link cost
 
@@ -29,7 +30,7 @@ The routing algorithm favors paths with the lowest total cost from client to tar
 
 **📌 NOTE**
 Link cost applies to **all services** on a link and cannot be set differently for individual services.
-For per-service control, use a [multi-key listener][mkl] instead.
+For per-service control, use a listener-side routing policy instead.
 
 **Understanding link cost behavior**
 

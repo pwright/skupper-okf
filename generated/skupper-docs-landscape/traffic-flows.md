@@ -36,7 +36,7 @@ Traffic Flow Requirements records which application clients need to reach which 
 - [Listener concept](../concepts/listener.md): Generated local concept source for client-facing endpoints and routing-key matching.
 - [Routing key concept](../concepts/routing-key.md): Generated local concept source for how listeners and connectors match service traffic.
 - [Service exposure with the CLI](../../human/skupper-docs/input/kube-cli/service-exposure.md): Local source for connector/listener examples and status checks.
-- [Network deployment concerns](../concepts/network-deployment-concerns.md): Generated local source for traffic direction, link cost, and multi-key listener planning.
+- [Network deployment concerns](../concepts/network-deployment-concerns.md): Generated local source for traffic direction, link cost, and listener-side routing policy planning.
 
 ## Website Links
 

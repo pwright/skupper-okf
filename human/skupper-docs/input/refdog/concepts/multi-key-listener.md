@@ -14,14 +14,15 @@ refdog_links:
 render_macros: false
 ---
 
-# Multi-key-listener concept
+# Listener-side routing policy concept
 
-A multi-key listener binds a single local connection endpoint to
+Listener-side routing policy binds a single local listener endpoint to
 multiple [connectors](connector.html) in remote [sites](site.html)
-using a strategy that matches multiple [routing keys](routing-key.html).
+using a strategy that selects among multiple [routing keys](routing-key.html).
+In the current resource model, configure this policy with a `MultiKeyListener`.
 
 Unlike a standard [listener](listener.html) which uses a single
-routing key to match with connectors, a multi-key listener can route
+routing key to match with connectors, listener-side routing policy can route
 to multiple connectors using either priority-based failover or
 weighted load balancing.
 
@@ -30,18 +31,18 @@ weighted load balancing.
   <figcaption>Weighted strategy distributes traffic proportionally across multiple routing keys</figcaption>
 </figure>
 
-A multi-key listener exposes a single host and port endpoint that
+A listener-side routing policy exposes a single host and port endpoint that
 distributes traffic to different connectors based on its configured
 strategy.  This allows you to aggregate multiple backend services
 behind a single service endpoint.
 
-**Key idea:** The multi-key listener is not limited to a single routing key.
+**Key idea:** The listener is not limited to a single routing key.
 It chooses from a set of routing keys. Connectors that advertise
 those routing keys forward the streams to their local workloads.
 
 ## Strategies
 
-Multi-key listeners support two routing strategies:
+Listener-side routing policy supports two routing strategies:
 
 ### Priority strategy
 
@@ -85,33 +86,32 @@ across multiple data centers, adjusting weights based on load or
 performance characteristics.
 
 
-**Note:** If multiple multi-key listeners reference the same set of
+**Note:** If multiple listeners use policy to reference the same set of
 routing keys, each listener calculates weights and assigns
 connections autonomously. There is no coordination or shared state
 between listeners when making load-balancing decisions.
 
 
-## Multi-key listeners and link cost
+## Listener-side routing policy and link cost
 
-Multi-key listeners and link cost are independent mechanisms that
+Listener-side routing policy and link cost are independent mechanisms that
 work together to control traffic routing.
 
-**Multi-key listeners** select between routing keys using the
+**Listener-side routing policy** selects between routing keys using the
 configured strategy (priority or weighted). This selection happens
 at the listener and is independent of link costs.
 
 **Link cost** determines which connector to use when multiple
 connectors share the same routing key. This applies to both standard
-listeners and multi-key listeners.
+listeners and listeners with listener-side routing policy.
 
-For example, with a weighted multi-key listener:
+For example, with a weighted listener-side routing policy:
 1. The listener's strategy selects a routing key (e.g., `east-backend`)
 2. If multiple connectors use that routing key, link cost determines which connector handles the connection
 3. The next connection may select a different routing key based on the weights
 
-Multi-key listeners with the **priority strategy** provide explicit
+Listener-side routing policy with the **priority strategy** provides explicit
 failover control at the routing key level, independent of link costs.
 The **weighted strategy** provides predictable load balancing across
 routing keys, while link cost still affects connector selection
 within each routing key.
-

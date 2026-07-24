@@ -48,6 +48,6 @@ Parallel Run is the migration phase where source and target connectivity are bot
 
 ## Draft Notes
 
-- Prefer explicit routing keys or multi-key listener configuration for test traffic rather than relying on implicit behavior.
+- Prefer explicit routing keys or listener-side routing policy for test traffic rather than relying on implicit behavior.
 - Record whether the parallel path carries production, shadow, or test-only traffic.
 - Avoid using link cost for per-service migration control because it affects all services on a link.

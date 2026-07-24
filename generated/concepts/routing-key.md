@@ -137,9 +137,9 @@ This allows clients to route to specific backend pods:
 - Base routing key: `backend` → round-robin to all pods
 - Qualified key: `backend.pod-abc123` → direct to specific pod
 
-## MultiKeyListener — Multiple Routing Keys on One Endpoint
+## Listener-side Routing Policy — Multiple Routing Keys on One Endpoint
 
-The `MultiKeyListener` CRD extends the concept by letting a single local endpoint distribute traffic across **multiple** routing keys using one of two strategies:
+Listener-side routing policy extends the routing-key model by letting a single local endpoint distribute traffic across **multiple** routing keys using one of two strategies. In the current Kubernetes resource model, configure this policy with the `MultiKeyListener` CRD:
 
 ### Priority Strategy
 
@@ -212,7 +212,7 @@ From the controller implementation:
 }
 ```
 
-Each routing key in a MultiKeyListener becomes a router entity (type `listenerAddress`) linked to the parent listener.
+Each routing key in a listener-side routing policy becomes a router entity (type `listenerAddress`) linked to the parent listener.
 
 ## Network Observer API
 

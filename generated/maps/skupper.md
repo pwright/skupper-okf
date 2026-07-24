@@ -310,7 +310,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
           },
           {
             "id": "multi-key-listener",
-            "name": "Multi-key listener",
+            "name": "Listener-side routing policy",
             "deps": [
               "listener",
               "routing-key-match"

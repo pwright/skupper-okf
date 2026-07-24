@@ -34,7 +34,7 @@ Routing tuning adjusts how traffic moves through a Skupper network by reviewing 
 
 ## Sources
 
-- [generated/concepts/network-deployment-concerns.md](../concepts/network-deployment-concerns.md) - Generated source for link cost, multi-key listeners, and topology notes.
+- [generated/concepts/network-deployment-concerns.md](../concepts/network-deployment-concerns.md) - Generated source for link cost, listener-side routing policy, and topology notes.
 - [human/skupper-docs/input/overview/load-balancing.md](../../human/skupper-docs/input/overview/load-balancing.md) - Local source for load balancing and failover controls.
 - [human/skupper-docs/input/refdog/topics/load-balancing.md](../../human/skupper-docs/input/refdog/topics/load-balancing.md) - Refdog source candidate for routing behavior.
 - [human/skupper-docs/input/refdog/resources/multi-key-listener.md](../../human/skupper-docs/input/refdog/resources/multi-key-listener.md) - MultiKeyListener resource reference.
@@ -49,6 +49,6 @@ Routing tuning adjusts how traffic moves through a Skupper network by reviewing 
 
 ## Draft Notes
 
-- Distinguish network-wide link-cost effects from per-service multi-key listener behavior.
+- Distinguish network-wide link-cost effects from per-service listener-side routing policy behavior.
 - Capture current topology and traffic paths before changing cost or distribution strategy.
 - Include examples for failover and weighted distribution only where the source examples support them.

@@ -21,7 +21,7 @@ timestamp: 2026-07-23T21:00:00Z
 
 # Traffic Shaping
 
-Traffic shaping covers source-backed ways to influence where application traffic goes, especially link cost and multi-key listener distribution.
+Traffic shaping covers source-backed ways to influence where application traffic goes, especially link cost and listener-side routing policy.
 
 ## Appears in
 
@@ -35,15 +35,15 @@ Traffic shaping covers source-backed ways to influence where application traffic
 ## Sources
 
 - [human/skupper-docs/input/overview/load-balancing.md](../../human/skupper-docs/input/overview/load-balancing.md) - Local source for load balancing and failover behavior.
-- [generated/concepts/network-deployment-concerns.md](../concepts/network-deployment-concerns.md) - Generated source for traffic direction, link cost, and multi-key listener notes.
+- [generated/concepts/network-deployment-concerns.md](../concepts/network-deployment-concerns.md) - Generated source for traffic direction, link cost, and listener-side routing policy notes.
 - [human/skupper-docs/input/refdog/resources/multi-key-listener.md](../../human/skupper-docs/input/refdog/resources/multi-key-listener.md) - MultiKeyListener resource reference.
-- [human/skupper-docs/input/refdog/concepts/multi-key-listener.md](../../human/skupper-docs/input/refdog/concepts/multi-key-listener.md) - Concept source for multi-key listener behavior.
+- [human/skupper-docs/input/refdog/concepts/multi-key-listener.md](../../human/skupper-docs/input/refdog/concepts/multi-key-listener.md) - Concept source for listener-side routing policy behavior.
 - [generated/concepts/routing-key.md](../concepts/routing-key.md) - Generated source for routing key relationships.
 
 ## Website Links
 
 - [Load balancing and failover](https://skupper.io/docs/overview/load-balancing.html)
-- [Multi-key listener concept](https://skupperproject.github.io/refdog/concepts/multi-key-listener.html)
+- [Listener-side routing policy concept](https://skupperproject.github.io/refdog/concepts/multi-key-listener.html)
 - [MultiKeyListener resource reference](https://skupperproject.github.io/refdog/resources/multi-key-listener.html)
 - [Routing key concept](https://skupperproject.github.io/refdog/concepts/routing-key.html)
 

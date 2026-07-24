@@ -120,19 +120,20 @@ For configuration details, see [Listener resource][listener-resource].
    There must be a `MATCHING-CONNECTOR` for the service to operate.
 
 <a id="kube-creating-multikeylistener-yaml"></a>
-## Creating a multi-key listener using YAML
+## Creating a listener-side routing policy using YAML
 <!--PROCEDURE-->
 
-A multi-key listener binds a single local host and port to multiple routing keys in remote sites.
-Use a multi-key listener when you want one service endpoint to aggregate traffic from multiple connectors.
+A listener-side routing policy binds a single local listener host and port to multiple routing keys in remote sites.
+Use this policy when you want one service endpoint to aggregate traffic from multiple connectors.
+In the current resource model, configure listener-side routing policy with a `MultiKeyListener` resource.
 
-With multi-key listeners, you must choose a strategy which determines how the traffic is distributed:
+With listener-side routing policy, you must choose a strategy which determines how the traffic is distributed:
 
 * priority - Uses the first routing key in list that is available for traffic. If the connectors for that routing key become unavailable, the listener matches with the next routing key in list.
 * weighted - Uses the routing keys in proportion to the assigned weights. For example, if `backend1` is assigned 25 and `backend2` is assigned 75, then only a quarter of the TCP connections are directed to `backend1`.
 
 **📌 NOTE**
-Multi-key listeners select between routing keys using the configured strategy. Each routing key may have multiple connectors, and link cost determines which connector is used within each routing key. The two mechanisms are independent.
+Listener-side routing policy selects between routing keys using the configured strategy. Each routing key may have multiple connectors, and link cost determines which connector is used within each routing key. The two mechanisms are independent.
 
 For configuration details, see [MultiKeyListener resource][multikeylistener-resource].
 
@@ -147,7 +148,7 @@ For configuration details, see [MultiKeyListener resource][multikeylistener-reso
 
 2. Determine which strategy is best for your use case. For example, failover is best achieved using the `priority` strategy.
 
-3. Create a multi-key listener resource YAML file.
+3. Create a `MultiKeyListener` resource YAML file.
    For example:
    ```yaml
    apiVersion: skupper.io/v2alpha1
@@ -180,19 +181,19 @@ For configuration details, see [MultiKeyListener resource][multikeylistener-reso
            - east-backend-http
            - west-backend-http
    ```
-   To create the multi-key listener resource:
+   To create the `MultiKeyListener` resource:
    ```bash
    kubectl apply -f <filename>
    ```
    where `<filename>` is the name of a YAML file that is saved on your local filesystem.
 
-4. Check the multi-key listener status:
+4. Check the `MultiKeyListener` status:
    ```bash
    kubectl get multikeylistener
    ```
 
    **📌 NOTE**
-   If you need to change strategy after you created a multi-key listener, you must delete and recreate the resource. This does not affect changing routing keys or weights.
+   If you need to change strategy after you created a `MultiKeyListener`, you must delete and recreate the resource. This does not affect changing routing keys or weights.
 
 <a id="kube-creating-attachedconnector-yaml"></a>
 ## Creating a connector for a different namespace using YAML

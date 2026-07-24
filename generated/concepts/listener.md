@@ -18,8 +18,8 @@ source_paths:
   - human/skupper-docs/input/system-cli/service-exposure.md
   - human/skupper-docs/refdog/config/commands/listener.yaml
 human_context:
-  - MultiKeyListener should be treated as a listener type in this wiki model, not as a separate concept family.
-  - Multi-key listener behavior may become the default listener behavior in the future.
+  - MultiKeyListener should be treated as the current resource shape for listener-side routing policy, not as a separate concept family.
+  - Listener-side routing policy may become default listener behavior in the future.
 tags:
   - skupper
   - service-exposure
@@ -56,7 +56,7 @@ local client -> listener host:port -> Skupper router -> matching routing key -> 
 - A service is usable when at least one listener and one connector share the same routing key.
 - On Kubernetes, a listener is implemented as a Kubernetes Service.
 - On Docker, Podman, and Linux, a listener is a listening socket bound to a local network interface.
-- A multi-key listener is a listener variant that binds one local endpoint to multiple routing keys.
+- Listener-side routing policy lets one listener endpoint select among multiple routing keys.
 
 ## Common fields
 
@@ -72,7 +72,7 @@ If a service needs multiple ports, create multiple listeners using the same host
 
 See also:
 - [Creating a listener using YAML (Kubernetes)](../input/kube-yaml/service-exposure.md#kube-creating-listener-yaml)
-- [Creating a multi-key listener using YAML](../input/kube-yaml/service-exposure.md#kube-creating-multikeylistener-yaml)
+- [Creating a listener-side routing policy using YAML](../input/kube-yaml/service-exposure.md#kube-creating-multikeylistener-yaml)
 - [Creating a listener using YAML (local systems)](../input/system-yaml/service-exposure.md)
 - [Creating a listener using CLI (local systems)](../input/system-cli/service-exposure.md)
 - [Skupper Ansible resource module](../skupper-ansible/skupper-ansible-module-resource.md)
@@ -164,11 +164,11 @@ backend   Ready   backend      ...      8080  true                OK
 
 The service is not operational until the listener has a matching connector. In resource status, the relevant signals are `hasMatchingConnector` and the conditions `Configured`, `Matched`, and `Ready`.
 
-## Listener variants
+## Listener-side routing policy
 
-A standard listener binds one local endpoint to one routing key. A multi-key listener is still a listener in the wiki model: it binds one local endpoint to multiple routing keys and uses a strategy to decide how traffic is distributed.
+A standard listener binds one local endpoint to one routing key. Listener-side routing policy extends that model: one local endpoint can select among multiple routing keys and use a strategy to decide how traffic is distributed.
 
-Current Skupper source material describes multi-key listeners as a separate resource, `MultiKeyListener`. For this wiki, treat that as an implementation detail or listener subtype rather than a separate concept family. This distinction matters because multi-key behavior may become the default listener behavior in the future.
+Current Skupper source material configures listener-side routing policy with the `MultiKeyListener` resource. For this wiki, treat that resource name as the current API shape rather than a separate concept family. This distinction matters because policy-based listener behavior may become the default listener behavior in the future.
 
 ## Observability
 
@@ -185,5 +185,5 @@ For detailed API schema information, see the [Network Observer API Reference](..
 
 - A listener does not expose a workload by itself; a connector with the same [routing key](./routing-key.md) is required.
 - A [routing key](./routing-key.md) can match multiple listeners and multiple connectors.
-- Multi-key listeners aggregate several routing keys behind one local endpoint.
+- Listener-side routing policy aggregates several routing keys behind one local endpoint. In current YAML, this is configured with `MultiKeyListener`.
 - On local-system platforms, configuration changes may require `skupper system reload`.

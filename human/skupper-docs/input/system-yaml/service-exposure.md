@@ -119,18 +119,19 @@ For configuration details, see [Listener resource][listener-resource].
    There must be a `MATCHING-CONNECTOR` for the service to operate.
 
 <a id="system-creating-multikeylistener-yaml"></a>
-## Creating a multi-key listener using YAML
+## Creating a listener-side routing policy using YAML
 <!--PROCEDURE-->
 
-A multi-key listener binds a single local host and port to multiple routing keys in remote sites.
-Use a multi-key listener when you want one service endpoint to aggregate traffic from multiple connectors.
+A listener-side routing policy binds a single local listener host and port to multiple routing keys in remote sites.
+Use this policy when you want one service endpoint to aggregate traffic from multiple connectors.
+In the current resource model, configure listener-side routing policy with a `MultiKeyListener` resource.
 
-With multi-key listeners, you must choose a strategy which determines how the traffic is distributed:
+With listener-side routing policy, you must choose a strategy which determines how the traffic is distributed:
 
 * priority - Uses the first routing key in list that is available for traffic. If the connector becomes unavailable, the listener matches with the next available routing key in list.
 * weighted - Uses the routing keys in proportion to the assigned weights. For example, if `backend1` is assigned 25 and `backend2` is assigned 75, then only a quarter of the TCP connections are directed to `backend1`.
 
-Multi-key listeners provide predictable traffic distribution from the client side and typically are not influenced by link costs.
+Listener-side routing policy provides predictable traffic distribution from the client side and typically is not influenced by link costs.
 
 For configuration details, see [Listener resource][listener-resource].
 
@@ -146,7 +147,7 @@ For configuration details, see [Listener resource][listener-resource].
 2. Determine which strategy is best for your use case. For example, failover is best achieved using the `priority` strategy.
 
 
-3. Create a multi-key listener resource YAML file.
+3. Create a `MultiKeyListener` resource YAML file.
    For example:
    ```yaml
    apiVersion: skupper.io/v2alpha1
@@ -180,7 +181,7 @@ For configuration details, see [Listener resource][listener-resource].
            - west-backend-http
    ```
 
-   To create the multi-key listener resource:
+   To create the `MultiKeyListener` resource:
 
    ```bash
    skupper system apply -f <filename>
@@ -190,7 +191,7 @@ For configuration details, see [Listener resource][listener-resource].
 
 
    **📌 NOTE**
-   If you need to change strategy after you created a multi-key listener, you must delete and recreate the resource. This does not affect changing routing keys or weights.
+   If you need to change strategy after you created a `MultiKeyListener`, you must delete and recreate the resource. This does not affect changing routing keys or weights.
 
 [connector]: https://skupperproject.github.io/refdog/concepts/connector.html
 [listener]: https://skupperproject.github.io/refdog/concepts/listener.html

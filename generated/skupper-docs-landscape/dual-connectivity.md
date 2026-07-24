@@ -34,7 +34,7 @@ Dual Connectivity Plan describes how source and target connectivity coexist duri
 
 ## Sources
 
-- [Skupper load balancing and failover](../../human/skupper-docs/input/overview/load-balancing.md): Local source for multi-key listener strategies and link cost caveats.
+- [Skupper load balancing and failover](../../human/skupper-docs/input/overview/load-balancing.md): Local source for listener-side routing policy strategies and link cost caveats.
 - [Routing key concept](../concepts/routing-key.md): Generated local source for routing-key matching and many-to-many service relationships.
 - [Network Observer API concept](../concepts/network-observer-api.md): Generated local source for observing active connections and traffic flows.
 - [Skupper Ansible mixed Kubernetes and system workflow](../skupper-ansible/skupper-ansible-workflow-mixed-sites.md): Generated local source for mixed deployment link-resource patterns.

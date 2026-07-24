@@ -20,7 +20,7 @@ timestamp: 2026-07-23T20:01:23Z
 
 # Routing Policy
 
-Routing Policy defines how Skupper should match and distribute service traffic after a service is onboarded. Local sources support routing-key matching, many-to-many listener/connector relationships, multi-key listeners, and link cost as an application-network-wide influence.
+Routing Policy defines how Skupper should match and distribute service traffic after a service is onboarded. Local sources support routing-key matching, many-to-many listener/connector relationships, listener-side routing policy configured with `MultiKeyListener`, and link cost as an application-network-wide influence.
 
 ## Appears in
 
@@ -32,10 +32,10 @@ Routing Policy defines how Skupper should match and distribute service traffic a
 
 ## Sources
 
-- [Routing key concept](../concepts/routing-key.md): Primary generated local source for routing keys, listener/connector matching, and multi-key listener behavior.
-- [Skupper load balancing and failover](../../human/skupper-docs/input/overview/load-balancing.md): Local source for multi-key listener strategies and link cost behavior.
+- [Routing key concept](../concepts/routing-key.md): Primary generated local source for routing keys, listener/connector matching, and listener-side routing policy behavior.
+- [Skupper load balancing and failover](../../human/skupper-docs/input/overview/load-balancing.md): Local source for listener-side routing policy strategies and link cost behavior.
 - [Network deployment concerns](../concepts/network-deployment-concerns.md): Generated local source for traffic direction decisions.
-- [Multi-key listener resource](../../human/skupper-docs/input/refdog/resources/multi-key-listener.md): Local resource reference candidate for multi-key listener definitions.
+- [MultiKeyListener resource](../../human/skupper-docs/input/refdog/resources/multi-key-listener.md): Local resource reference for listener-side routing policy definitions.
 - [Link concept](../../human/skupper-docs/input/refdog/concepts/link.md): Local concept source for links and network-wide connectivity.
 
 ## Website Links
@@ -46,6 +46,6 @@ Routing Policy defines how Skupper should match and distribute service traffic a
 
 ## Draft Notes
 
-- Prefer routing keys and multi-key listeners for per-service policy; link cost affects all services on a link.
+- Prefer routing keys and listener-side routing policy for per-service policy; link cost affects all services on a link.
 - Record whether the policy is simple matching, weighted distribution, or failover order.
 - Validate policy with listener/connector status and, where available, observer service binding data.

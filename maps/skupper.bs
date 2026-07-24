@@ -295,7 +295,7 @@
           },
           {
             "id": "multi-key-listener",
-            "name": "Multi-key listener",
+            "name": "Listener-side routing policy",
             "deps": [
               "listener",
               "routing-key-match"
