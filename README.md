@@ -13,6 +13,72 @@ See [Requirements](#requirements) and [Quick start](#quick-start) to set up the 
 ## Maps
 
 - [Skupper Blockscape map](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs) from `maps/skupper.bs`
+- [Skupper Docs Landscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper-docs-landscape.bs) from `maps/skupper-docs-landscape.bs` - documentation coverage map with quality ratings
+
+### Documentation Quality Ratings
+
+The `rate_docs.py` script analyzes documentation files and adds quality ratings (3-10) to items in `maps/skupper-docs-landscape.bs`.
+
+**How ratings are calculated:**
+
+The script analyzes each documentation file's content indicators and calculates a score:
+
+1. **Human links** (links to `human/` directory - indicates actual written content):
+   - 5+ links: +3 points
+   - 3-4 links: +2 points
+   - 1-2 links: +1 point
+
+2. **External links** (website references):
+   - 4+ links: +2 points
+   - 2-3 links: +1 point
+
+3. **Sources** (reference material):
+   - 5+ sources: +1 point
+   - 3-4 sources: +0.5 points
+
+4. **Specific draft notes** (actionable guidance, not generic TODOs):
+   - Contains specific indicators (commands, procedures, examples): +1 point
+
+5. **Review status**:
+   - `confidence: reviewed` in frontmatter: +2 points
+
+6. **Score to rating conversion**:
+   - 8+ points → 9/10
+   - 6.5-7.9 points → 8/10
+   - 5-6.4 points → 7/10
+   - 3.5-4.9 points → 6/10
+   - 2-3.4 points → 5/10
+   - 1-1.9 points → 4/10
+   - <1 point → 3/10
+
+Navigation-only stubs (`confidence: stub`) receive no rating.
+
+**Usage:**
+
+```bash
+# Full rating pass - analyze all docs and update aggregates
+python3 rate_docs.py
+
+# Aggregate-only - preserve manual edits, only update parent nav ratings
+python3 rate_docs.py --aggregate
+```
+
+**Rating scale:**
+- No rating: Navigation-only stubs
+- 3-4/10: Minimal draft with few content indicators
+- 5-6/10: Moderate draft with some links and sources
+- 7-8/10: Strong draft with multiple human/ links and references
+- 9-10/10: Comprehensive content with extensive coverage
+
+**Aggregate ratings for navigation items:**
+
+Parent navigation items (e.g., "Configure", "Secure") that have no direct content receive an aggregate rating calculated as the average of all child topic ratings in their detailed map. For example:
+
+- "Configure" detailed map contains 15 topics rated 6-9
+- Average rating: 7.7
+- "Configure" nav item displays: "Configure (8)"
+
+This helps identify which major documentation sections are well-covered vs. need improvement.
 
 
 The intended split is:
