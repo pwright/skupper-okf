@@ -1,0 +1,97 @@
+title: Skupper Hello World DMZ
+subtitle: Connect services separated by firewalls and a DMZ
+overview: |
+  This example is a basic multi-service HTTP application deployed
+  across one Kubernetes cluster in the public cloud and another
+  Kubernetes cluster in a private data center.  They are separated by
+  a DMZ and two firewalls.
+
+  It contains two services:
+
+  * A backend service that exposes an `/api/hello` endpoint.  It
+    returns greetings of the form `Hi, <your-name>.  I am <my-name>
+    (<pod>)`.
+
+  * A frontend service that connects to the backend.  It sends
+    greetings to the backend and fetches new greetings in response.
+
+  The backend service runs in the private on-prem cluster, and the
+  frontend service runs in the public cloud.  The private and public
+  sites are linked by a relay site in the DMZ.  Skupper enables the
+  frontend to connect to the backend over a secure dedicated
+  application network.
+
+  <img src="images/entities.svg" style="max-width: 100%;"/>
+sites:
+  public:
+    title: Public
+    platform: kubernetes
+    namespace: public
+    env:
+      KUBECONFIG: ~/.kube/config-public
+  private:
+    title: Private
+    platform: kubernetes
+    namespace: private
+    env:
+      KUBECONFIG: ~/.kube/config-private
+  dmz:
+    title: DMZ
+    platform: kubernetes
+    namespace: dmz
+    env:
+      KUBECONFIG: ~/.kube/config-dmz
+steps:
+  - standard: platform/access_your_kubernetes_clusters
+  - standard: platform/create_your_kubernetes_namespaces
+  - standard: hello_world/deploy_the_frontend_and_backend/kubernetes_cli
+  - standard: platform/install_skupper_on_your_kubernetes_clusters
+  - standard: platform/install_the_skupper_command_line_tool
+  - standard: skupper/create_your_sites/kubernetes_cli
+    commands:
+      public:
+        - run: skupper site create public --enable-link-access
+      private:
+        - run: skupper site create private --enable-link-access
+      dmz:
+        - run: skupper site create dmz
+  - standard: skupper/link_your_sites/kubernetes_cli
+    preamble: |
+      A Skupper _link_ is a channel for communication between two sites.
+      Links serve as a transport for application connections and
+      requests.
+
+      Creating a link requires the use of two Skupper commands in
+      conjunction: `skupper token issue` and `skupper token redeem`.
+      The `skupper token issue` command generates a secret token that
+      can be transferred to a remote site and redeemed for a link to the
+      issuing site.  The `skupper token redeem` command uses the token
+      to create the link.
+
+      **Note:** The link token is truly a *secret*.  Anyone who has the
+      token can link to your site.  Make sure that only those you trust
+      have access to it.
+
+      First, use `skupper token issue` in Public and in Private to
+      issue two access tokens.  Then, use `skupper token redeem` in
+      Public and Private to link DMZ to Public and Private.
+    commands:
+      public:
+        - run: skupper token issue ~/public.token
+      private:
+        - run: skupper token issue ~/private.token
+      dmz:
+        - run: skupper token redeem ~/public.token
+        - run: skupper token redeem ~/private.token
+  - standard: hello_world/expose_the_backend_service/kubernetes_cli
+  - standard: hello_world/access_the_frontend_service/kubernetes_cli
+  - standard: hello_world/cleaning_up/kubernetes_cli
+    commands:
+      public:
+        - run: skupper site delete --all
+        - run: kubectl delete deployment/frontend
+      private:
+        - run: skupper site delete --all
+        - run: kubectl delete deployment/backend
+      dmz:
+        - run: skupper site delete --all

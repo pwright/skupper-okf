@@ -1,0 +1,105 @@
+title: Skupper Hello World private to private
+subtitle: Connect services in isolated on-prem sites
+overview: |
+  This example is a basic multi-service HTTP application deployed
+  across two Kubernetes clusters, each in its own private data center.
+
+  It contains two services:
+
+  * A backend service that exposes an `/api/hello` endpoint.  It
+    returns greetings of the form `Hi, <your-name>.  I am <my-name>
+    (<pod>)`.
+
+  * A frontend service that connects to the backend.  It sends
+    greetings to the backend and fetches new greetings in response.
+
+  The backend service runs in on-prem cluster "private1", and the
+  frontend service runs in on-prem cluster "private2".  The private
+  sites are linked by a relay site in the public cloud.  Skupper
+  enables the frontend to connect to the backend over a secure
+  dedicated application network.
+
+  <img src="images/entities.svg" style="max-width: 100%;"/>
+sites:
+  private1:
+    title: Private 1
+    platform: kubernetes
+    namespace: private1
+    env:
+      KUBECONFIG: ~/.kube/config-private1
+  private2:
+    title: Private 2
+    platform: kubernetes
+    namespace: private2
+    env:
+      KUBECONFIG: ~/.kube/config-private2
+  relay:
+    title: Relay
+    platform: kubernetes
+    namespace: relay
+    env:
+      KUBECONFIG: ~/.kube/config-relay
+steps:
+  - standard: platform/access_your_kubernetes_clusters
+  - standard: platform/create_your_kubernetes_namespaces
+  - standard: hello_world/deploy_the_frontend_and_backend/kubernetes_cli
+  - standard: platform/install_skupper_on_your_kubernetes_clusters
+  - standard: platform/install_the_skupper_command_line_tool
+  - standard: skupper/create_your_sites/kubernetes_cli
+    commands:
+      private1:
+        - run: skupper site create private1
+      private2:
+        - run: skupper site create private2
+      relay:
+        - run: skupper site create relay --enable-link-access
+  - standard: skupper/link_your_sites/kubernetes_cli
+    preamble: |
+      A Skupper _link_ is a channel for communication between two sites.
+      Links serve as a transport for application connections and
+      requests.
+
+      Creating a link requires the use of two Skupper commands in
+      conjunction: `skupper token issue` and `skupper token redeem`.
+      The `skupper token issue` command generates a secret token that
+      can be transferred to a remote site and redeemed for a link to the
+      issuing site.  The `skupper token redeem` command uses the token
+      to create the link.
+
+      **Note:** The link token is truly a *secret*.  Anyone who has the
+      token can link to your site.  Make sure that only those you trust
+      have access to it.
+
+      First, use `skupper token issue` in Relay to generate a token
+      for each private site.  Then, use `skupper token redeem` in
+      Private 1 and 2 to link the sites.
+    commands:
+      relay:
+        - run: skupper token issue ~/relay1.token
+          # output: |
+          #   Token written to ~/relay1.token
+        - run: skupper token issue ~/relay2.token
+          # output: |
+          #   Token written to ~/relay2.token
+      private1:
+        - run: skupper token redeem ~/relay1.token
+          # output: |
+          #   Site configured to link to https://10.106.89.17:8081/76f8f557-ccd2-11ee-865d-04421a4c5042 (name=link1)
+          #   Check the status of the link using 'skupper link status'.
+      private2:
+        - run: skupper token redeem ~/relay2.token
+          # output: |
+          #   Site configured to link to https://10.106.89.17:8081/775fb7d6-ccd2-11ee-aab9-04421a4c5042 (name=link1)
+          #   Check the status of the link using 'skupper link status'.
+  - standard: hello_world/expose_the_backend_service/kubernetes_cli
+  - standard: hello_world/access_the_frontend_service/kubernetes_cli
+  - standard: hello_world/cleaning_up/kubernetes_cli
+    commands:
+      private1:
+        - run: skupper site delete --all
+        - run: kubectl delete deployment/frontend
+      private2:
+        - run: skupper site delete --all
+        - run: kubectl delete deployment/backend
+      relay:
+        - run: skupper site delete --all

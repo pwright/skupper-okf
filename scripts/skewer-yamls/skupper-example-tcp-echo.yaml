@@ -1,0 +1,78 @@
+title: Skupper enables inter-cluster TCP communication
+subtitle: TCP tunneling with Skupper
+overview: |
+  This is a simple demonstration of TCP communication tunneled through
+  a Skupper network from a private to a public cluster and back again.
+  During development of this demonstration, the private cluster was
+  running locally, while the public cluster was on AWS.
+
+  We set up a Skupper network between the two clusters, start a TCP
+  echo-server on the public cluster, then communicate to it from the
+  private cluster and receive its replies. At no time is any port
+  opened on the machine running the private cluster.
+
+  <img src="images/entities.svg" width="800"/>
+sites:
+  public:
+    title: Public
+    platform: kubernetes
+    namespace: public
+    env:
+      KUBECONFIG: /tmp/public-kubeconfig
+  private:
+    title: Private
+    platform: kubernetes
+    namespace: private
+    env:
+      KUBECONFIG: /tmp/private-kubeconfig
+steps:
+  - standard: platform/access_your_kubernetes_clusters
+  - standard: platform/create_your_kubernetes_namespaces
+  - standard: platform/install_skupper_on_your_kubernetes_clusters
+  - standard: platform/install_the_skupper_command_line_tool
+  - title: Deploy the TCP echo server
+    commands:
+      public:
+        - run: kubectl apply -f ./public-deployment.yaml
+  - standard: skupper/create_your_sites/kubernetes_cli
+  - standard: skupper/link_your_sites/kubernetes_cli
+  - title: Expose the TCP echo service
+    preamble: |
+      Create a listener in the private cluster where the client runs and
+      a connector in the public cluster where the echo server runs. This
+      makes the public echo service reachable inside the private
+      namespace as `tcp-go-echo` on port 9090.
+    commands:
+      private:
+        - run: skupper listener create tcp-go-echo 9090
+      public:
+        - run: skupper connector create tcp-go-echo 9090 --workload deployment/tcp-go-echo
+  - title: Access the public service remotely
+    preamble: |
+      From the private cluster, forward traffic to the exposed echo
+      service and verify that it responds.
+    commands:
+      private:
+        - run: kubectl get svc
+          apply: readme
+        - run: kubectl port-forward service/tcp-go-echo 9090:9090
+          apply: readme
+        - run: telnet 0.0.0.0 9090
+          apply: readme
+          output: |
+            hello, Skupper
+            tcp-go-echo-7ddbc7756c-wxgcq : HELLO, SKUPPER
+  - standard: skupper/cleaning_up/kubernetes_cli
+    commands:
+      public:
+        - run: skupper site delete --all
+        - run: kubectl delete -f ./public-deployment.yaml
+      private:
+        - run: skupper site delete --all
+summary: |
+  The TCP echo server runs only in the public cluster, but Skupper
+  exposes it as a local service in the private cluster. By forwarding
+  to the private cluster, you can reach the public service without
+  opening any ports on the private side. Skupper handles the encrypted
+  traffic between clusters transparently, so the echo replies arrive as
+  if the service were running locally.

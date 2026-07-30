@@ -1,0 +1,87 @@
+title: Accessing an ActiveMQ message broker using Skupper
+subtitle: Use public cloud resources to process data from a private message broker
+overview: |
+  This example is a simple message application that shows how you can
+  use Skupper to access an ActiveMQ broker at a remote site without
+  exposing it to the public internet.
+
+  It contains two services:
+
+  * An ActiveMQ broker named `broker1` running in a private data center.
+    The broker has a queue named `queue1`.
+
+  * An AMQP client running in the public cloud.  It sends 10 messages
+    to `queue1` and then receives them back.
+
+  The example uses two Kubernetes namespaces, `private` and `public`,
+  to represent the private data center and public cloud.
+sites:
+  public:
+    title: Public
+    platform: kubernetes
+    namespace: public
+    env:
+      KUBECONFIG: ~/.kube/config-public
+  private:
+    title: Private
+    platform: kubernetes
+    namespace: private
+    env:
+      KUBECONFIG: ~/.kube/config-private
+steps:
+  - standard: platform/access_your_kubernetes_clusters
+  - standard: platform/create_your_kubernetes_namespaces
+  - standard: platform/install_skupper_on_your_kubernetes_clusters
+  - standard: platform/install_the_skupper_command_line_tool
+  - title: Deploy the message broker
+    commands:
+      private:
+        - run: kubectl apply -f broker1.yaml
+        - await_resource: deployment/broker1
+  - title: Create your sites
+    preamble: |
+      Use `skupper site create` to configure each location.  Enable link
+      access on Public so it can issue tokens.  Disable ingress on
+      Private to keep the broker hidden from the internet.
+    commands:
+      public:
+        - run: skupper site create public --enable-link-access
+      private:
+        - run: skupper site create private
+  - title: Link your sites
+    preamble: |
+      Use `skupper token issue` in Public to generate a token, then use
+      `skupper token redeem` in Private to create the link.  The token is
+      a secret; handle it carefully.
+    commands:
+      public:
+        - run: skupper token issue ~/public.token
+      private:
+        - run: skupper token redeem ~/public.token
+  - title: Expose the message broker
+    preamble: |
+      Create a listener in Public where the client runs.  Create a
+      connector in Private so the broker workload is reachable on the
+      network under the service name `broker1`.
+    commands:
+      public:
+        - run: skupper listener create broker1 5672
+      private:
+        - run: skupper connector create broker1 5672
+  - title: Run the client
+    commands:
+      public:
+        - run: kubectl run client --attach --rm --restart Never --image quay.io/skupper/activemq-example-client --env SERVER=broker1 --pod-running-timeout=5m
+  - standard: skupper/cleaning_up/kubernetes_cli
+    commands:
+      public:
+        - run: skupper site delete --all
+      private:
+        - run: skupper site delete --all
+        - run: kubectl delete deployment/broker1
+summary: |
+  Skupper creates a virtual application network that lets the client in
+  `public` reach the broker in `private` without exposing the broker to
+  the internet.  The listener in `public` makes `broker1` appear local,
+  and the connector in `private` forwards the traffic to the actual
+  Artemis deployment.
