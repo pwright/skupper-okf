@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper CRD - connectors-skupper-io
 id: skupper-crd-connectors-skupper-io
 source_file: ../human/skupper/config/crd/bases/skupper_connector_crd.yaml
-generated_at: 2026-07-22T20:46:15Z
+generated_at: 2026-08-11T17:21:39Z
 generator: manual
 ---
 

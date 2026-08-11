@@ -4,7 +4,7 @@ title: Skupper gRPC example source snapshot
 source_repo: https://github.com/skupperproject/skupper-example-grpc.git
 source_branch: main
 source_commit: a40e5c41b2b119616c8a715d3bff55a64e30eb1a
-retrieved_at: 2026-07-22T20:46:13Z
+retrieved_at: 2026-08-11T17:21:20Z
 status: human-source-snapshot
 ---
 

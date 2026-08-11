@@ -3,7 +3,7 @@ type: RouterDocs
 title: Inter-Router Connection Upgrade
 id: router-docs-notes-connection-upgrade
 source_file: ../human/skupper-router/docs/notes/connection-upgrade.md
-generated_at: 2026-07-22T20:46:26Z
+generated_at: 2026-08-11T17:21:42Z
 generator: copy-router-markdown.sh
 ---
 

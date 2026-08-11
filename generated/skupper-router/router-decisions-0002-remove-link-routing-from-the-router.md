@@ -3,7 +3,7 @@ type: RouterDocs
 title: 2. Remove Link-Routing from the router
 id: router-decisions-0002-remove-link-routing-from-the-router
 source_file: ../human/skupper-router/decisions/0002-remove-link-routing-from-the-router.md
-generated_at: 2026-07-22T20:46:26Z
+generated_at: 2026-08-11T17:21:42Z
 generator: copy-router-markdown.sh
 ---
 

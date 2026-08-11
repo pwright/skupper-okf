@@ -3,7 +3,7 @@ type: GeneratedDocs
 title: Skupper Console API Calls
 id: console-api-calls
 source_repo: ../human/skupper-console
-generated_at: 2026-07-22T20:46:21Z
+generated_at: 2026-08-11T17:21:42Z
 generator: extract-console-api-calls.sh
 ---
 
@@ -13,7 +13,7 @@ This document describes all API calls made by the Skupper Console frontend to th
 
 **Source Repository:** `skupperproject/skupper-console`
 **API Version:** `/api/v2alpha1`
-**Generated:** `2026-07-22T20:46:21Z`
+**Generated:** `2026-08-11T17:21:42Z`
 
 ## Overview
 

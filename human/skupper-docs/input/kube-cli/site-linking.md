@@ -253,6 +253,17 @@ You can now expose services on the application network.
 
 There are many options to consider when linking sites using the CLI, see [CLI Reference][cli-ref], including *frequently used* options.
 
+
+## Using custom certificates
+
+For information about linking sites using custom certificates instead of the default Skupper-generated certificates, see [Linking sites using custom certificates][custom-certs-yaml].
+
+**📌 NOTE**  
+For custom certificate workflows YAML provides more control over certificate management and integration with existing PKI infrastructure, although you can still use the Skupper CLI to generate links for those workflows.
+
+[custom-certs-yaml]: ../kube-yaml/custom-certs.md
+
+
 <a id="kube-link-cost-cli"></a>
 ## Specifying link cost
 <!--PROCEDURE-->
@@ -263,9 +274,8 @@ The routing algorithm favors paths with the lowest total cost from client to
 target server.
 
 **📌 NOTE**
-For most load-balancing and failover use cases, listener-side routing policy
+For most load-balancing and failover use cases, a [multi-key listener][mkl]
 provides per-service control.
-In the current resource model, configure this policy with a [multi-key listener][mkl].
 Link cost applies to **all services** that traverse a link; it is not
 possible to set different costs for distinct services on the same link.
 
@@ -343,7 +353,7 @@ Skupper does not provide orchestrated failover for stateful applications that
 require control over the order in which traffic is redirected.
 You must implement that orchestration separately.
 
-For per-service failover or weighted traffic distribution, use
-listener-side routing policy instead.
+For per-service failover or weighted traffic distribution, use a
+[multi-key listener][mkl] instead.
 
 [mkl]: ../kube-yaml/service-exposure.html#kube-creating-multikeylistener-yaml

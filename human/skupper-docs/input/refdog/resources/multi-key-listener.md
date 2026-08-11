@@ -19,20 +19,19 @@ render_macros: false
 
 # MultiKeyListener resource
 
-A `MultiKeyListener` configures listener-side routing policy. It binds a
-single local listener host and port to multiple routing keys in remote
-[sites](site.html). Use it when you want one service endpoint to aggregate
-traffic from multiple [connectors](connector.html).
+A multi-key listener binds a single local host and port to multiple
+routing keys in remote [sites](site.html). Use a multi-key listener
+when you want one service endpoint to aggregate traffic from multiple
+[connectors](connector.html).
 
 Unlike a standard [listener](listener.html) which maps to a single
-routing key, a MultiKeyListener can apply listener-side policy to route to
-multiple connectors using either priority-based or weighted distribution
-strategies.
+routing key, a MultiKeyListener can route to multiple connectors using
+either priority-based or weighted distribution strategies.
 
 ## Examples
 
-A weighted listener-side routing policy that distributes traffic evenly
-across multiple backends:
+A weighted multi-key listener that distributes traffic evenly across
+multiple backends:
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -49,7 +48,7 @@ spec:
         west-backend: 1
 ~~~
 
-A priority-based listener-side routing policy that prefers one routing key and
+A priority-based multi-key listener that prefers one routing key and
 falls back to another if unavailable:
 
 ~~~ yaml
@@ -323,11 +322,11 @@ A set of named conditions describing the current state of the
 resource.
 
 
-- `Configured`: The listener-side routing policy configuration has been applied
+- `Configured`: The multi-key listener configuration has been applied
   to the router.
 - `Operational`: There is at least one connector corresponding to
-  the `MultiKeyListener` strategy.
-- `Ready`: The `MultiKeyListener` is ready to use. All other conditions
+  the multi-key listener strategy.
+- `Ready`: The multi-key listener is ready to use. All other conditions
   are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>

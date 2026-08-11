@@ -3,7 +3,7 @@ type: RouterDocs
 title: Code conventions
 id: router-docs-notes-code-conventions
 source_file: ../human/skupper-router/docs/notes/code-conventions.md
-generated_at: 2026-07-22T20:46:26Z
+generated_at: 2026-08-11T17:21:42Z
 generator: copy-router-markdown.sh
 ---
 

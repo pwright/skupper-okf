@@ -3,8 +3,8 @@ type: SourceSnapshot
 title: Skupper documentation source snapshot
 source_repo: https://github.com/skupperproject/skupper-docs.git
 source_branch: main
-source_commit: 2cbdb3fa2c7d7a9de416f87f650f96b8f2d8cb66
-retrieved_at: 2026-07-22T20:46:11Z
+source_commit: a5c5adcecc82b7d72187fc16441fee3a17054917
+retrieved_at: 2026-08-11T17:21:18Z
 status: human-source-snapshot
 ---
 
