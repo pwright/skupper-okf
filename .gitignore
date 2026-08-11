@@ -1,6 +1,12 @@
 # Upstream snapshot; refresh with scripts/sync-human-skupper-docs.sh
 #/human/
 
+
+# debug
+
+debug/
+
+
 # Full repo clones (gitignored, used as source for doc generation)
 /human/skupper/
 /human/skupper-console/
