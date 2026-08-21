@@ -26,6 +26,7 @@ Security Requirements captures the constraints that shape a Skupper deployment: 
 ## Appears in
 
 - [Plan a Skupper Deployment](./plan-skupper.md) / Requirements and Constraints
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Validate Readiness (as Security and Compliance Review)
 
 ## Dependencies
 

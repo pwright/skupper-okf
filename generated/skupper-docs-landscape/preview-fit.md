@@ -26,6 +26,7 @@ Preview fit assessment decides whether a candidate preview is appropriate for a 
 ## Appears in
 
 - [Skupper Technology Previews](./skupper-previews.md) / Evaluate Preview Value
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Evaluate Fit (as Skupper Fit Evaluation)
 
 ## Dependencies
 

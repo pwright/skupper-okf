@@ -26,6 +26,7 @@ Preview evaluation helps a reader decide whether an early-access or experimental
 ## Appears in
 
 - [What's New in Skupper](./skupper-whats-new.md) / Adoption Impact
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Define Trial Scope (as Success and Exit Criteria)
 
 ## Dependencies
 

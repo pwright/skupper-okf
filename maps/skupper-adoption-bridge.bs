@@ -1,0 +1,279 @@
+{
+  "blockscapeVersion": 1,
+  "title": "Skupper Adoption Bridge",
+  "settings": {
+    "theme": "light",
+    "hoverScale": 1.6,
+    "selectionDimOpacity": 0.2,
+    "selectionDimEnabled": true,
+    "tileCompactness": 1,
+    "titleWrapMode": "wrap",
+    "titleHoverWidthMultiplier": 1.3,
+    "titleHoverTextPortion": 0.25,
+    "obsidianLinksEnabled": false,
+    "obsidianLinkMode": "title",
+    "obsidianVault": "",
+    "autoIdFromName": false,
+    "seriesNavDoubleClickMs": 700,
+    "showSecondaryLinks": true,
+    "centerItems": false,
+    "centerNoStageItems": true,
+    "showReusedInMap": false,
+    "colorPresets": [
+      {
+        "name": "Black",
+        "value": "#111111"
+      },
+      {
+        "name": "White",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Red",
+        "value": "#ef4444"
+      },
+      {
+        "name": "Green",
+        "value": "#22c55e"
+      },
+      {
+        "name": "Blue",
+        "value": "#2563eb"
+      }
+    ],
+    "depColor": "#2563eb",
+    "revdepColor": "#ef4444",
+    "linkThickness": "l",
+    "stripParentheticalNames": true
+  },
+  "maps": [
+    {
+      "id": "skupper-adoption-bridge",
+      "title": "Skupper Adoption Bridge: From Evaluation to Implementation",
+      "abstract": "Bridge the gap between understanding Skupper's business value and starting your first deployment. This map guides you through use-case evaluation, scope definition, readiness validation, and rollout planning so you arrive at implementation with confidence, clear success criteria, and an exit path.",
+      "status": "generated",
+      "reviewed": false,
+      "source_paths": [],
+      "categories": [
+        {
+          "id": "evaluate-fit",
+          "title": "Evaluate Fit",
+          "items": [
+            {
+              "id": "use-case-alignment",
+              "name": "Use Case Alignment",
+              "deps": [
+                "migration-flexibility",
+                "delivery-velocity",
+                "cross-site-resilience",
+                "workload-placement",
+                "capacity-spillover",
+                "regional-deployment"
+              ],
+              "external": "https://skupper.io/docs/overview/",
+              "source": "generated/skupper-adoption-bridge/use-case-alignment.md"
+            },
+            {
+              "id": "current-state-assessment",
+              "name": "Current Connectivity Assessment",
+              "deps": [],
+              "source": "generated/skupper-docs-landscape/application-inventory.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/current-state-assessment"
+            },
+            {
+              "id": "protocol-port-requirements",
+              "name": "Protocol and Port Requirements (TCP, Stable Ports)",
+              "deps": [
+                "current-state-assessment"
+              ],
+              "external": "https://skupper.io/docs/overview/connectivity.html",
+              "note": "Skupper requires: (a) TCP protocol - UDP not supported, (b) Stable ports - dynamic port allocation (e.g., some FTP implementations) not supported",
+              "source": "generated/skupper-adoption-bridge/protocol-port-requirements.md"
+            },
+            {
+              "id": "skupper-fit-evaluation",
+              "name": "Skupper Fit Evaluation",
+              "deps": [
+                "use-case-alignment",
+                "current-state-assessment",
+                "protocol-port-requirements"
+              ],
+              "source": "generated/skupper-docs-landscape/preview-fit.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/skupper-fit-evaluation"
+            },
+            {
+              "id": "adoption-risk-assessment",
+              "name": "Adoption Risk Assessment",
+              "deps": [
+                "current-state-assessment",
+                "protocol-port-requirements"
+              ],
+              "source": "generated/skupper-docs-landscape/rollout-plan.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/adoption-risk-assessment"
+            }
+          ]
+        },
+        {
+          "id": "define-scope",
+          "title": "Define Trial Scope",
+          "items": [
+            {
+              "id": "service-workload-inventory",
+              "name": "Service and Workload Inventory",
+              "deps": [
+                "current-state-assessment"
+              ],
+              "source": "generated/skupper-docs-landscape/application-inventory.md",
+              "external": "https://skupper.io/docs/overview/"
+            },
+            {
+              "id": "traffic-flow-requirements",
+              "name": "Traffic Flow Requirements",
+              "deps": [
+                "service-workload-inventory"
+              ],
+              "source": "generated/skupper-docs-landscape/traffic-flows.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/traffic-flow-requirements"
+            },
+            {
+              "id": "trial-scope-selection",
+              "name": "First Trial Scope",
+              "deps": [
+                "skupper-fit-evaluation",
+                "service-workload-inventory",
+                "traffic-flow-requirements",
+                "adoption-risk-assessment"
+              ],
+              "source": "generated/skupper-docs-landscape/rollout-plan.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/trial-scope-selection"
+            },
+            {
+              "id": "success-exit-criteria",
+              "name": "Success and Exit Criteria",
+              "deps": [
+                "trial-scope-selection"
+              ],
+              "source": "generated/skupper-docs-landscape/preview-evaluation.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/success-exit-criteria"
+            }
+          ]
+        },
+        {
+          "id": "validate-readiness",
+          "title": "Validate Readiness",
+          "items": [
+            {
+              "id": "platform-infrastructure-readiness",
+              "name": "Platform and Infrastructure Readiness",
+              "deps": [
+                "trial-scope-selection",
+                "skupper-platform-choices"
+              ],
+              "source": "generated/concepts/network-deployment-concerns.md",
+              "external": "https://skupper.io/docs/install/"
+            },
+            {
+              "id": "team-skills-readiness",
+              "name": "Team and Skills Readiness",
+              "deps": [],
+              "source": "generated/skupper-docs-landscape/ownership-model.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/team-skills-readiness"
+            },
+            {
+              "id": "resource-budget-allocation",
+              "name": "Resource and Budget Allocation",
+              "deps": [
+                "trial-scope-selection"
+              ],
+              "source": "generated/concepts/network-deployment-concerns.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/resource-budget-allocation"
+            },
+            {
+              "id": "security-compliance-review",
+              "name": "Security and Compliance Review",
+              "deps": [
+                "trial-scope-selection"
+              ],
+              "source": "generated/skupper-docs-landscape/security-requirements.md",
+              "color": "#0000ff",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/security-compliance-review"
+            }
+          ]
+        },
+        {
+          "id": "plan-and-start",
+          "title": "Plan and Start",
+          "items": [
+            {
+              "id": "trial-topology-design",
+              "name": "Trial Topology Design",
+              "deps": [
+                "trial-scope-selection",
+                "platform-infrastructure-readiness",
+                "traffic-flow-requirements"
+              ],
+              "source": "generated/concepts/network-deployment-concerns.md",
+              "external": "https://skupper.io/docs/refdog/concepts/"
+            },
+            {
+              "id": "staged-rollout-plan",
+              "name": "Staged Rollout Plan",
+              "deps": [
+                "trial-topology-design",
+                "success-exit-criteria",
+                "team-skills-readiness"
+              ],
+              "source": "generated/skupper-docs-landscape/rollout-plan.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/staged-rollout-plan"
+            },
+            {
+              "id": "validation-checkpoints",
+              "name": "Validation Checkpoints",
+              "deps": [
+                "staged-rollout-plan",
+                "success-exit-criteria"
+              ],
+              "source": "generated/skupper-docs-landscape/rollout-plan.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/validation-checkpoints"
+            },
+            {
+              "id": "operational-transition-plan",
+              "name": "Operational Transition Plan",
+              "deps": [
+                "staged-rollout-plan",
+                "team-skills-readiness"
+              ],
+              "source": "generated/skupper-docs-landscape/ownership-model.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/operational-transition-plan"
+            },
+            {
+              "id": "ready-to-implement",
+              "name": "Implementation Readiness Gate",
+              "deps": [
+                "staged-rollout-plan",
+                "validation-checkpoints",
+                "resource-budget-allocation",
+                "security-compliance-review"
+              ],
+              "source": "generated/skupper-adoption-bridge/ready-to-implement.md",
+              "external": "https://pwright.github.io/skupper-okf/generated/skupper-adoption-bridge/ready-to-implement"
+            },
+            {
+              "id": "next-steps",
+              "name": "Next Steps: Get Started",
+              "deps": [
+                "ready-to-implement",
+                "get-started",
+                "plan-skupper",
+                "install-skupper"
+              ],
+              "external": "https://skupper.io/docs/kube-cli/",
+              "source": "generated/skupper-adoption-bridge/next-steps.md"
+            }
+          ]
+        }
+      ],
+      "source_base_url": "https://pwright.github.io/skupper-okf/"
+    }
+  ]
+}

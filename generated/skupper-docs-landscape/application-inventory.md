@@ -23,6 +23,8 @@ Application and Service Inventory is the source list of workloads, services, cli
 ## Appears in
 
 - [Plan a Skupper Deployment](./plan-skupper.md) / Planning Inputs
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Evaluate Fit (as Current Connectivity Assessment)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Define Trial Scope (as Service and Workload Inventory)
 
 ## Sources
 

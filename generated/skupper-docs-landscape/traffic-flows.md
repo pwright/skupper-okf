@@ -25,6 +25,7 @@ Traffic Flow Requirements records which application clients need to reach which 
 ## Appears in
 
 - [Plan a Skupper Deployment](./plan-skupper.md) / Requirements and Constraints
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Define Trial Scope (as Traffic Flow Requirements)
 
 ## Dependencies
 

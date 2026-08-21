@@ -54,6 +54,12 @@ This topic assumes that you have completed the Getting Started and understand th
 
 Consider the following topics when designing and implementing your application network.
 
+## Appears in
+
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Validate Readiness (as Platform and Infrastructure Readiness)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Validate Readiness (as Resource and Budget Allocation)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Plan and Start (as Trial Topology Design)
+
 ## Outcome
 
 Understanding deployment concerns helps you:

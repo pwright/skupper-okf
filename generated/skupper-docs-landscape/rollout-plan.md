@@ -27,6 +27,10 @@ Rollout Plan turns the target topology into a staged implementation path. It sho
 ## Appears in
 
 - [Plan a Skupper Deployment](./plan-skupper.md) / Deployment Design
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Evaluate Fit (as Adoption Risk Assessment)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Define Trial Scope (as First Trial Scope)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Plan and Start (as Staged Rollout Plan)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Plan and Start (as Validation Checkpoints)
 
 ## Dependencies
 

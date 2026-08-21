@@ -1,0 +1,28 @@
+---
+type: DocumentationLandscapePage
+title: "Workload Placement Freedom"
+id: workload-placement
+status: generated
+owner: agent
+generated_by: codex
+reviewed: false
+confidence: stub
+source: blockscape-json
+external: https://pwright.github.io/skupper-okf/generated/skupper-value-perspectives/workload-placement
+tags:
+  - skupper
+  - value-perspectives
+timestamp: 2026-08-21T10:57:19Z
+---
+
+# Workload Placement Freedom
+
+{Brief placeholder description}
+
+## Appears in
+
+- [Skupper Business Value Chain](./skupper-value-perspectives.md) / Strategic Use Cases
+
+## Notes
+
+- TODO: replace this stub with sourced content.

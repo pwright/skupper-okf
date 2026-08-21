@@ -23,6 +23,8 @@ Operational Ownership identifies who owns the application, the Skupper sites, li
 ## Appears in
 
 - [Plan a Skupper Deployment](./plan-skupper.md) / Planning Inputs
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Validate Readiness (as Team and Skills Readiness)
+- [Skupper Adoption Bridge](../skupper-adoption-bridge/skupper-adoption-bridge.md) / Plan and Start (as Operational Transition Plan)
 
 ## Sources
 
