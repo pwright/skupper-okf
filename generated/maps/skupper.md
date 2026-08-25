@@ -54,7 +54,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connectors-map"
             ],
             "source": "human/docs/input/system-yaml/service-exposure.md",
-            "external": "https://pwright.github.io/okf/human/docs/input/overview/service-exposure"
+            "external": "https://pwright.github.io/skupper-okf/human/docs/input/overview/service-exposure"
           },
           {
             "id": "secure-hybrid-cloud-connectivity",
@@ -77,14 +77,14 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "listeners-map",
             "name": "Clients",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener",
             "deps": ["routing-key"]
           },
           {
             "id": "connectors-map",
             "name": "Servers",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector",
             "deps": ["routing-key"]
           }
         ]
@@ -98,20 +98,20 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "routing-key",
             "name": "Routing key",
             "source": "generated/concepts/routing-key.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/routing-key",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/routing-key",
             "deps": []
           },          {
             "id": "network-observer-api",
             "name": "Network Observer API",
             "source": "generated/concepts/network-observer-api.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/network-observer-api",
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/network-observer-api",
             "deps": ["routing-key", "listeners-map", "connectors-map"]
           }
 
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/okf/"
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
   },
   {
     "id": "listeners-map",
@@ -157,7 +157,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-host-port"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener#outcome"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#outcome"
           }
         ]
       },
@@ -173,7 +173,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "routing-key-match"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener#listener"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#listener"
           },
           {
             "id": "listener-host-port",
@@ -215,7 +215,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener"
             ],
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener"
           },
           {
             "id": "router-forwarding",
@@ -294,19 +294,19 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "listener-spec-routing-key",
             "name": "spec.routingKey",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "listener-spec-host",
             "name": "spec.host",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "listener-spec-port",
             "name": "spec.port",
             "source": "generated/concepts/listener.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/listener#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/listener#common-fields"
           },
           {
             "id": "multi-key-listener",
@@ -331,7 +331,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/okf/"
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
   },
   {
     "id": "connectors-map",
@@ -395,19 +395,19 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "routing-key-match"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#connector"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#connector"
           },
           {
             "id": "connector-selector-or-host",
             "name": "Selector or host",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-port",
             "name": "Target port",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "routing-key-match",
@@ -438,7 +438,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "connector"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
           },
           {
             "id": "router-message-forwarding",
@@ -458,7 +458,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
               "listener-to-connector-traffic"
             ],
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector"
           }
         ]
       },
@@ -518,19 +518,19 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
             "id": "connector-routing-key-field",
             "name": "spec.routingKey",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-selector-field",
             "name": "spec.selector",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "connector-port-field",
             "name": "spec.port",
             "source": "generated/concepts/connector.md",
-            "external": "https://pwright.github.io/okf/generated/concepts/connector#common-fields"
+            "external": "https://pwright.github.io/skupper-okf/generated/concepts/connector#common-fields"
           },
           {
             "id": "attached-connector",
@@ -570,7 +570,7 @@ Edit: [Blockscape](https://pwright.github.io/blockscape/?load=https://raw.github
         ]
       }
     ],
-    "source_base_url": "https://pwright.github.io/okf/"
+    "source_base_url": "https://pwright.github.io/skupper-okf/"
   }
 ]
 ```
