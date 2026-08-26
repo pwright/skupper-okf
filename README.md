@@ -12,8 +12,14 @@ See [Requirements](#requirements) and [Quick start](#quick-start) to set up the 
 
 ## Maps
 
+### Skupper Maps
+
 - [Skupper Blockscape map](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper.bs) from `maps/skupper.bs`
 - [Skupper Docs Landscape](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/skupper-docs-landscape.bs) from `maps/skupper-docs-landscape.bs` - documentation coverage map with quality ratings
+
+### Skupper VMS Maps
+
+- [Skupper VMS Blockscape map](https://pwright.github.io/blockscape/?load=https://raw.githubusercontent.com/pwright/skupper-okf/refs/heads/main/maps/vms.bs) from `maps/vms.bs` - multi-tenant VAN management system with linked detail maps for network topology, application lifecycle, security/PKI, and architecture
 
 ### Documentation Quality Ratings
 
@@ -123,6 +129,7 @@ just tree  # optional: view the directory structure
 - `human/skupper/` — Full Skupper repo (for API/CRD generation, gitignored)
 - `human/skupper-console/` — Console repo (for API extraction)
 - `human/skupper-router/` — Router repo (for markdown extraction)
+- `human/vms/` — Skupper VMs repository
 
 `just tree` displays the directory structure to verify the layout.
 

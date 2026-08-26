@@ -24,6 +24,7 @@ init:
     ./scripts/extract-console-api-calls.sh
     ./scripts/sync-human-skupper-router.sh
     ./scripts/copy-router-markdown.sh
+    ./scripts/sync-human-vms.sh
 
 # Create directories only
 layout:
@@ -44,6 +45,7 @@ sync-human:
     ./scripts/extract-console-api-calls.sh
     ./scripts/sync-human-skupper-router.sh
     ./scripts/copy-router-markdown.sh
+    ./scripts/sync-human-vms.sh
 
 # Dry-run all human source sync scripts
 sync-human-dry-run:
@@ -59,6 +61,7 @@ sync-human-dry-run:
     ./scripts/extract-console-api-calls.sh --dry-run
     ./scripts/sync-human-skupper-router.sh --dry-run
     ./scripts/copy-router-markdown.sh --dry-run
+    ./scripts/sync-human-vms.sh --dry-run
 
 # Refresh human/skupper-docs/ from skupper-docs main
 sync-human-skupper-docs:
@@ -111,6 +114,10 @@ sync-human-skupper-router:
 # Copy markdown files from human/skupper-router/ to sources/
 copy-router-markdown:
     ./scripts/copy-router-markdown.sh
+
+# Refresh human/vms/ from skupperproject/vms main
+sync-human-vms:
+    ./scripts/sync-human-vms.sh
 
 # Build an offline test fixture and validate behavior without network
 test:
