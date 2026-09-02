@@ -44,6 +44,17 @@ jobs:
         working-directory: quartz
         run: node quartz/bootstrap-cli.mjs build
 
+      - name: Copy standalone HTML assets
+        run: |
+          find generated -name '*.html' | while read src; do
+            rel="${src#generated/}"
+            dest="quartz/public/generated/$rel"
+            mkdir -p "$(dirname "$dest")"
+            cp "$src" "$dest"
+            # Remove the extensionless copy Quartz's Assets emitter produced
+            rm -f "quartz/public/generated/${rel%.html}"
+          done
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: quartz/public
