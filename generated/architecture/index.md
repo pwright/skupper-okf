@@ -8,8 +8,8 @@ reviewed: false
 
 ## Diagrams
 
-- [Skupper Combined Architecture](skupper-combined.html)
-- [Skupper Network Observer Architecture](skupper-network-observer.html)
+- [Skupper Combined Architecture](https://pwright.github.io/skupper-okf/generated/architecture/skupper-combined.html)
+- [Skupper Network Observer Architecture](https://pwright.github.io/skupper-okf/generated/architecture/skupper-network-observer.html)
 
 ## Patterns
 
