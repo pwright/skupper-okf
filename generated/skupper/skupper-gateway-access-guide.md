@@ -61,7 +61,7 @@ The Gateway API separates concerns into three resources:
 - Creates **one shared Gateway** for the entire Skupper installation (in the controller namespace)
 - Creates **one TLSRoute per port** in each SecuredAccess/RouterAccess
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 76-105, 114-163)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 76-105, 114-163)
 
 ## Prerequisites
 
@@ -95,7 +95,7 @@ The Skupper controller requires specific environment variables to enable and con
   - `"cilium"` (Cilium Gateway)
   - `"kong"` (Kong Gateway)
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 52-55, 83)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 52-55, 83)
 
 ### Optional Environment Variables
 
@@ -107,7 +107,7 @@ The Skupper controller requires specific environment variables to enable and con
   - `"gateway.example.com"` → generates `my-router-inter-router.default.gateway.example.com`
   - Auto-deduced: `"34.123.45.67.nip.io"` (from Gateway LoadBalancer IP)
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 82), `gateway.go` (lines 96-103, 165-184)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 82), `gateway.go` (lines 96-103, 165-184)
 
 **`SKUPPER_GATEWAY_PORT`**
 - **Purpose**: The port the Gateway should listen on for TLS traffic
@@ -115,7 +115,7 @@ The Skupper controller requires specific environment variables to enable and con
 - **Valid range**: 1-65535
 - **Example**: `"443"` (standard HTTPS port)
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 84)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 84)
 
 **`SKUPPER_DEFAULT_ACCESS_TYPE` (Optional)**
 - **Purpose**: Sets the default access type for sites that don't specify one
@@ -178,7 +178,7 @@ The controller validates the configuration on startup:
   ```
   **Solution**: Ensure `SKUPPER_DEFAULT_ACCESS_TYPE` is in `SKUPPER_ENABLED_ACCESS_TYPES`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 52-55)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 52-55)
 
 ## Using Gateway API with Sites
 
@@ -282,7 +282,7 @@ spec:
 - **`listeners[].port`**: Port to listen on (default 8443)
 - **`listeners[].tls.mode: Passthrough`**: TLS traffic is passed through without termination
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 76-105)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 76-105)
 
 ### TLSRoute Creation
 
@@ -302,7 +302,7 @@ Skupper creates **one TLSRoute per port** in each RouterAccess/SecuredAccess:
 1. Name: `my-router-access-inter-router`, Hostname: `my-router-access-inter-router.default.gateway.example.com`
 2. Name: `my-router-access-edge`, Hostname: `my-router-access-edge.default.gateway.example.com`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 120-122)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 120-122)
 
 ### TLSRoute Resource Structure
 
@@ -334,7 +334,7 @@ spec:
 - **`hostnames`**: SNI hostname for routing (TLS passthrough uses SNI)
 - **`rules[].backendRefs`**: Routes to the Kubernetes Service backing the access
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 131-151)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 131-151)
 
 ### How TLS Passthrough Works with Gateway API
 
@@ -363,7 +363,7 @@ endpoints:
 
 Remote sites connect to these endpoints (via the Gateway) to establish links.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 156-160)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 156-160)
 
 ### Domain Auto-Deduction
 
@@ -384,7 +384,7 @@ status:
 ```
 **Deduced domain**: `gateway-lb.us-east-1.elb.amazonaws.com`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 165-184)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go` (lines 165-184)
 
 ## Gateway API Deployment Considerations
 
@@ -692,20 +692,20 @@ Use alternatives if Gateway API is not yet available or your controller doesn't 
 
 ### Source Code References
 
-- **Implementation**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go`
+- **Implementation**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/gateway.go`
   - Lines 44-54: `GatewayAccessType` struct
   - Lines 76-105: Gateway creation (`init` function)
   - Lines 114-163: TLSRoute creation (`RealiseAndResolve`)
   - Lines 165-184: Domain auto-deduction (`getBaseDomain`)
 
-- **Configuration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
+- **Configuration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
   - Line 19: `ACCESS_TYPE_GATEWAY` constant
   - Lines 52-55: Gateway validation (GatewayClass required)
   - Line 82: `SKUPPER_GATEWAY_DOMAIN` binding
   - Line 83: `SKUPPER_GATEWAY_CLASS` binding
   - Line 84: `SKUPPER_GATEWAY_PORT` binding
 
-- **Access Type Registration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
+- **Access Type Registration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
   - Lines 79-86: Gateway access type initialization
 
 ### External Resources

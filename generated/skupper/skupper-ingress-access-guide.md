@@ -58,7 +58,7 @@ Both access types work with Kubernetes Ingress controllers but differ in their a
 | Default IngressClass | None (must be configured) | `"nginx"` (if not otherwise set) |
 | Use case | Generic ingress controllers | NGINX-specific deployments |
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 17-33, 195-198)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 17-33, 195-198)
 
 ## Prerequisites
 
@@ -90,7 +90,7 @@ The Skupper controller requires specific environment variables to enable and con
   - `"ingress.example.com"` → generates hostnames like `inter-router.ingress.example.com`
   - `"apps.cluster.local"` → generates hostnames like `edge.apps.cluster.local`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 79)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 79)
 
 ### Optional Environment Variables
 
@@ -105,7 +105,7 @@ The Skupper controller requires specific environment variables to enable and con
   - `"haproxy"` (HAProxy Ingress Controller)
   - `"traefik"` (Traefik Ingress Controller)
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 80), `ingress.go` (lines 35-50)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 80), `ingress.go` (lines 35-50)
 
 **`SKUPPER_DEFAULT_ACCESS_TYPE` (Optional)**
 - **Purpose**: Sets the default access type for sites that don't specify one
@@ -209,7 +209,7 @@ spec:
 
 **Per-resource IngressClass override**: The `spec.settings.ingressClassName` field overrides the controller-wide `SKUPPER_INGRESS_CLASS_NAME` for this specific RouterAccess.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 35-50)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 35-50)
 
 ### Method 3: SecuredAccess Resource
 
@@ -253,7 +253,7 @@ When you configure ingress access, Skupper generates fully qualified hostnames b
 - Ingress domain: `ingress.example.com`
 - Generated FQDN: `inter-router.ingress.example.com`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 147-189)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 147-189)
 
 ### Ingress Resource Structure
 
@@ -289,7 +289,7 @@ spec:
 - Each port gets its own ingress rule with a unique hostname
 - All traffic routes to port `443` (standard HTTPS)
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 195-198)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 195-198)
 
 ### Endpoint Resolution
 
@@ -304,7 +304,7 @@ endpoints:
 
 Remote sites connect to these endpoints to establish links.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 68-76)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 68-76)
 
 ## NGINX Ingress Controller Configuration
 
@@ -351,7 +351,7 @@ annotations:
 - **ssl-passthrough**: Tells NGINX to pass TLS traffic directly to the backend without terminating it
 - **ssl-redirect**: Forces HTTP traffic to redirect to HTTPS
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 195-198)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 195-198)
 
 ## DNS Configuration
 
@@ -388,7 +388,7 @@ env:
 
 Skupper will generate hostnames like `inter-router.203.0.113.10.nip.io`, which automatically resolve to `203.0.113.10`.
 
-**Note**: Skupper can auto-deduce the domain from the ingress controller's LoadBalancer status and use nip.io if an IP address is available. See **Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 200-212)
+**Note**: Skupper can auto-deduce the domain from the ingress controller's LoadBalancer status and use nip.io if an IP address is available. See **Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go` (lines 200-212)
 
 ## Troubleshooting
 
@@ -539,20 +539,20 @@ openssl s_client -connect inter-router.ingress.example.com:443 -servername inter
 
 ### Source Code References
 
-- **Implementation**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go`
+- **Implementation**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/ingress.go`
   - Lines 17-33: `IngressAccessType` struct with nginx flag
   - Lines 35-50: `ingressClassNameForDesiredIngress` function (IngressClass selection logic)
   - Lines 147-189: `toIngress` function (Ingress resource creation)
   - Lines 195-198: `addNginxIngressAnnotations` function (NGINX-specific annotations)
   - Lines 68-76: Endpoint resolution
 
-- **Configuration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
+- **Configuration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
   - Lines 15-16: Access type constants
   - Line 17: `SettingIngressClassName` constant
   - Line 79: `SKUPPER_INGRESS_DOMAIN` binding
   - Line 80: `SKUPPER_INGRESS_CLASS_NAME` binding
 
-- **Access Type Registration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
+- **Access Type Registration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
   - Lines 73-76: Ingress access type initialization
 
 ### External Resources

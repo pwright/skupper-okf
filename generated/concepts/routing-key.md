@@ -270,7 +270,7 @@ Flow aggregates (sitepairs, processpairs, componentpairs) track traffic volume a
    ↓
 4. Site B router registers AMQP address "backend"
    ↓
-5. Routers exchange reachability over inter-site link
+5. Routers exchange reachability over [inter-site link](./inter-site-link.md)
    ↓
 6. Status updated:
    - Listener.status.hasMatchingConnector = true

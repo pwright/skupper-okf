@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Skupper v2 — Deployment & Data Path",
+    "output": "skupper-combined.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "control-plane",
+        "label": "Control plane",
+        "focus": ["crds-a", "controller", "kube-adaptor", "site-ca", "router-a"],
+        "note": "Controller reconciles CRDs, issues TLS certs, and configures the router."
+      },
+      {
+        "id": "data-path",
+        "label": "Data path",
+        "focus": ["client", "listener", "router-a", "router-b", "connector", "backend"],
+        "note": "Client TCP enters Site A via the Listener, bridges to AMQP, crosses the Link, and bridges back to TCP via the Connector in Site B."
+      }
+    ]
+  },
+  "components": [
+    { "id": "crds-a",       "type": "backend",    "label": "Skupper CRDs",  "sublabel": "Site · Link · Listener",  "pos": [60,  50],  "size": [140, 60] },
+    { "id": "controller",   "type": "backend",    "label": "Controller",    "sublabel": "skupper/controller",      "pos": [260, 50],  "size": [140, 60] },
+    { "id": "site-ca",      "type": "security",   "label": "Site CA",       "sublabel": "mTLS certificates",       "pos": [460, 50],  "size": [130, 60] },
+    { "id": "kube-adaptor", "type": "backend",    "label": "Kube Adaptor",  "sublabel": "skupper/kube-adaptor",    "pos": [260, 170], "size": [140, 60] },
+    { "id": "router-a",     "type": "messagebus", "label": "Router A",      "sublabel": "interior :55671 :45671",  "pos": [460, 170], "size": [140, 60] },
+    { "id": "router-b",     "type": "messagebus", "label": "Router B",      "sublabel": "interior :55671 :45671",  "pos": [720, 170], "size": [140, 60] },
+    { "id": "client",       "type": "external",   "label": "Client",        "sublabel": "any consumer",            "pos": [60,  370], "size": [120, 60] },
+    { "id": "listener",     "type": "backend",    "label": "Listener",      "sublabel": "routingKey: backend",     "pos": [240, 370], "size": [140, 60], "tag": "TcpListener" },
+    { "id": "connector",    "type": "backend",    "label": "Connector",     "sublabel": "routingKey: backend",     "pos": [720, 370], "size": [140, 60], "tag": "TcpConnector" },
+    { "id": "backend",      "type": "external",   "label": "Backend",       "sublabel": "pod / host / server",     "pos": [920, 370], "size": [120, 60] }
+  ],
+  "boundaries": [
+    { "kind": "region",         "label": "Site A", "wraps": ["crds-a", "controller", "site-ca", "kube-adaptor", "router-a", "client", "listener"] },
+    { "kind": "region",         "label": "Site B", "wraps": ["router-b", "connector", "backend"] },
+    { "kind": "security-group", "label": "Inter-site Link (AMQP / mTLS)", "wraps": ["router-a", "router-b"] }
+  ],
+  "connections": [
+    { "id": "ctrl-crds",       "from": "controller",   "to": "crds-a",      "label": "watch / reconcile", "fromSide": "left",   "toSide": "right",  "variant": "dashed",   "labelAt": [230, 46] },
+    { "id": "ctrl-cert",       "from": "controller",   "to": "site-ca",     "label": "issue cert",        "fromSide": "right",  "toSide": "left",   "variant": "security", "labelDy": -24 },
+    { "id": "ctrl-router",     "from": "controller",   "to": "router-a",    "label": "configure",         "fromSide": "right",  "toSide": "top",    "variant": "dashed",   "labelAt": [424, 46] },
+    { "id": "kadapt-crds",     "from": "kube-adaptor", "to": "crds-a",      "label": "watch",             "fromSide": "left",   "toSide": "bottom", "variant": "dashed",   "labelDy": -24 },
+    { "id": "kadapt-router",   "from": "kube-adaptor", "to": "router-a",    "label": "mgmt API",          "fromSide": "right",  "toSide": "left",   "labelAt": [450, 244] },
+    { "id": "client-listener", "from": "client",       "to": "listener",    "label": "① TCP connect",    "variant": "emphasis", "labelDy": -24 },
+    { "id": "listener-router", "from": "listener",     "to": "router-a",    "label": "② AMQP bridge",    "fromSide": "top",    "toSide": "bottom",  "labelDy": -24 },
+    { "id": "router-link",     "from": "router-a",     "to": "router-b",    "label": "③ Link :55671/:45671","variant": "security", "labelDy": -44 },
+    { "id": "router-connect",  "from": "router-b",     "to": "connector",   "label": "④ AMQP bridge",    "fromSide": "bottom", "toSide": "top",     "labelAt": [790, 244] },
+    { "id": "conn-backend",    "from": "connector",    "to": "backend",     "label": "⑤ TCP connect",    "variant": "emphasis", "labelDy": -24 }
+  ],
+  "cards": [
+    { "dot": "cyan",    "title": "Control plane",  "items": ["Controller reconciles Skupper CRDs (Site, Link, RouterAccess, Connector, Listener)", "Kube Adaptor bridges Kubernetes resources to the router management API", "Site CA issues mTLS certificates for inter-router links"] },
+    { "dot": "emerald", "title": "Data path",      "items": ["Client TCP bytes enter Site A via the Listener (TcpListener bridge)", "Flow is carried as AMQP across the inter-site Link to Router B", "Router B bridges the flow back to TCP via the Connector (TcpConnector)"] },
+    { "dot": "rose",    "title": "Inter-site Link ports", "items": ["Each router opens :55671 (inter-router) for interior-to-interior connections", "Each router also opens :45671 (edge) for edge site uplinks", "The connecting site picks the port based on its own mode — interior dials :55671, edge dials :45671"] }
+  ]
+}

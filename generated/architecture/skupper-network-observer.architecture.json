@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Skupper Network Observer",
+    "output": "skupper-network-observer.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "collection",
+        "label": "Collection path",
+        "focus": ["router", "session", "discovery", "eventsource-client", "collector", "store", "graph"],
+        "note": "Vanflow events arrive over AMQP from routers and controllers, discovered dynamically, stored and indexed in memory."
+      },
+      {
+        "id": "api-path",
+        "label": "API & console path",
+        "focus": ["store", "graph", "api-server", "console", "prometheus", "browser"],
+        "note": "API server reads from store and graph, serves REST + /metrics, and optionally proxies Prometheus queries for the console SPA."
+      }
+    ]
+  },
+  "components": [
+    { "id": "router",            "type": "messagebus", "label": "Skupper Router",        "sublabel": "AMQP / vanflow source",  "pos": [60,  120], "size": [150, 60] },
+    { "id": "session",           "type": "security",   "label": "AMQP Session",          "sublabel": "mTLS · SASL External",   "pos": [290, 120], "size": [150, 60] },
+    { "id": "discovery",         "type": "backend",    "label": "Discovery",             "sublabel": "eventsource.Discovery",  "pos": [290, 260], "size": [150, 60] },
+    { "id": "eventsource-client","type": "backend",    "label": "Event Source Client",   "sublabel": "per router / controller","pos": [290, 400], "size": [150, 60] },
+    { "id": "collector",         "type": "backend",    "label": "Collector",             "sublabel": "work-queue · managers",  "pos": [550, 260], "size": [150, 60] },
+    { "id": "store",             "type": "database",   "label": "Vanflow Store",         "sublabel": "in-memory · indexed",    "pos": [550, 160], "size": [150, 60] },
+    { "id": "graph",             "type": "database",   "label": "Topology Graph",        "sublabel": "DAG · site/router/proc", "pos": [550, 400], "size": [150, 60] },
+    { "id": "api-server",        "type": "backend",    "label": "API Server",            "sublabel": ":8080 · REST v2alpha1",  "pos": [810, 260], "size": [150, 60] },
+    { "id": "prometheus",        "type": "external",   "label": "Prometheus",            "sublabel": "metrics backend",        "pos": [810, 100], "size": [140, 60] },
+    { "id": "console",           "type": "frontend",   "label": "Web Console",           "sublabel": "skupper-console SPA",    "pos": [810, 420], "size": [150, 60] },
+    { "id": "browser",           "type": "external",   "label": "Browser",               "sublabel": "operator / end-user",    "pos": [1050, 260], "size": [130, 60] }
+  ],
+  "boundaries": [
+    { "kind": "region",         "label": "Skupper Sites",    "wraps": ["router"] },
+    { "kind": "region",         "label": "Network Observer", "wraps": ["session", "discovery", "eventsource-client", "collector", "store", "graph", "api-server", "console"] },
+    { "kind": "security-group", "label": "AMQP / mTLS",      "wraps": ["router", "session"] }
+  ],
+  "connections": [
+    { "id": "router-session",      "from": "router",            "to": "session",            "label": "AMQP/TLS",           "variant": "security",  "labelAt": [215, 100] },
+    { "id": "session-discovery",   "from": "session",           "to": "discovery",          "label": "announce sources",   "variant": "dashed",    "labelAt": [395, 210] },
+    { "id": "discovery-client",    "from": "discovery",         "to": "eventsource-client", "label": "spawn client",       "variant": "dashed",    "labelAt": [395, 342] },
+    { "id": "client-collector",    "from": "eventsource-client","to": "collector",          "label": "vanflow records",    "fromSide": "right",    "toSide": "left",    "labelAt": [480, 380] },
+    { "id": "collector-store",     "from": "collector",         "to": "store",              "label": "add / update",       "fromSide": "top",      "toSide": "bottom",  "labelAt": [680, 234] },
+    { "id": "collector-graph",     "from": "collector",         "to": "graph",              "label": "index / reindex",    "fromSide": "bottom",   "toSide": "top",     "labelAt": [620, 340] },
+    { "id": "store-api",           "from": "store",             "to": "api-server",         "label": "read records",       "fromSide": "right",    "toSide": "left",    "labelAt": [750, 140] },
+    { "id": "graph-api",           "from": "graph",             "to": "api-server",         "label": "read topology",      "fromSide": "right",    "toSide": "bottom",  "labelAt": [750, 400] },
+    { "id": "api-prom",            "from": "api-server",        "to": "prometheus",         "label": "proxy /query",       "fromSide": "top",      "toSide": "bottom",  "variant": "dashed",  "labelAt": [936, 172] },
+    { "id": "api-console",         "from": "api-server",        "to": "console",            "label": "serve assets",       "fromSide": "bottom",   "toSide": "top",     "variant": "dashed",  "labelAt": [936, 380] },
+    { "id": "browser-api",         "from": "browser",           "to": "console",         "label": "REST + /metrics",    "variant": "emphasis",  "labelAt": [990, 240] }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Collection pipeline",
+      "items": [
+        "Discovery listens for CONTROLLER and ROUTER event-source announcements over the AMQP session",
+        "Per-source EventSource Clients subscribe to .flows and .heartbeats addresses and route records into the store",
+        "The Collector's work-queue drives managers: processManager, addressManager, pairManager, and metricsAdaptor"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "In-memory model",
+      "items": [
+        "Vanflow Store holds vanflow records (Site, Router, Link, Listener, Connector, Process, Flow…) with configurable TTL",
+        "Topology Graph is a DAG tracking parent-child and peer relations (Site → Router → Listener/Connector → Process)",
+        "Record cleanup runs every 10 s and purges terminated or TTL-expired records"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Serving layer",
+      "items": [
+        "REST API (v2alpha1) is code-generated from an OpenAPI spec and served on :8080 (optional TLS)",
+        "A separate /metrics endpoint (Prometheus) can be split to a dedicated listen address via --listen-metrics",
+        "The optional Web Console SPA is proxied through the API server with a Prometheus query proxy for charts"
+      ]
+    }
+  ]
+}

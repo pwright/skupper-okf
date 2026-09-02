@@ -55,7 +55,7 @@ When you configure a Skupper site with nodeport access:
 
 Remote sites connect to `<SKUPPER_CLUSTER_HOST>:<NodePort>` to establish links.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/nodeport.go` (lines 23-35)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/nodeport.go` (lines 23-35)
 
 ## Prerequisites
 
@@ -92,7 +92,7 @@ The Skupper controller reads its access type configuration from environment vari
 - **Validation**: Must be included in `SKUPPER_ENABLED_ACCESS_TYPES` if set
 - **Example**: `"nodeport"`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 76-78, 88-94)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 76-78, 88-94)
 
 ### Configuration via Deployment YAML
 
@@ -132,7 +132,7 @@ defaultAccessType: "nodeport"  # Optional
 
 These Helm values are rendered into the corresponding environment variables on the controller Deployment.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/scripts/skupper-helm-chart-generator.sh` (lines 44-57, 128-146)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/scripts/skupper-helm-chart-generator.sh` (lines 44-57, 128-146)
 
 ### Validation
 
@@ -150,7 +150,7 @@ The controller validates the configuration on startup:
   ```
   **Solution**: Ensure `SKUPPER_DEFAULT_ACCESS_TYPE` value is included in `SKUPPER_ENABLED_ACCESS_TYPES`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 43-57)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (lines 43-57)
 
 ## Using NodePort with Sites
 
@@ -194,7 +194,7 @@ spec:
 
 **When to use**: You need to configure custom roles, ports, or TLS settings for router access.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/site/site_test.go` (lines 243-245, 1188-1190)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/site/site_test.go` (lines 243-245, 1188-1190)
 
 ### Method 3: SecuredAccess Resource
 
@@ -222,7 +222,7 @@ spec:
 
 **When to use**: You're exposing application services (not just router links) with mutual TLS and need nodeport accessibility.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access_test.go` (lines 1108-1123)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access_test.go` (lines 1108-1123)
 
 ## Kind-Specific Considerations
 
@@ -402,23 +402,23 @@ curl -k https://<SKUPPER_CLUSTER_HOST>:<NodePort>
 
 ### Source Code References
 
-- **Configuration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
+- **Configuration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
   - Lines 22-32: `Config` struct definition
   - Lines 43-57: `Verify()` function validating nodeport requirements
   - Lines 74-86: `BoundConfig()` function binding environment variables
   - Lines 88-94: `defaultEnabledAccessTypes()` function
 
-- **Implementation**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/nodeport.go`
+- **Implementation**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/nodeport.go`
   - Lines 23-35: `NodeportAccessType.RealiseAndResolve()` implementation
 
-- **Helm Chart**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/scripts/skupper-helm-chart-generator.sh`
+- **Helm Chart**: `~/repos/sk/skupper-okf/human/skupper/scripts/skupper-helm-chart-generator.sh`
   - Lines 44-57: Helm values definition
   - Lines 128-146: Environment variable injection
 
 - **Tests**:
-  - `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config_test.go` (lines 29-51, 124-147)
-  - `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access_test.go` (lines 1088-1170)
-  - `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/site/site_test.go` (lines 243-245, 1188-1190)
+  - `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config_test.go` (lines 29-51, 124-147)
+  - `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access_test.go` (lines 1088-1170)
+  - `~/repos/sk/skupper-okf/human/skupper/internal/kube/site/site_test.go` (lines 243-245, 1188-1190)
 
 ### External Resources
 

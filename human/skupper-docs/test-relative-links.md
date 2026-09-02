@@ -19,7 +19,7 @@ Use:
 Regenerate with empty prefix and see if relative links work:
 
 ```bash
-cd /home/paulwright/repos/sk/vale/docs-vale
+cd ~/repos/sk/vale/docs-vale
 REFDOG_SITE_PREFIX="" ./regenerate-refdog.sh
 ```
 

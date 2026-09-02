@@ -59,7 +59,7 @@ Unlike standard Ingress resources, HTTPProxy offers native support for TLS passt
 
 **Key advantage**: HTTPProxy's `spec.tcpproxy` enables direct TCP routing with TLS passthrough, which is exactly what Skupper needs for router-to-router connections.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 192-212)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 192-212)
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ The Skupper controller requires specific environment variables to enable and con
   - `"contour.example.com"` → generates `my-router-inter-router.contour.example.com`
   - `"apps.cluster.local"` → generates `my-router-edge.apps.cluster.local`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 81)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go` (line 81)
 
 ### Optional Environment Variables
 
@@ -227,7 +227,7 @@ Skupper creates one HTTPProxy resource **per port** in the RouterAccess or Secur
 1. Name: `my-router-access-inter-router`, FQDN: `my-router-access-inter-router.contour.example.com`
 2. Name: `my-router-access-edge`, FQDN: `my-router-access-edge.contour.example.com`
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 139-151)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 139-151)
 
 ### HTTPProxy Resource Structure
 
@@ -261,7 +261,7 @@ spec:
   - `name`: The Kubernetes Service backing the RouterAccess/SecuredAccess
   - `port`: The service port number
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 192-212)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 192-212)
 
 ### How TLS Passthrough Works
 
@@ -292,7 +292,7 @@ endpoints:
 
 Remote sites connect to these endpoints (via Contour/Envoy on port 443) to establish links.
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 32-55)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 32-55)
 
 ## Contour Deployment Considerations
 
@@ -379,7 +379,7 @@ Skupper uses Kubernetes' **dynamic client** to create and manage HTTPProxy resou
 - **GroupVersionKind**: `projectcontour.io/v1/HTTPProxy`
 - Resources are created, updated, and deleted using `unstructured.Unstructured` objects
 
-**Source**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 121-130, 214-227)
+**Source**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go` (lines 121-130, 214-227)
 
 ## Troubleshooting
 
@@ -570,7 +570,7 @@ kubectl exec -n projectcontour $ENVOY_POD -- curl -s localhost:9001/config_dump 
 
 ### Source Code References
 
-- **Implementation**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go`
+- **Implementation**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/contour.go`
   - Lines 18-30: `ContourHttpProxyAccessType` struct
   - Lines 32-46: `RealiseAndResolve` implementation
   - Lines 132-151: `desiredHttpProxies` function (HTTPProxy generation)
@@ -578,11 +578,11 @@ kubectl exec -n projectcontour $ENVOY_POD -- curl -s localhost:9001/config_dump 
   - Lines 121-130: HTTPProxy GroupVersionResource/Kind
   - Lines 214-227: HTTPProxy creation and update functions
 
-- **Configuration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
+- **Configuration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/config.go`
   - Line 18: `ACCESS_TYPE_CONTOUR_HTTP_PROXY` constant
   - Line 81: `SKUPPER_HTTP_PROXY_DOMAIN` binding
 
-- **Access Type Registration**: `/home/paulwright/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
+- **Access Type Registration**: `~/repos/sk/skupper-okf/human/skupper/internal/kube/securedaccess/access.go`
   - Lines 77-78: Contour HTTPProxy access type initialization
 
 ### External Resources

@@ -163,6 +163,7 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 ## Published areas
 
 ### Generated notes
+- [Architecture](generated/architecture/)
 - [Concepts](generated/concepts/)
 - [Maps](generated/maps/)
 - [Skupper](generated/skupper/)

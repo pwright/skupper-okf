@@ -173,7 +173,7 @@ Since `{{site.prefix}}` is in hundreds of files, use sed:
 
 ```bash
 # One-time fix for existing files
-cd /home/paulwright/repos/sk/vale/docs-vale/refdog/input
+cd ~/repos/sk/vale/docs-vale/refdog/input
 find . -name "*.md" -type f -exec sed -i 's/{{site\.prefix}}//g' {} \;
 
 # Or add to refdog/.plano.py as a post-generation step
