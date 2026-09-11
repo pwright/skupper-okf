@@ -162,6 +162,9 @@ This site publishes staged OKF wiki pages from the repository's generated and re
 
 ## Published areas
 
+### Why use Skupper?
+- [Skupper personas](generated/personas/skupper-personas.md)
+
 ### Generated notes
 - [Architecture](generated/architecture/)
 - [Concepts](generated/concepts/)

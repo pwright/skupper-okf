@@ -234,7 +234,9 @@ plugins:
       display: mobile-only
   - source: github:quartz-community/bases-page
     enabled: true
-    options: {}
+    options:
+      defaultViewType: cards
+      linkResolution: shortest
     order: 50
   - source: github:quartz-community/note-properties
     enabled: true

@@ -95,3 +95,49 @@ article {
     padding: 0.6rem 1rem !important;
   }
 }
+
+// Persona cards use the quoted audience message as their primary content.
+body[data-slug="generated/personas/skupper-personas"] {
+  .bases-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  }
+
+  .bases-card-body {
+    gap: 1rem;
+  }
+
+  .bases-card-row:first-child {
+    display: block;
+
+    .bases-card-label {
+      display: none;
+    }
+
+    .bases-card-value {
+      display: block;
+      color: var(--darkgray);
+      font-size: 0.95rem;
+      font-style: italic;
+      line-height: 1.55;
+      text-align: left;
+
+      &::before {
+        content: "“";
+      }
+
+      &::after {
+        content: "”";
+      }
+    }
+  }
+
+  .bases-card-row:not(:first-child) {
+    align-items: flex-start;
+    gap: 1rem;
+
+    .bases-card-value {
+      font-weight: 600;
+      text-align: right;
+    }
+  }
+}

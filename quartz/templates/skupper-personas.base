@@ -1,0 +1,34 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.inFolder("generated/personas")
+    - file.name != "skupper-personas"
+    - file.name != "index"
+properties:
+  audience_message:
+    displayName: Audience message
+  coverage:
+    displayName: Existing coverage
+  missing_target_count:
+    displayName: Missing targets
+views:
+  - type: cards
+    name: Personas
+    order:
+      - file.name
+      - audience_message
+      - coverage
+      - missing_target_count
+    sort:
+      - property: persona_order
+        direction: ASC
+    cardSize: 320
+  - type: table
+    name: Coverage inventory
+    order:
+      - file.name
+      - coverage
+      - missing_target_count
+    sort:
+      - property: persona_order
+        direction: ASC

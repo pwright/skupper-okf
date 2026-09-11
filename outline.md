@@ -1,0 +1,786 @@
+- Home
+  - Skupper documentation
+    - Get started with the CLI
+    - Create application networks declaratively
+    - Explore conceptual deep dives
+    - Reference material
+- Overview
+  - Introduction
+    - Skupper overview
+      - Application Networks
+      - Skupper routers
+      - Skupper
+  - Connectivity
+    - Skupper connectivity
+  - Security
+    - Skupper security
+  - Routing
+    - Skupper routing
+  - Load Balancing
+    - Skupper load balancing and failover
+      - Preferred approach: Multi-key listeners
+      - Alternative: Link cost
+  - Resources
+    - Skupper resources on Kubernetes
+      - Custom resource definitions
+      - Service accounts, roles and role bindings
+      - Deployments
+      - ConfigMaps
+      - Secrets
+      - Services
+  - Migrating
+    - Migrating from Skupper v1
+      - Creating sites
+      - Linking sites
+      - Exposing services
+- Installation
+  - Installing the Skupper controller
+    - Installing the Skupper controller using YAML
+    - Installing the Skupper controller using the Skupper Helm charts
+    - Installing the Skupper CLI
+    - Upgrading sites
+      - Upgrading local sites
+      - Upgrading the Skupper controller
+- Kubernetes CLI
+  - Overview
+    - Overview of Skupper CLI on Kubernetes
+  - Site Configuration
+    - Creating a site on Kubernetes using the Skupper CLI
+      - Checking the Skupper CLI
+      - Creating a simple site using the CLI on Kubernetes
+      - Creating a high availability site using the CLI on Kubernetes
+      - Deleting a site using the CLI on Kubernetes
+  - Site Linking
+    - Linking sites on Kubernetes using the Skupper CLI
+      - Linking sites using a token
+      - Linking sites using a link resource
+      - Linking sites through an HTTP proxy
+      - Using custom certificates
+      - Specifying link cost
+  - Service Exposure
+    - Exposing services on the application network using the CLI
+      - Creating a connector using the CLI
+      - Creating a listener using the CLI
+- Kubernetes YAML
+  - Overview
+    - Overview of using YAML on Kubernetes
+  - Site Configuration
+    - Creating a site on Kubernetes using YAML
+      - Creating a simple site on Kubernetes using YAML
+      - Creating a high availability site using YAML
+      - Setting site resources
+  - Site Linking
+    - Linking sites on Kubernetes using YAML
+      - Linking sites using AccessGrant and AccessToken resources
+      - Specifying link cost using YAML
+      - Using custom certificates
+  - Custom Certificates
+    - Linking sites using custom certificates
+      - Linking sites using a custom RouterAccess, and custom certificates
+      - Linking sites using Link resources and custom certificates
+  - Service Exposure
+    - Exposing services on the application network using YAML
+      - Creating a connector using YAML
+      - Creating a listener using YAML
+      - Creating a multi-key listener using YAML
+      - Creating a connector for a different namespace using YAML
+- System CLI
+  - Overview
+    - Overview of Skupper CLI on local systems
+  - Site Configuration
+    - Creating a site on a local system using the Skupper CLI
+      - Checking the Skupper CLI and environment
+      - Creating a simple site using the CLI on local systems
+      - Deleting a site using the CLI on local systems
+      - Creating a site bundle using the CLI on local systems
+  - Site Linking
+    - Linking sites on local systems using the Skupper CLI
+      - Linking to Kubernetes sites using a token
+      - Linking sites using a link resource
+  - Service Exposure
+    - Exposing services on the application network using the CLI
+      - Creating a connector using the CLI
+      - Creating a listener using the CLI
+- System YAML
+  - Overview
+    - Overview of using YAML on local systems
+  - Site Configuration
+    - Creating a site on local systems using YAML
+      - Creating a simple site on local systems using YAML
+  - Site Linking
+    - Linking sites on local systems using YAML
+      - Linking sites using a link resource
+  - Service Exposure
+    - Exposing services on the application network using YAML
+      - Creating a connector using YAML
+      - Creating a listener using YAML
+      - Creating a multi-key listener using YAML
+- Console
+  - Overview
+    - Using the Skupper network console
+      - Getting started with Skupper network console
+      - Advanced Configuration
+        - Configuration Examples
+        - Validation and Troubleshooting
+        - Upgrade and Rollback
+        - Uninstallation
+      - Exploring the Network console
+  - Configuration
+    - Network Observer Configuration Reference
+      - External access
+        - Ingress
+        - Route (OpenShift)
+      - Authentication
+        - Basic Authentication
+        - OpenShift OAuth
+      - TLS Certificates
+      - Router Connection
+      - Network Observer Tuning
+      - Prometheus Configuration
+        - Configuration File
+        - Command-Line Flags
+        - Extra Volumes and Mounts
+      - Data Persistence
+        - Persistence Options
+      - Container Resources
+        - Network Observer Container
+        - Prometheus Container
+        - Proxy Container
+      - Container Images
+        - Network Observer Image
+        - Prometheus Image
+        - NGINX Proxy Image
+        - OpenShift OAuth Proxy Image
+      - Labels and Annotations
+      - Service
+      - Security
+        - Pod Security Context
+        - Container Security Contexts
+      - Advanced Options
+        - Name Overrides
+        - Skip Management Labels
+      - Metrics Endpoint
+        - Metrics Service
+        - Scraping Metrics
+      - Validation and Troubleshooting
+        - Verify Services
+        - Test Metrics Endpoint
+        - Check Observer Logs
+        - Verify Prometheus Configuration
+        - PersistentVolumeClaim Issues
+- Troubleshooting
+  - Troubleshooting an application network
+    - Checking sites
+    - Checking links
+    - Creating a Skupper debug tar file
+    - Troubleshooting the Dynamic System Controller
+- Kube Yaml
+  - Index
+    - Overview of using YAML on Kubernetes
+  - Custom Certs
+    - Linking sites using custom certificates
+      - Linking sites using a custom RouterAccess, and custom certificates
+      - Linking sites using Link resources and custom certificates
+  - Custom Labels
+    - Propagating custom labels and annotations using YAML
+      - Creating a label template using YAML
+      - Controlling label template scope
+      - Filtering label templates by resource type
+      - Excluding specific keys from propagation
+      - Using multiple label templates
+      - Managing label template lifecycle
+      - Label template reference
+        - Affected resources
+        - ConfigMap data fields
+        - Complete example
+  - Service Exposure
+    - Exposing services on the application network using YAML
+      - Creating a connector using YAML
+      - Creating a listener using YAML
+      - Creating a multi-key listener using YAML
+      - Creating a connector for a different namespace using YAML
+  - Site Configuration
+    - Creating a site on Kubernetes using YAML
+      - Creating a simple site on Kubernetes using YAML
+      - Creating a high availability site using YAML
+      - Setting site resources
+  - Site Linking
+    - Linking sites on Kubernetes using YAML
+      - Linking sites using AccessGrant and AccessToken resources
+      - Specifying link cost using YAML
+      - Using custom certificates
+- Reference
+  - Index
+    - Refdog
+  - Commands
+    - Index
+      - Skupper CLI commands
+        - Command index
+          - Site operations
+          - Site linking
+          - Service exposure
+          - System operations
+          - Debugging operations
+          - Other operations
+        - Overview
+          - Capabilities
+          - Usage
+          - Context
+          - Blocking
+          - Errors
+          - Resource commands
+          - Token commands
+          - System commands
+          - Debug commands
+          - Version command
+    - Connector
+      - Index
+        - Connector command
+          - Subcommands
+      - Create
+        - Connector create command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --tls-credentials
+            - --type
+          - Global options
+      - Delete
+        - Connector delete command
+          - Examples
+          - Primary options
+            - --help
+            - --timeout
+            - --wait
+          - Global options
+      - Generate
+        - Connector generate command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --routing-key
+            - --tls-credentials
+            - --type
+          - Global options
+      - Status
+        - Connector status command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+      - Update
+        - Connector update command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --port
+            - --tls-credentials
+            - --type
+          - Global options
+    - Debug
+      - Index
+        - Debug command
+          - Subcommands
+      - Check
+        - Debug check command
+          - Primary options
+          - Global options
+            - --context
+            - --kubeconfig
+            - --namespace
+            - --platform
+            - --help
+      - Dump
+        - Debug dump command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+    - Link
+      - Index
+        - Link command
+          - Subcommands
+      - Delete
+        - Link delete command
+          - Examples
+          - Primary options
+            - --help
+            - --timeout
+          - Global options
+      - Generate
+        - Link generate command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --name
+          - Global options
+      - Status
+        - Link status command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+      - Update
+        - Link update command
+          - Examples
+          - Primary options
+            - --cost
+            - --help
+            - --timeout
+            - --tls-credentials
+          - Global options
+    - Listener
+      - Index
+        - Listener command
+          - Subcommands
+      - Create
+        - Listener create command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --routing-key
+            - --tls-credentials
+            - --type
+          - Global options
+      - Delete
+        - Listener delete command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+      - Generate
+        - Listener generate command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --routing-key
+            - --tls-credentials
+            - --type
+          - Global options
+      - Status
+        - Listener status command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+      - Update
+        - Listener update command
+          - Examples
+          - Primary options
+            - --help
+            - --host
+            - --port
+            - --routing-key
+            - --tls-credentials
+            - --type
+          - Global options
+    - Site
+      - Index
+        - Site command
+          - Subcommands
+      - Create
+        - Site create command
+          - Examples
+          - Primary options
+            - --enable-link-access
+            - --help
+          - Global options
+          - Errors
+      - Delete
+        - Site delete command
+          - Examples
+          - Primary options
+            - --all
+            - --help
+          - Global options
+          - Errors
+      - Generate
+        - Site generate command
+          - Examples
+          - Primary options
+            - --enable-link-access
+            - --help
+          - Global options
+      - Reload
+        - Site reload command
+          - Usage
+      - Start
+        - Site start command
+          - Usage
+      - Status
+        - Site status command
+          - Examples
+          - Primary options
+            - --help
+          - Global options
+      - Stop
+        - Site stop command
+          - Usage
+      - Update
+        - Site update command
+          - Examples
+          - Primary options
+            - --enable-link-access
+            - --help
+          - Global options
+          - Errors
+    - System
+      - Index
+        - System command
+          - Subcommands
+      - Apply
+        - System apply command
+          - Primary options
+            - --help
+          - Global options
+      - Delete
+        - System delete command
+          - Primary options
+            - --help
+          - Global options
+      - Generate Bundle
+        - System generate-bundle command
+          - Primary options
+            - --help
+            - --input
+            - --type
+          - Global options
+      - Install
+        - System install command
+          - Primary options
+            - --help
+            - --reload-type
+          - Global options
+      - Reload
+        - System reload command
+          - Primary options
+            - --help
+          - Global options
+      - Start
+        - System start command
+          - Primary options
+            - --help
+          - Global options
+      - Stop
+        - System stop command
+          - Primary options
+            - --help
+          - Global options
+      - Uninstall
+        - System uninstall command
+          - Primary options
+            - --help
+          - Global options
+    - Token
+      - Index
+        - Token command
+          - Subcommands
+      - Issue
+        - Token issue command
+          - Examples
+          - Primary options
+            - --cost
+            - --expiration-window
+            - --help
+            - --redemptions-allowed
+            - --timeout
+          - Global options
+          - Errors
+      - Redeem
+        - Token redeem command
+          - Examples
+          - Primary options
+            - --help
+            - --timeout
+          - Global options
+    - Version
+      - Version command
+        - Examples
+        - Primary options
+          - --help
+        - Global options
+  - Concepts
+    - Index
+      - Skupper concepts
+        - Concept index
+          - Sites
+          - Networks
+          - Services
+          - Applications
+        - Overview
+          - Sites
+          - Networks
+          - Services
+          - Applications
+    - Access Token
+      - Access token concept
+    - Application
+      - Application concept
+    - Component
+      - Component concept
+    - Connector
+      - Connector concept
+    - Link
+      - Link concept
+    - Listener
+      - Listener concept
+    - Multi Key Listener
+      - Multi-key-listener concept
+        - Strategies
+          - Priority strategy
+          - Weighted strategy
+        - Use cases
+        - Multi-key listeners and link cost
+    - Network
+      - Network concept
+    - Platform
+      - Platform concept
+    - Routing Key
+      - Routing key concept
+    - Site
+      - Site concept
+    - Workload
+      - Workload concept
+  - Resources
+    - Index
+      - Skupper API resources
+        - Resource index
+          - Primary resources
+          - Sites and site linking
+          - Service exposure
+        - Overview
+          - Capabilities
+          - Controller
+          - Operations
+          - Primary resources
+          - Site linking resources
+          - Service exposure resources
+    - Access Grant
+      - AccessGrant resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - redemptionsAllowed
+          - expirationWindow
+          - code
+          - issuer
+          - settings
+        - Status properties
+          - status
+          - message
+          - redemptions
+          - expirationTime
+          - url
+          - ca
+          - code
+          - conditions
+    - Access Token
+      - AccessToken resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - url
+          - code
+          - ca
+          - linkCost
+          - settings
+        - Status properties
+          - redeemed
+          - status
+          - message
+          - conditions
+    - Attached Connector Binding
+      - AttachedConnectorBinding resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - connectorNamespace
+          - routingKey
+          - exposePodsByName
+          - settings
+        - Status properties
+          - status
+          - hasMatchingListener
+          - conditions
+    - Attached Connector
+      - AttachedConnector resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - siteNamespace
+          - port
+          - selector
+          - includeNotReadyPods
+          - tlsCredentials
+          - settings
+        - Status properties
+          - status
+          - conditions
+          - selectedPods
+    - Connector
+      - Connector resource
+        - Examples
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - routingKey
+          - port
+          - selector
+          - host
+          - includeNotReadyPods
+          - exposePodsByName
+          - tlsCredentials
+          - useClientCert
+          - verifyHostname
+          - settings
+        - Status properties
+          - status
+          - message
+          - hasMatchingListener
+          - conditions
+          - selectedPods
+    - Link
+      - Link resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - endpoints
+          - cost
+          - tlsCredentials
+          - settings
+        - Status properties
+          - status
+          - message
+          - remoteSiteId
+          - remoteSiteName
+          - conditions
+    - Listener
+      - Listener resource
+        - Examples
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - routingKey
+          - host
+          - port
+          - exposePodsByName
+          - tlsCredentials
+          - settings
+        - Status properties
+          - status
+          - message
+          - hasMatchingConnector
+          - conditions
+    - Multi Key Listener
+      - MultiKeyListener resource
+        - Examples
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - host
+          - port
+          - strategy
+          - observer
+          - tlsCredentials
+          - requireClientCert
+          - settings
+        - Status properties
+          - status
+          - message
+          - hasDestination
+          - strategy
+          - conditions
+    - Router Access
+      - RouterAccess resource
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - roles
+          - tlsCredentials
+          - generateTlsCredentials
+          - issuer
+          - accessType
+          - bindHost
+          - subjectAlternativeNames
+          - settings
+        - Status properties
+          - status
+          - message
+          - conditions
+          - endpoints
+    - Site
+      - Site resource
+        - Examples
+        - Metadata properties
+          - name
+          - namespace
+        - Spec properties
+          - linkAccess
+          - ha
+          - defaultIssuer
+          - edge
+          - serviceAccount
+          - settings
+        - Status properties
+          - status
+          - message
+          - conditions
+          - defaultIssuer
+          - endpoints
+          - network
+          - sitesInNetwork
+  - Topics
+    - Index
+      - Topics
+    - Application Tls
+      - Application TLS
+    - Attached Connectors
+      - Attached connectors
+    - Components
+      - Components
+    - Controller Configuration
+      - Controller configuration
+    - Debug Dumps
+      - Debug dumps
+    - High Availability
+      - High availability
+    - Individual Pod Services
+      - Individual pod services
+    - Large Networks
+      - Large networks
+    - Load Balancing
+      - Load balancing
+    - Resource Settings
+      - Resource settings
+    - Resource Status
+      - Resource status
+    - Router Tls
+      - Router TLS
+    - Service Exposure
+      - Service exposure
+    - Site Configuration
+      - Site configuration
+    - Site Linking
+      - Site linking
+        - Using kubectl to generate an access token from an access grant
+    - Skupper Overview
+      - Skupper overview
+    - System Namespaces
+      - System namespaces
+    - System Tls Credentials
+      - System TLS credentials
