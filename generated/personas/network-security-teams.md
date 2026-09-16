@@ -25,6 +25,8 @@ tags:
 
 For this audience, explicit service exposure is the key unit of review. Skupper link security and platform authorization complement rather than replace application authentication and authorization.
 
+The security model spans both Kubernetes and Linux host environments. On Kubernetes, governance operates through RBAC, NetworkPolicies, and namespace isolation. On Linux hosts, the equivalent controls are filesystem permissions on Skupper configuration directories, firewall rules governing listener ports, and process-level access to site definitions and tokens.
+
 ## Relevant existing pages
 
 - [Secure Skupper](../skupper-docs-landscape/secure-skupper.md) — the current security topic map; useful as an outline but still a stub.
