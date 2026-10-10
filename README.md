@@ -9,6 +9,12 @@ This repo can be supplemented with code repos so you can query it like deepwiki,
 
 See [Requirements](#requirements) and [Quick start](#quick-start) to set up the repository.
 
+## Export document models
+
+Run `just report-generated-docs` to export `generated/` as schema-validated
+JSON Lines with front matter, sections, Markdown blocks, relative paths, filenames, and Git
+commit metadata. See [document model export](docs/document-model.md) for details.
+
 
 ## Maps
 

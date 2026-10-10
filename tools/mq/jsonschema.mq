@@ -1,0 +1,350 @@
+# JSON Schema (Draft 7-equivalent) validator implemented as an mq module.
+# https://json-schema.org/draft-07/json-schema-release-notes
+
+def _js_type_name(value):
+  if (is_none(value)): "null"
+  elif (is_bool(value)): "boolean"
+  elif (is_dict(value)): "object"
+  elif (is_array(value)): "array"
+  elif (is_string(value)): "string"
+  elif (is_number(value)): "number"
+  else: type(value)
+end
+
+def _js_matches_type(value, t):
+  if (t == "null"): is_none(value)
+  elif (t == "boolean"): is_bool(value)
+  elif (t == "object"): is_dict(value)
+  elif (t == "array"): is_array(value)
+  elif (t == "string"): is_string(value)
+  elif (t == "number"): is_number(value)
+  elif (t == "integer"): is_number(value) && value == trunc(value)
+  else: error("jsonschema: unknown type keyword: " + t)
+end
+
+def _js_err(path, keyword, message):
+  [{"path": path, "keyword": keyword, "message": message}]
+end
+
+def _js_resolve_pointer_segment(node, segment, ref):
+  if (is_dict(node) && has(node, segment)): node[segment]
+  elif (is_dict(node)): error("jsonschema: invalid $ref, no such path: " + ref)
+  elif (is_array(node) && is_regex_match(segment, "^[0-9]+$") && to_number(segment) < len(node)):
+    node[to_number(segment)]
+  else: error("jsonschema: invalid $ref, cannot resolve path: " + ref)
+end
+
+def _js_resolve_pointer(root, ref):
+  if (!starts_with(ref, "#")):
+    error("jsonschema: only local $ref (starting with '#') is supported, got: " + ref)
+  else:
+    do
+      let pointer = ltrimstr(ref, "#")
+      | let segments = if (is_empty(pointer) || pointer == "/"): []
+                        else: split(ltrimstr(pointer, "/"), "/")
+      | fold(segments, root, fn(node, raw_segment):
+          let segment = replace(replace(raw_segment, "~1", "/"), "~0", "~")
+          | _js_resolve_pointer_segment(node, segment, ref);
+        )
+    end
+end
+
+# Follows a chain of `$ref` indirections until a schema without a `$ref` (or a
+# boolean schema) is reached. Bounded to guard against reference cycles.
+def _js_resolve_ref(root, ref):
+  do
+    var current = ref
+    | var resolved = None
+    | var depth = 0
+    | var done = false
+    | let _ = while (!done):
+        if (depth > 64):
+          error("jsonschema: $ref chain too deep (possible cycle) at: " + current)
+        else:
+          do
+            let target = _js_resolve_pointer(root, current)
+            | if (is_dict(target) && has(target, "$ref") && is_string(target["$ref"])):
+                do current = target["$ref"] | depth += 1 | resolved end
+              else:
+                do resolved = target | done = true | resolved end
+          end
+      end
+    | resolved
+  end
+end
+
+def _js_format_pattern(format):
+  if (format == "email"): "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+  elif (format == "uri"): "^[a-zA-Z][a-zA-Z0-9+.-]*://\\S+$"
+  elif (format == "date"): "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  elif (format == "date-time"): "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+  elif (format == "time"): "^[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$"
+  elif (format == "uuid"): "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+  elif (format == "ipv4"): "^([0-9]{1,3}\\.){3}[0-9]{1,3}$"
+  elif (format == "ipv6"): "^[0-9a-fA-F:]+:[0-9a-fA-F:]+$"
+  elif (format == "hostname"): "^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+  else: None
+end
+
+def _js_check_format(value, format, path):
+  let pattern = _js_format_pattern(format)
+  | if (is_none(pattern)): []
+    elif (is_regex_match(value, pattern)): []
+    else: _js_err(path, "format", "string does not match format '" + format + "'")
+end
+
+def _js_to_type_list(declared):
+  if (is_array(declared)): declared else: [declared]
+end
+
+def _js_check_type(value, schema, path):
+  if (!has(schema, "type")): []
+  else:
+    do
+      let types = _js_to_type_list(schema["type"])
+      | if (any(types, fn(t): _js_matches_type(value, t);)): []
+        else: _js_err(path, "type", "expected type " + join(types, " or ") + ", got " + _js_type_name(value))
+    end
+end
+
+def _js_check_enum(value, schema, path):
+  if (!has(schema, "enum")): []
+  elif (in(schema["enum"], value)): []
+  else: _js_err(path, "enum", "value is not one of the allowed enum values")
+end
+
+def _js_check_const(value, schema, path):
+  if (!has(schema, "const")): []
+  elif (value == schema["const"]): []
+  else: _js_err(path, "const", "value does not equal the required const value")
+end
+
+def _js_is_multiple_of(value, divisor):
+  if (divisor == 0): error("jsonschema: multipleOf must not be zero")
+  else:
+    do
+      let quotient = value / divisor
+      | abs(quotient - round(quotient)) < 1e-9
+    end
+end
+
+def _js_check_number(value, schema, path):
+  if (!is_number(value)): []
+  else:
+    (if (has(schema, "minimum") && value < schema["minimum"]):
+         _js_err(path, "minimum", "value " + to_string(value) + " is less than minimum " + to_string(schema["minimum"]))
+       else: [])
+    + (if (has(schema, "maximum") && value > schema["maximum"]):
+         _js_err(path, "maximum", "value " + to_string(value) + " is greater than maximum " + to_string(schema["maximum"]))
+       else: [])
+    + (if (has(schema, "exclusiveMinimum") && value <= schema["exclusiveMinimum"]):
+         _js_err(path, "exclusiveMinimum", "value " + to_string(value) + " must be greater than " + to_string(schema["exclusiveMinimum"]))
+       else: [])
+    + (if (has(schema, "exclusiveMaximum") && value >= schema["exclusiveMaximum"]):
+         _js_err(path, "exclusiveMaximum", "value " + to_string(value) + " must be less than " + to_string(schema["exclusiveMaximum"]))
+       else: [])
+    + (if (has(schema, "multipleOf") && !_js_is_multiple_of(value, schema["multipleOf"])):
+         _js_err(path, "multipleOf", "value " + to_string(value) + " is not a multiple of " + to_string(schema["multipleOf"]))
+       else: [])
+end
+
+def _js_check_string(value, schema, path):
+  if (!is_string(value)): []
+  else:
+    (if (has(schema, "minLength") && len(value) < schema["minLength"]):
+       _js_err(path, "minLength", "string length " + to_string(len(value)) + " is less than minLength " + to_string(schema["minLength"]))
+     else: [])
+    + (if (has(schema, "maxLength") && len(value) > schema["maxLength"]):
+         _js_err(path, "maxLength", "string length " + to_string(len(value)) + " is greater than maxLength " + to_string(schema["maxLength"]))
+       else: [])
+    + (if (has(schema, "pattern") && !is_regex_match(value, schema["pattern"])):
+         _js_err(path, "pattern", "string does not match pattern '" + schema["pattern"] + "'")
+       else: [])
+    + (if (has(schema, "format")): _js_check_format(value, schema["format"], path) else: [])
+end
+
+def _js_check_items(value, schema, path, root):
+  let items = schema["items"]
+  | let n = len(value)
+  | if (is_array(items)):
+      do
+        let m = len(items)
+        | var errors = []
+        | var i = 0
+        | let _ = while (i < n):
+            do
+              let item_path = path + "[" + to_string(i) + "]"
+              | errors = errors +
+                  if (i < m):
+                    _js_validate(value[i], items[i], item_path, root)
+                  elif (has(schema, "additionalItems") && schema["additionalItems"] == false):
+                    _js_err(item_path, "additionalItems", "no additional items are allowed")
+                  elif (has(schema, "additionalItems") && is_dict(schema["additionalItems"])):
+                    _js_validate(value[i], schema["additionalItems"], item_path, root)
+                  else: []
+              | i += 1
+              | errors
+            end
+          end
+        | errors
+      end
+    else:
+      do
+        var errors = []
+        | var i = 0
+        | let _ = while (i < n):
+            do
+              errors = errors + _js_validate(value[i], items, path + "[" + to_string(i) + "]", root)
+              | i += 1
+              | errors
+            end
+          end
+        | errors
+      end
+end
+
+def _js_check_array(value, schema, path, root):
+  if (!is_array(value)): []
+  else:
+    do
+      let n = len(value)
+      | (if (has(schema, "minItems") && n < schema["minItems"]):
+           _js_err(path, "minItems", "array has " + to_string(n) + " items, expected at least " + to_string(schema["minItems"]))
+         else: [])
+      + (if (has(schema, "maxItems") && n > schema["maxItems"]):
+           _js_err(path, "maxItems", "array has " + to_string(n) + " items, expected at most " + to_string(schema["maxItems"]))
+         else: [])
+      + (if (has(schema, "uniqueItems") && schema["uniqueItems"] == true && len(uniq(value)) != n):
+           _js_err(path, "uniqueItems", "array items must be unique")
+         else: [])
+      + (if (has(schema, "items")): _js_check_items(value, schema, path, root) else: [])
+      + (if (!has(schema, "contains")): []
+         elif (any(value, fn(v): is_empty(_js_validate(v, schema["contains"], path, root));)): []
+         else: _js_err(path, "contains", "array must contain at least one item matching the 'contains' schema"))
+    end
+end
+
+def _js_check_property(value, schema, root, path, key):
+  let v = value[key]
+  | let kpath = path + "." + key
+  | let props = if (has(schema, "properties")): schema["properties"] else: dict()
+  | let pattern_props = if (has(schema, "patternProperties")): entries(schema["patternProperties"]) else: []
+  | let in_properties = has(props, key)
+  | let matching_patterns = filter(pattern_props, fn(pe): is_regex_match(key, pe[0]);)
+  | let matches_pattern = !is_empty(matching_patterns)
+  | let property_names_schema = if (has(schema, "propertyNames")): schema["propertyNames"] else: None
+  | (if (in_properties): _js_validate(v, props[key], kpath, root) else: [])
+  + fold(matching_patterns, [], fn(acc, pe): acc + _js_validate(v, pe[1], kpath, root);)
+  + (if (is_none(property_names_schema)): [] else: _js_validate(key, property_names_schema, path, root))
+  + (if (in_properties || matches_pattern || !has(schema, "additionalProperties")): []
+     elif (schema["additionalProperties"] == false):
+       _js_err(kpath, "additionalProperties", "unexpected additional property '" + key + "'")
+     elif (is_dict(schema["additionalProperties"])):
+       _js_validate(v, schema["additionalProperties"], kpath, root)
+     else: [])
+end
+
+def _js_check_dependency(value, path, root, entry):
+  let key = entry[0]
+  | let dep = entry[1]
+  | if (!has(value, key)): []
+    elif (is_array(dep)):
+      fold(dep, [], fn(acc, req_key):
+        if (has(value, req_key)): acc
+        else: acc + _js_err(path, "dependencies", "property '" + key + "' requires property '" + req_key + "'");
+      )
+    elif (is_dict(dep)):
+      _js_validate(value, dep, path, root)
+    else:
+      error("jsonschema: unsupported \"dependencies\" entry for '" + key + "'")
+end
+
+def _js_check_object(value, schema, path, root):
+  if (!is_dict(value)): []
+  else:
+    do
+      let n = len(value)
+      | let required_errors = if (has(schema, "required")):
+          fold(schema["required"], [], fn(acc, key):
+            if (has(value, key)): acc
+            else: acc + _js_err(path, "required", "missing required property '" + key + "'");
+          )
+        else: []
+      | let prop_errors = fold(keys(value), [], fn(acc, key): acc + _js_check_property(value, schema, root, path, key);)
+      | let dependency_errors = if (has(schema, "dependencies")):
+          fold(entries(schema["dependencies"]), [], fn(acc, e): acc + _js_check_dependency(value, path, root, e);)
+        else: []
+      | required_errors
+      + (if (has(schema, "minProperties") && n < schema["minProperties"]):
+           _js_err(path, "minProperties", "object has " + to_string(n) + " properties, expected at least " + to_string(schema["minProperties"]))
+         else: [])
+      + (if (has(schema, "maxProperties") && n > schema["maxProperties"]):
+           _js_err(path, "maxProperties", "object has " + to_string(n) + " properties, expected at most " + to_string(schema["maxProperties"]))
+         else: [])
+      + prop_errors
+      + dependency_errors
+    end
+end
+
+def _js_check_combinators(value, schema, path, root):
+  (if (has(schema, "allOf")):
+     fold(schema["allOf"], [], fn(acc, s): acc + _js_validate(value, s, path, root);)
+   else: [])
+  + (if (!has(schema, "anyOf")): []
+     elif (any(schema["anyOf"], fn(s): is_empty(_js_validate(value, s, path, root));)): []
+     else: _js_err(path, "anyOf", "value does not match any schema in \"anyOf\""))
+  + (if (has(schema, "oneOf")):
+       do
+         let match_count = len(filter(schema["oneOf"], fn(s): is_empty(_js_validate(value, s, path, root));))
+         | if (match_count == 1): []
+           else: _js_err(path, "oneOf", "value must match exactly one schema in \"oneOf\" (matched " + to_string(match_count) + ")")
+       end
+     else: [])
+  + (if (has(schema, "not") && is_empty(_js_validate(value, schema["not"], path, root))):
+       _js_err(path, "not", "value must not match the \"not\" schema")
+     else: [])
+  + _js_check_if_then_else(value, schema, path, root)
+end
+
+def _js_check_if_then_else(value, schema, path, root):
+  if (!has(schema, "if")): []
+  else:
+    do
+      let if_ok = is_empty(_js_validate(value, schema["if"], path, root))
+      | if (if_ok && has(schema, "then")): _js_validate(value, schema["then"], path, root)
+        elif (!if_ok && has(schema, "else")): _js_validate(value, schema["else"], path, root)
+        else: []
+    end
+end
+
+def _js_validate(value, schema, path, root):
+  if (schema == true): []
+  elif (schema == false): _js_err(path, "false", "no value is valid against the schema `false`")
+  elif (!is_dict(schema)): error("jsonschema: schema must be a dict or a boolean, got: " + type(schema))
+  elif (has(schema, "$ref") && is_string(schema["$ref"])):
+    _js_validate(value, _js_resolve_ref(root, schema["$ref"]), path, root)
+  else:
+    _js_check_type(value, schema, path)
+    + _js_check_enum(value, schema, path)
+    + _js_check_const(value, schema, path)
+    + _js_check_object(value, schema, path, root)
+    + _js_check_array(value, schema, path, root)
+    + _js_check_string(value, schema, path)
+    + _js_check_number(value, schema, path)
+    + _js_check_combinators(value, schema, path, root)
+end
+
+# Validates `value` against a JSON Schema (Draft 7-equivalent) `schema`.
+# Both `value` and `schema` are plain mq values (dict/array/string/number/
+# bool/None), as produced by `json::json_parse`, `yaml::yaml_parse`,
+# `toml::toml_parse`, or literal mq object/array syntax.
+#
+# Returns an array of violation records `{"path", "keyword", "message"}`.
+# An empty array means `value` is valid. Local `$ref` (e.g. `"#/definitions/x"`)
+# is resolved against `schema` itself; remote `$ref` is not supported.
+def validate(value, schema):
+  _js_validate(value, schema, "$", schema)
+end
+
+# Returns `true` if `value` satisfies `schema`, `false` otherwise.
+def is_valid(value, schema): is_empty(validate(value, schema));

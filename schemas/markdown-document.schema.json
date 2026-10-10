@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Markdown document model",
+  "$ref": "#/definitions/document",
+  "definitions": {
+    "id": { "type": "string", "minLength": 1 },
+    "node": {
+      "oneOf": [
+        { "$ref": "#/definitions/section" },
+        { "$ref": "#/definitions/block" }
+      ]
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id", "path", "filename", "git_commit", "children"],
+      "properties": {
+        "type": { "const": "document" },
+        "id": { "$ref": "#/definitions/id" },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/].*$",
+          "not": { "pattern": "(^|/)\\.\\.(/|$)" },
+          "description": "Source file path relative to its Git repository root, using forward slashes."
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/\\\\]+$",
+          "description": "Source file basename, including its extension."
+        },
+        "git_commit": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+          "description": "HEAD commit of the source repository when exported. Content is read from the working tree."
+        },
+        "frontmatter": {
+          "$ref": "#/definitions/frontmatter"
+        },
+        "children": {
+          "type": "array",
+          "description": "Content in source order.",
+          "items": { "$ref": "#/definitions/node" }
+        }
+      }
+    },
+    "frontmatter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "raw", "data"],
+      "properties": {
+        "format": { "enum": ["yaml", "toml"] },
+        "raw": {
+          "type": "string",
+          "description": "Original front matter including delimiters and source line endings."
+        },
+        "data": {
+          "description": "Parsed YAML or TOML represented as JSON. Arbitrary source keys and nested values are preserved; empty YAML is null."
+        }
+      },
+      "description": "Optional document metadata, present only when the source has front matter."
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id", "heading", "level", "children"],
+      "properties": {
+        "type": { "const": "section" },
+        "id": { "$ref": "#/definitions/id" },
+        "heading": {
+          "type": "string",
+          "description": "Heading content without heading markers; inline Markdown is permitted."
+        },
+        "level": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "children": {
+          "type": "array",
+          "description": "Blocks and nested sections in source order.",
+          "items": { "$ref": "#/definitions/node" }
+        }
+      }
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id", "kind", "markdown"],
+      "properties": {
+        "type": { "const": "block" },
+        "id": { "$ref": "#/definitions/id" },
+        "kind": {
+          "enum": ["paragraph", "code", "list", "table", "blockquote", "thematicBreak", "html"]
+        },
+        "markdown": {
+          "type": "string",
+          "description": "Complete Markdown for this block, including relevant syntax markers."
+        }
+      }
+    }
+  }
+}

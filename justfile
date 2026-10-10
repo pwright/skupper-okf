@@ -127,6 +127,14 @@ test:
 tags *paths:
     @./scripts/extract-frontmatter-tags.py {{paths}}
 
+# Export schema-validated JSON documents for every Markdown file in generated/
+report-generated-docs:
+    python3 tools/report-generated-docs.py generated/
+
+# Recreate Markdown from a document JSON Lines report in a separate directory
+generate-docs input output:
+    python3 tools/generate-docs.py "{{input}}" "{{output}}"
+
 # Wrap Blockscape maps as generated Markdown pages
 maps:
     ./tools/update-generated-maps.py --input maps --output generated/maps --source-base-url {{blockscape_raw_base_url}} --blockscape-base-url {{blockscape_app_base_url}}
