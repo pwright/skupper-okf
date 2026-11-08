@@ -1,0 +1,16 @@
+concepts:
+  - id: concept:listener
+    name: Listener
+    documents: [human/one/listener.md, generated/concepts/listener.md]
+  - id: concept:routing-key
+    name: RoutingKey
+    documents: [human/two/routing-key.md]
+assertions:
+  - source: concept:listener
+    target: concept:routing-key
+    predicate: uses
+    path: human/one/listener.md
+    locator: '# Listener'
+    quote: A listener uses a routing key.
+    status: proposed
+    reviewed: false

@@ -123,6 +123,18 @@ sync-human-vms:
 test:
     ./tests/smoke-test.sh
 
+# Build the LinkML documentation/domain pilot (requires requirements-linkml.txt)
+linkml-build:
+    .venv-linkml/bin/python scripts/linkml_model.py build
+
+# Validate the generated LinkML dataset; pass --strict to require resolved provenance
+linkml-check *args:
+    .venv-linkml/bin/python scripts/linkml_model.py validate {{args}}
+
+# Offline command-interface tests for the LinkML pilot
+linkml-test:
+    .venv-linkml/bin/python -m unittest discover -s tests -p 'test_linkml_model.py'
+
 # Print unique tags from Markdown front matter
 tags *paths:
     @./scripts/extract-frontmatter-tags.py {{paths}}

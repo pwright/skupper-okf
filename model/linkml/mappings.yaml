@@ -1,0 +1,38 @@
+# These are domain identities, not deployed resources or Go symbols.
+concepts:
+  - id: concept:listener
+    name: Listener
+    documents:
+      - human/skupper-docs/input/refdog/concepts/listener.md
+      - generated/concepts/listener.md
+  - id: concept:connector
+    name: Connector
+    documents:
+      - human/skupper-docs/input/refdog/concepts/connector.md
+      - generated/concepts/connector.md
+  - id: concept:routing-key
+    name: RoutingKey
+    documents:
+      - human/skupper-docs/input/refdog/concepts/routing-key.md
+      - generated/concepts/routing-key.md
+assertions:
+  - source: concept:listener
+    target: concept:routing-key
+    predicate: uses
+    path: human/skupper-docs/input/refdog/concepts/listener.md
+    locator: '# Listener concept'
+    quote: |-
+      Each listener has an associated
+      connection endpoint and routing key.
+    status: proposed
+    reviewed: false
+  - source: concept:connector
+    target: concept:routing-key
+    predicate: uses
+    path: human/skupper-docs/input/refdog/concepts/connector.md
+    locator: '# Connector concept'
+    quote: |-
+      Each connector has an
+      associated workload and routing key.
+    status: proposed
+    reviewed: false

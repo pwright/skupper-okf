@@ -1,0 +1,143 @@
+id: https://example.org/skupper-okf/architecture
+name: skupper_architecture
+description: Evidence-bearing documentation and domain concepts for Skupper.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  okf: https://example.org/skupper-okf/
+default_prefix: okf
+imports:
+  - linkml:types
+default_range: string
+classes:
+  Entity:
+    abstract: true
+    attributes:
+      id:
+        identifier: true
+        required: true
+      name:
+        required: true
+      evidence:
+        range: Evidence
+        multivalued: true
+        inlined: false
+  Repository:
+    is_a: Entity
+    attributes:
+      root:
+        required: true
+      url: {}
+      record_commit: {}
+      snapshot_commit: {}
+  SourceDocument:
+    is_a: Entity
+    slot_usage:
+      evidence:
+        required: true
+    attributes:
+      path:
+        required: true
+      repository:
+        range: Repository
+        required: true
+      original_id: {}
+  DomainConcept:
+    is_a: Entity
+    slot_usage:
+      evidence:
+        required: true
+  Evidence:
+    attributes:
+      id:
+        identifier: true
+        required: true
+      repository:
+        range: Repository
+      path:
+        required: true
+      declared_commit: {}
+      declared_repo: {}
+      declared_branch: {}
+      snapshot_commit: {}
+      availability:
+        range: Availability
+        required: true
+      revision_state:
+        range: RevisionState
+        required: true
+      method:
+        range: ExtractionMethod
+        required: true
+      locator: {}
+      quote: {}
+      status: {}
+      reviewed:
+        range: boolean
+      confidence: {}
+  Relationship:
+    attributes:
+      id:
+        identifier: true
+        required: true
+      source:
+        range: Entity
+        required: true
+      target:
+        range: Entity
+        required: true
+      predicate:
+        range: Predicate
+        required: true
+      evidence:
+        range: Evidence
+        multivalued: true
+        required: true
+        inlined: false
+  ArchitectureDataset:
+    tree_root: true
+    attributes:
+      repositories:
+        range: Repository
+        multivalued: true
+        inlined_as_list: true
+        required: true
+      documents:
+        range: SourceDocument
+        multivalued: true
+        inlined_as_list: true
+        required: true
+      concepts:
+        range: DomainConcept
+        multivalued: true
+        inlined_as_list: true
+        required: true
+      evidence:
+        range: Evidence
+        multivalued: true
+        inlined_as_list: true
+        required: true
+      relationships:
+        range: Relationship
+        multivalued: true
+        inlined_as_list: true
+        required: true
+enums:
+  Predicate:
+    permissible_values:
+      documents: {}
+      related_to: {}
+      uses: {}
+  Availability:
+    permissible_values:
+      present: {}
+      missing: {}
+  RevisionState:
+    permissible_values:
+      matches: {}
+      mismatch: {}
+      unknown: {}
+  ExtractionMethod:
+    permissible_values:
+      frontmatter: {}
+      source_path: {}
+      maintained_mapping: {}

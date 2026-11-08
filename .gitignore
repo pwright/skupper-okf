@@ -26,6 +26,8 @@ debug/
 
 # Temporary files
 /tmp/
+.venv-linkml/
+__pycache__/
 .DS_Store
 
 

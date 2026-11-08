@@ -1,0 +1,15 @@
+repositories:
+  - id: repo:one
+    root: human/one
+    record: sources/one.md
+    required: true
+    include: [listener.md]
+  - id: repo:two
+    root: human/two
+    record: sources/two.md
+    required: true
+    include: [routing-key.md]
+  - id: repo:notes
+    root: generated/concepts
+    required: true
+    include: [listener.md]

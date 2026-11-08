@@ -169,6 +169,11 @@ maps/
 
 ## Basic workflow
 
+The optional [LinkML architecture pilot](model/linkml/README.md) builds an
+evidence-bearing dataset for Listener, Connector, and RoutingKey from selected
+source snapshots and generated notes. Run `just linkml-build` and
+`just linkml-check` after installing its separate requirements.
+
 ```text
 1. Refresh human/skupper-docs/ from skupper-docs main.
 2. Use prompts/extract-from-human.md to generate OKF pages into generated/.

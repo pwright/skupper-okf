@@ -1,0 +1,47 @@
+# Synthetic hand-authored dataset illustrating the three pilot concepts.
+# This is a representation example, not a claim about deployed infrastructure.
+repositories:
+  - id: repo:example
+    name: Example fixture
+    root: .
+documents:
+  - id: doc:example
+    name: Three-concept example
+    path: example.yaml
+    repository: repo:example
+    evidence: [evidence:example]
+concepts:
+  - id: concept:listener
+    name: Listener
+    evidence: [evidence:example]
+  - id: concept:connector
+    name: Connector
+    evidence: [evidence:example]
+  - id: concept:routing-key
+    name: RoutingKey
+    evidence: [evidence:example]
+evidence:
+  - id: evidence:example
+    repository: repo:example
+    path: example.yaml
+    availability: present
+    revision_state: unknown
+    method: maintained_mapping
+    status: example
+    reviewed: false
+relationships:
+  - id: relationship:example-listener
+    source: doc:example
+    target: concept:listener
+    predicate: documents
+    evidence: [evidence:example]
+  - id: relationship:example-connector
+    source: doc:example
+    target: concept:connector
+    predicate: documents
+    evidence: [evidence:example]
+  - id: relationship:example-routing-key
+    source: doc:example
+    target: concept:routing-key
+    predicate: documents
+    evidence: [evidence:example]

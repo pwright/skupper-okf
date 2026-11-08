@@ -1,0 +1,398 @@
+{
+  "$defs": {
+    "ArchitectureDataset": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "concepts": {
+          "items": {
+            "$ref": "#/$defs/DomainConcept"
+          },
+          "type": "array"
+        },
+        "documents": {
+          "items": {
+            "$ref": "#/$defs/SourceDocument"
+          },
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "relationships": {
+          "items": {
+            "$ref": "#/$defs/Relationship"
+          },
+          "type": "array"
+        },
+        "repositories": {
+          "items": {
+            "$ref": "#/$defs/Repository"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "repositories",
+        "documents",
+        "concepts",
+        "evidence",
+        "relationships"
+      ],
+      "title": "ArchitectureDataset",
+      "type": "object"
+    },
+    "Availability": {
+      "description": "",
+      "enum": [
+        "present",
+        "missing"
+      ],
+      "title": "Availability",
+      "type": "string"
+    },
+    "DomainConcept": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "evidence"
+      ],
+      "title": "DomainConcept",
+      "type": "object"
+    },
+    "Entity": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "Entity",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "availability": {
+          "$ref": "#/$defs/Availability"
+        },
+        "confidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_repo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "$ref": "#/$defs/ExtractionMethod"
+        },
+        "path": {
+          "type": "string"
+        },
+        "quote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "revision_state": {
+          "$ref": "#/$defs/RevisionState"
+        },
+        "snapshot_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "path",
+        "availability",
+        "revision_state",
+        "method"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "ExtractionMethod": {
+      "description": "",
+      "enum": [
+        "frontmatter",
+        "source_path",
+        "maintained_mapping"
+      ],
+      "title": "ExtractionMethod",
+      "type": "string"
+    },
+    "Predicate": {
+      "description": "",
+      "enum": [
+        "documents",
+        "related_to",
+        "uses"
+      ],
+      "title": "Predicate",
+      "type": "string"
+    },
+    "Relationship": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "predicate": {
+          "$ref": "#/$defs/Predicate"
+        },
+        "source": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "target",
+        "predicate",
+        "evidence"
+      ],
+      "title": "Relationship",
+      "type": "object"
+    },
+    "Repository": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "record_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "root": {
+          "type": "string"
+        },
+        "snapshot_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "root",
+        "id",
+        "name"
+      ],
+      "title": "Repository",
+      "type": "object"
+    },
+    "RevisionState": {
+      "description": "",
+      "enum": [
+        "matches",
+        "mismatch",
+        "unknown"
+      ],
+      "title": "RevisionState",
+      "type": "string"
+    },
+    "SourceDocument": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "original_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "repository",
+        "id",
+        "name",
+        "evidence"
+      ],
+      "title": "SourceDocument",
+      "type": "object"
+    }
+  },
+  "$id": "https://example.org/skupper-okf/architecture",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "",
+  "metamodel_version": "1.12.0",
+  "properties": {
+    "concepts": {
+      "items": {
+        "$ref": "#/$defs/DomainConcept"
+      },
+      "type": "array"
+    },
+    "documents": {
+      "items": {
+        "$ref": "#/$defs/SourceDocument"
+      },
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/Relationship"
+      },
+      "type": "array"
+    },
+    "repositories": {
+      "items": {
+        "$ref": "#/$defs/Repository"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "repositories",
+    "documents",
+    "concepts",
+    "evidence",
+    "relationships"
+  ],
+  "title": "skupper_architecture",
+  "type": "object",
+  "version": null
+}

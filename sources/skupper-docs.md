@@ -4,8 +4,8 @@ title: Skupper documentation
 id: source-skupper-docs
 repo: https://github.com/skupperproject/skupper-docs.git
 branch: main
-commit: a5c5adcecc82b7d72187fc16441fee3a17054917
-retrieved_at: 2026-08-11T17:21:18Z
+commit: 7dce4ad21d258de34a74a0c73f3f2b22526e236b
+retrieved_at: 2026-11-08T20:10:49Z
 local_snapshot: ../human/skupper-docs
 ---
 
@@ -15,6 +15,6 @@ This source entry records the commit used to populate `human/skupper-docs/`.
 
 - Repository: `https://github.com/skupperproject/skupper-docs.git`
 - Branch: `main`
-- Commit: `a5c5adcecc82b7d72187fc16441fee3a17054917`
-- Retrieved: `2026-08-11T17:21:18Z`
+- Commit: `7dce4ad21d258de34a74a0c73f3f2b22526e236b`
+- Retrieved: `2026-11-08T20:10:49Z`
 - Local snapshot: `../human/skupper-docs`

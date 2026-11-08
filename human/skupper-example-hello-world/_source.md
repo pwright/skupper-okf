@@ -4,7 +4,7 @@ title: Skupper Hello World example source snapshot
 source_repo: https://github.com/skupperproject/skupper-example-hello-world.git
 source_branch: main
 source_commit: 4f190d39c213064d5da1269ddef1847a4ad75481
-retrieved_at: 2026-08-11T17:21:19Z
+retrieved_at: 2026-11-08T20:10:50Z
 status: human-source-snapshot
 ---
 
