@@ -1,0 +1,285 @@
+id: https://skupper.io/schema/user-config
+name: skupper_user_config
+title: Skupper User Configuration Schema
+description: >-
+  A LinkML schema modeling the user-facing configuration surface for Skupper,
+  a layer 7 service interconnect for Kubernetes. Covers site definition,
+  service exposure (listeners/connectors), and inter-site linking. Based on
+  the skupper.io/v2alpha1 CRD API.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  skupper: https://skupper.io/schema/user-config/
+
+default_prefix: skupper
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+
+  Platform:
+    description: >-
+      The runtime platform where a Skupper site is deployed.
+    permissible_values:
+      kubernetes:
+        description: Kubernetes cluster (default).
+      podman:
+        description: Podman container engine.
+      docker:
+        description: Docker container engine.
+      linux:
+        description: Bare Linux host without a container runtime.
+
+  LinkAccessType:
+    description: >-
+      How the site's router is exposed for incoming links from other sites.
+    permissible_values:
+      none:
+        description: No link access; other sites cannot link to this site.
+      default:
+        description: System selects the appropriate exposure method for the platform.
+      loadbalancer:
+        description: Expose via a Kubernetes LoadBalancer service.
+      route:
+        description: Expose via an OpenShift Route.
+
+  ProtocolType:
+    description: >-
+      Application protocol for listeners and connectors.
+    permissible_values:
+      tcp:
+        description: Raw TCP (default).
+      udp:
+        description: UDP.
+      http:
+        description: HTTP/1.x with application-layer routing.
+      http2:
+        description: HTTP/2 (including gRPC) with application-layer routing.
+
+classes:
+
+  SkupperNetwork:
+    description: >-
+      Top-level container representing a Skupper network: one or more
+      interconnected sites with services distributed across them.
+    tree_root: true
+    attributes:
+      services:
+        description: >-
+          The set of services available on this Skupper network. Each service
+          is a logical grouping identified by a routing key. Listeners and
+          connectors on different sites reference these services to establish
+          cross-site connectivity.
+        range: Service
+        multivalued: true
+        inlined_as_list: true
+      sites:
+        description: >-
+          The sites that make up this Skupper network. Each site is a
+          deployment context (a Kubernetes namespace, a Podman host, etc.)
+          running a Skupper router.
+        range: Site
+        multivalued: true
+        inlined_as_list: true
+
+  Service:
+    description: >-
+      A logical service on the Skupper network, identified by a routing key.
+      Listeners expose the service at a site; connectors provide the backing
+      implementation at another site. The routing key is the coordination
+      point that matches listeners to connectors across sites.
+    attributes:
+      routing_key:
+        description: >-
+          Unique identifier for this service on the Skupper network. Listeners
+          and connectors with the same routing key are matched, regardless of
+          which site they are on.
+        identifier: true
+        required: true
+      protocol:
+        description: >-
+          The application protocol used by this service.
+        range: ProtocolType
+        ifabsent: string(tcp)
+
+  Site:
+    description: >-
+      A Skupper site: a deployment context running a Skupper router. Typically
+      corresponds to a Kubernetes namespace or a Linux/Podman host. Sites are
+      linked together to form the Skupper network.
+    attributes:
+      name:
+        description: >-
+          Name of the site. Must be unique within the network.
+        identifier: true
+        required: true
+      namespace:
+        description: >-
+          Namespace (or equivalent scope) where Skupper resources are deployed.
+        ifabsent: string(default)
+      platform:
+        description: >-
+          The runtime platform for this site.
+        range: Platform
+        ifabsent: string(kubernetes)
+      edge:
+        description: >-
+          When true, the site runs in edge mode. Edge routers connect to
+          interior routers but do not participate in inter-router protocol
+          exchanges, reducing resource usage for lightweight sites.
+        range: boolean
+        ifabsent: "false"
+      ha:
+        description: >-
+          When true, the site runs in high-availability mode with multiple
+          router replicas.
+        range: boolean
+        ifabsent: "false"
+      link_access:
+        description: >-
+          How this site's router is exposed for incoming links from other
+          sites. Controls whether and how a RouterAccess resource is created.
+        range: LinkAccessType
+        ifabsent: string(none)
+      router_logging:
+        description: >-
+          Router log level configuration. Format follows qdrouterd log level
+          syntax (e.g. "ROUTER_CORE:error+").
+      router_data_connection_count:
+        description: >-
+          Number of data connections the router maintains.
+      additional_settings:
+        description: >-
+          Additional router or site settings not covered by named attributes.
+          Keys and values are strings passed through to the site configuration.
+        range: string
+        multivalued: true
+        inlined: true
+      listeners:
+        description: >-
+          Listeners defined at this site. Each listener creates a local
+          service endpoint (a Kubernetes Service or equivalent) that forwards
+          traffic to the Skupper network.
+        range: Listener
+        multivalued: true
+        inlined_as_list: true
+      connectors:
+        description: >-
+          Connectors defined at this site. Each connector binds a local
+          workload to the Skupper network so that remote listeners can
+          reach it.
+        range: Connector
+        multivalued: true
+        inlined_as_list: true
+      links:
+        description: >-
+          Links from this site to other sites. A link is a directed
+          connection from this site to a remote site, but once established,
+          traffic flows bidirectionally across it.
+        range: Link
+        multivalued: true
+        inlined_as_list: true
+
+  Listener:
+    description: >-
+      A listener exposes a service on the Skupper network at this site. It
+      creates a local service endpoint (e.g. a Kubernetes Service) with the
+      specified host and port. Traffic arriving at this endpoint is forwarded
+      to connectors with the same routing key on any linked site.
+    attributes:
+      name:
+        description: >-
+          Name of the listener. Must be unique within the site.
+        identifier: true
+        required: true
+      service:
+        description: >-
+          The service this listener exposes, identified by routing key.
+        range: Service
+        required: true
+      host:
+        description: >-
+          Virtual hostname for the service on the Skupper network. On
+          Kubernetes, this becomes the name of the generated Service resource.
+          Other pods in the namespace can reach this listener at this hostname.
+        required: true
+      port:
+        description: >-
+          Port number the listener accepts traffic on.
+        range: integer
+        required: true
+      tls_credentials:
+        description: >-
+          Name of a TLS credential (Secret or Certificate resource) used to
+          terminate TLS on the listener side of the Skupper network.
+
+  Connector:
+    description: >-
+      A connector binds a local workload to the Skupper network. Remote
+      listeners with the same routing key can reach the workload through
+      this connector. The workload is identified either by a Kubernetes
+      label selector or a direct host address.
+    attributes:
+      name:
+        description: >-
+          Name of the connector. Must be unique within the site.
+        identifier: true
+        required: true
+      service:
+        description: >-
+          The service this connector provides, identified by routing key.
+        range: Service
+        required: true
+      host:
+        description: >-
+          Direct hostname or IP address of the backing workload. Mutually
+          exclusive with selector. Use for non-Kubernetes targets or when
+          targeting a specific endpoint.
+      selector:
+        description: >-
+          Kubernetes label selector identifying the pods that back this
+          service (e.g. "app=backend"). Mutually exclusive with host.
+      port:
+        description: >-
+          Port number the backing workload listens on.
+        range: integer
+        required: true
+      tls_credentials:
+        description: >-
+          Name of a TLS credential (Secret or Certificate resource) used for
+          the connection between the connector and the backing workload.
+
+  Link:
+    description: >-
+      A link connects this site to a remote site. Links are directed (created
+      from one site toward another) but once established, traffic flows
+      bidirectionally. In practice, links are often created via the AccessGrant
+      and AccessToken workflow, but this schema models the declarative
+      end-state.
+    attributes:
+      name:
+        description: >-
+          Name of the link. Must be unique within the site.
+        identifier: true
+        required: true
+      remote_site:
+        description: >-
+          The target site this link connects to, identified by site name.
+        range: Site
+        required: true
+      cost:
+        description: >-
+          Routing cost for this link. Lower cost paths are preferred when
+          multiple paths exist between sites. Default is 1.
+        range: integer
+        ifabsent: int(1)
+      proxy_configuration:
+        description: >-
+          Proxy configuration for the link, if traffic must traverse an
+          HTTP proxy to reach the remote site.
+      tls_credentials:
+        description: >-
+          Name of a TLS credential (Secret or Certificate resource) used to
+          secure the inter-site link.

@@ -1,0 +1,100 @@
+services:
+  - routing_key: adservice
+    protocol: tcp
+  - routing_key: cartservice
+    protocol: tcp
+  - routing_key: checkoutservice
+    protocol: tcp
+  - routing_key: currencyservice
+    protocol: tcp
+  - routing_key: productcatalogservice
+    protocol: tcp
+  - routing_key: recommendationservice
+    protocol: tcp
+  - routing_key: shippingservice
+    protocol: tcp
+
+sites:
+  - name: grpc-a
+    namespace: grpc-a
+    platform: kubernetes
+    link_access: default
+    listeners:
+      - name: adservice
+        service: adservice
+        host: adservice
+        port: 9555
+      - name: cartservice
+        service: cartservice
+        host: cartservice
+        port: 7070
+      - name: checkoutservice
+        service: checkoutservice
+        host: checkoutservice
+        port: 5050
+      - name: currencyservice
+        service: currencyservice
+        host: currencyservice
+        port: 7000
+      - name: productcatalogservice
+        service: productcatalogservice
+        host: productcatalogservice
+        port: 3550
+      - name: recommendationservice
+        service: recommendationservice
+        host: recommendationservice
+        port: 8080
+      - name: shippingservice
+        service: shippingservice
+        host: shippingservice
+        port: 50051
+    connectors:
+      - name: productcatalogservice
+        service: productcatalogservice
+        selector: app=productcatalogservice
+        port: 3550
+      - name: recommendationservice
+        service: recommendationservice
+        selector: app=recommendationservice
+        port: 8080
+
+  - name: grpc-b
+    namespace: grpc-b
+    platform: kubernetes
+    connectors:
+      - name: adservice
+        service: adservice
+        selector: app=adservice
+        port: 9555
+      - name: cartservice
+        service: cartservice
+        selector: app=cartservice
+        port: 7070
+      - name: currencyservice
+        service: currencyservice
+        selector: app=currencyservice
+        port: 7000
+    links:
+      - name: link-to-a
+        remote_site: grpc-a
+        cost: 1
+
+  - name: grpc-c
+    namespace: grpc-c
+    platform: kubernetes
+    connectors:
+      - name: checkoutservice
+        service: checkoutservice
+        selector: app=checkoutservice
+        port: 5050
+      - name: shippingservice
+        service: shippingservice
+        selector: app=shippingservice
+        port: 50051
+    links:
+      - name: link-to-a
+        remote_site: grpc-a
+        cost: 1
+      - name: link-to-b
+        remote_site: grpc-b
+        cost: 1

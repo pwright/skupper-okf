@@ -1,0 +1,27 @@
+services:
+  - routing_key: backend
+    protocol: http
+
+sites:
+  - name: west
+    namespace: west
+    platform: kubernetes
+    link_access: default
+    listeners:
+      - name: backend
+        service: backend
+        host: backend
+        port: 8080
+
+  - name: east
+    namespace: east
+    platform: kubernetes
+    connectors:
+      - name: backend
+        service: backend
+        selector: app=backend
+        port: 8080
+    links:
+      - name: link-to-west
+        remote_site: west
+        cost: 1
