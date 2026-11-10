@@ -58,6 +58,22 @@ enums:
       http2:
         description: HTTP/2 (including gRPC) with application-layer routing.
 
+  RoutingStrategy:
+    description: >-
+      Strategy for distributing traffic across multiple routing keys in a
+      MultiKeyListener. Exactly one strategy must be specified.
+    permissible_values:
+      priority:
+        description: >-
+          Ordered failover. 100% of traffic goes to the highest-priority
+          routing key that has a reachable connector. If it becomes
+          unreachable, traffic shifts to the next key in list order.
+      weighted:
+        description: >-
+          Proportional distribution. Traffic is split among reachable routing
+          keys according to their assigned weights. Keys with higher weights
+          receive a larger share of traffic.
+
 classes:
 
   SkupperNetwork:
@@ -173,6 +189,15 @@ classes:
         range: Connector
         multivalued: true
         inlined_as_list: true
+      multi_key_listeners:
+        description: >-
+          MultiKeyListeners defined at this site. Like listeners, they create
+          a local service endpoint, but route traffic to multiple routing
+          keys using a priority (failover) or weighted (load-balancing)
+          strategy.
+        range: MultiKeyListener
+        multivalued: true
+        inlined_as_list: true
       links:
         description: >-
           Links from this site to other sites. A link is a directed
@@ -214,6 +239,73 @@ classes:
         description: >-
           Name of a TLS credential (Secret or Certificate resource) used to
           terminate TLS on the listener side of the Skupper network.
+
+  MultiKeyListener:
+    description: >-
+      A multi-key listener creates a local service endpoint (like a Listener)
+      but routes traffic to multiple routing keys using a strategy. With a
+      priority strategy, traffic fails over through an ordered list of keys.
+      With a weighted strategy, traffic is distributed proportionally.
+      Corresponds to the MultiKeyListener CRD (skupper.io/v2alpha1).
+    attributes:
+      name:
+        description: >-
+          Name of the multi-key listener. Must be unique within the site.
+        identifier: true
+        required: true
+      host:
+        description: >-
+          Virtual hostname for the service on the Skupper network. On
+          Kubernetes, this becomes the name of the generated Service resource.
+        required: true
+      port:
+        description: >-
+          Port number the listener accepts traffic on.
+        range: integer
+        required: true
+      strategy:
+        description: >-
+          The routing strategy: priority (ordered failover) or weighted
+          (proportional distribution).
+        range: RoutingStrategy
+        required: true
+      priority_routing_keys:
+        description: >-
+          Ordered list of routing keys for the priority strategy. 100% of
+          traffic goes to the first key with a reachable connector; if it
+          becomes unreachable, traffic shifts to the next. Only used when
+          strategy is priority.
+        range: string
+        multivalued: true
+        inlined_as_list: true
+      weighted_routing_keys:
+        description: >-
+          Routing keys with weights for the weighted strategy. Traffic is
+          distributed proportionally based on weight values. Only used when
+          strategy is weighted.
+        range: WeightedRoutingKey
+        multivalued: true
+        inlined_as_list: true
+      tls_credentials:
+        description: >-
+          Name of a TLS credential (Secret or Certificate resource) used to
+          terminate TLS on the listener side.
+
+  WeightedRoutingKey:
+    description: >-
+      A routing key with an associated weight for use in a weighted
+      MultiKeyListener strategy.
+    attributes:
+      routing_key:
+        description: >-
+          The routing key identifying the target service.
+        required: true
+      weight:
+        description: >-
+          Relative weight for traffic distribution. Higher weight means more
+          traffic directed to this routing key.
+        range: integer
+        required: true
 
   Connector:
     description: >-
